@@ -92,8 +92,8 @@ var VI = {
   'built.body': 'Mình không chỉ nói về dự án không ai có. Đây là của mình, và miễn phí.',
   'built.c1': 'Biến QuickDBD, DBML hoặc dự án dbt thành sơ đồ ER vẫn đọc được ở 200+ bảng. 40 bản release, 21 demo trực tiếp.',
   'built.c2': 'Extension VS Code: xem trước bất kỳ CTE dbt nào và so sánh hai phía của một diff. Thử ngay trên trình duyệt.',
-  'built.c3': 'Một dự án dbt chạy được trên DuckDB hoặc Snowflake. 40 sao, 12 fork.',
-  'built.c4': 'Chín bài thực hành, mỗi bài có checkpoint.',
+  'built.c3': 'Một dự án dbt trên DuckDB hoặc Snowflake. Cùng model, source và test — chỉ đổi target. 40 sao, 12 fork.',
+  'built.c4': 'Chín bài thực hành, mỗi bài có checkpoint. Bạn dựng dev, ci và prod, rồi chạy slim CI trên một pull request thật.',
 
   'proof.h2': 'những người mình đã dạy',
 
