@@ -75,7 +75,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </a>
   <nav class="site-nav hand" aria-label="Sections">
     <a href="#why" data-i18n="nav.why">why me</a>
-    <a href="#proof" data-i18n="nav.proof">what others say</a>
+    <a href="#proof" data-i18n="nav.proof">who I've taught</a>
     <a href="#work" data-i18n="nav.work">what we work on</a>
     <a href="#built" data-i18n="nav.built">what I built</a>
     <a href="#how" data-i18n="nav.how">how it works</a>
@@ -146,28 +146,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <!-- proof -->
   <section id="proof" class="section">
-    <h2 class="hand" data-i18n="proof.h2" data-reveal>what others say</h2>
-    <p data-i18n="proof.body" data-reveal>18 recommendations, one editor. Open a file.</p>
-    <div id="rec-themes" class="rec-themes" data-reveal></div>
-    <div id="rec-ide" class="rec-ide" data-sketch="box" data-reveal>
-      <div class="rec-bar">
-        <span class="rec-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span class="rec-title">recommendations — markpham</span>
-        <button type="button" class="rec-files-btn" id="rec-files" aria-expanded="false" data-i18n="proof.files">files</button>
-      </div>
-      <div class="rec-body">
-        <div class="rec-tree" id="rec-tree"></div>
-        <div class="rec-main">
-          <div class="rec-tabs" id="rec-tabs" role="tablist" aria-label="Open recommendations"></div>
-          <div class="rec-editor" id="rec-editor"></div>
-        </div>
-      </div>
-      <div class="rec-status">
-        <a href="https://www.linkedin.com/in/minhbphamm/details/recommendations/" target="_blank" rel="noopener" data-i18n="proof.linkedin">all on LinkedIn</a>
-        <span id="rec-meta"></span>
-      </div>
+    <h2 class="hand" data-i18n="proof.h2" data-reveal>people I've taught</h2>
+    <div class="quotes" data-reveal-group>
+      <blockquote data-sketch="box">
+        <p>“He genuinely believes in his students and encourages us to think deeper instead of simply giving us the answers. He challenges us to be curious, ask better questions, and grow into more confident data professionals.”</p>
+        <footer class="hand"><a href="https://www.linkedin.com/in/miatran1207/" target="_blank" rel="noopener">Mia Tran</a> — SDS &amp; Quant Econ @ Smith College</footer>
+      </blockquote>
+      <blockquote data-sketch="box">
+        <p>“Mark is the kind of mentor that will push you forward and is very critical of your work — he will not let you look back on failures without lessons attached. I believe working with Mark is the fastest way to level up your skills in a corporate setting.”</p>
+        <footer class="hand"><a href="https://www.linkedin.com/in/gwennienguyen/" target="_blank" rel="noopener">Gwen Nguyen</a> — Cloud &amp; Data Engineer Intern @ Arch Insurance</footer>
+      </blockquote>
+      <blockquote data-sketch="box">
+        <p>“He took me from 0 to 1 — teaching me dbt, Airflow, and GitHub, and walking me through my first PR. As a business analyst with no prior data engineering experience, it was one of the most impactful months since I started working.”</p>
+        <footer class="hand"><a href="https://www.linkedin.com/in/yuki-fang/" target="_blank" rel="noopener">Yuki Fang</a> — Data @ Insurify</footer>
+      </blockquote>
+      <blockquote data-sketch="box">
+        <p>“I've learned more technical skills from him than from everyone else combined.”</p>
+        <footer class="hand"><a href="https://www.linkedin.com/in/max-brinker-b15b461a0/" target="_blank" rel="noopener">Max Brinker</a> — Data Analyst @ Insurify</footer>
+      </blockquote>
     </div>
-    <p class="aside rec-more"><a href="https://drive.google.com/file/d/1EyMtIZU1_ohN9i2lJ7sGvAiPnxX7vVAv/view?usp=sharing" target="_blank" rel="noopener" data-i18n="proof.letter">Lazard reference letter</a></p>
     <div id="mentee-wall" class="cards" hidden data-reveal-group></div>
   </section>
 
@@ -534,7 +531,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="assets/vendor/rough.js" defer></script>
 <script src="assets/vi.js" defer></script>
 <script src="assets/mentees.js" defer></script>
-<script src="assets/recs.js" defer></script>
 <script src="assets/site.js" defer></script>
 </body>
 </html>
