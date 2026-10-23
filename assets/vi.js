@@ -96,6 +96,8 @@ var VI = {
   'built.c4': 'Chín bài thực hành, mỗi bài có checkpoint. Bạn dựng dev, ci và prod, rồi chạy slim CI trên một pull request thật.',
 
   'proof.h2': 'những người mình đã dạy',
+  'proof.h3': 'và những người mình đã làm cùng',
+  'proof.all': 'đọc cả 18 lời giới thiệu trên LinkedIn ↗',
 
   'projects.h2': 'mentee của mình đã làm gì',
   'projects.body': 'Một pipeline thật, làm cùng nhau: 117.000 review hàng không scrape từ Skytrax, đưa lên S3, load vào Snowflake và model bằng dbt, chạy bằng Airflow và triển khai bằng Terraform. Sau đó mỗi mentee nhận một hãng bay và ship một dashboard trên nền đó.',

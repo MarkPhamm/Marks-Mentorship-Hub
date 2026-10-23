@@ -277,6 +277,13 @@ picture.drawing img { display: block; margin: 0 auto; } /* phones get the -m cut
 .quotes blockquote { margin: 0; padding: 20px 22px; }
 .quotes blockquote p { margin: 0 0 12px; }
 .quotes footer { color: var(--grey); font-size: 17px; }
+.quotes.compact { grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 16px; margin-top: 16px; }
+.quotes.compact blockquote { padding: 14px 16px; }
+.quotes.compact blockquote p { font-size: 16px; }
+#proof h3 { margin-top: 36px; }
+/* full-width rows so 5 and 13 boxes leave no orphan */
+.quotes > blockquote:last-child:nth-child(odd), .quotes.compact > blockquote:first-child { grid-column: 1 / -1; }
+.quotes.compact > blockquote:last-child { grid-column: auto; }
 
 /* about links */
 .links { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 14px 26px; font-size: 22px; }
