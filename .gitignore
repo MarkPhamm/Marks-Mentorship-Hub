@@ -1,0 +1,5 @@
+drawing/node_modules/
+drawing/package-lock.json
+.DS_Store
+images/
+drawing/*.png
