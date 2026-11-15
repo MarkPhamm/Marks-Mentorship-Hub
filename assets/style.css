@@ -61,7 +61,7 @@ a:focus-visible, button:focus-visible {
 .site-header {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   flex-wrap: wrap;
   padding: 14px 16px;
   max-width: 1100px;
@@ -74,7 +74,7 @@ a:focus-visible, button:focus-visible {
   text-decoration: none;
   font-size: 22px;
 }
-.site-nav { display: flex; gap: 18px; flex-wrap: wrap; font-size: 18px; }
+.site-nav { display: flex; gap: 12px; flex-wrap: wrap; font-size: 18px; }
 .site-nav a { text-decoration: none; }
 .site-nav a:hover { color: var(--violet); }
 .header-actions { margin-left: auto; display: flex; align-items: center; gap: 12px; }
@@ -207,6 +207,15 @@ h3 { font-size: 24px; margin: 0 0 8px; }
 .site-footer a { color: var(--ink); text-decoration: none; }
 .site-footer a:hover { color: var(--violet); }
 
+/* below full width the nav drops to its own row, so brand and actions stay on one line */
+@media (max-width: 1100px) {
+  .site-nav { order: 1; width: 100%; }
+}
 @media (max-width: 640px) {
   .site-nav { display: none; }
+  .site-header { gap: 10px; }
+  .brand { font-size: 18px; gap: 8px; }
+  .brand img { width: 36px; height: 36px; }
+  .header-actions { gap: 8px; }
+  .header-actions .btn { padding: 6px 12px; }
 }

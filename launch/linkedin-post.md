@@ -6,7 +6,7 @@ Attach: `launch-square.png`
 
 I put my mentorship on one page: markmentorship.com
 
-For two years I've been mentoring students and early-career people into data roles — data analyst, analytics engineer, data engineer. The guides were always public on GitHub. Now there's a front door.
+Since 2020 I've been mentoring students and early-career people into data roles — data analyst, analytics engineer, data engineer. The guides were always public on GitHub. Now there's a front door.
 
 The whole thing runs on one rule: if you do what everyone else does, you will not get hired.
 
