@@ -32,6 +32,8 @@
   ]
 }
 </script>
+<!-- reveal on scroll: hide the targets before first paint, and show them again after 3s if assets/site.js never starts -->
+<script>(function(d){if(!('IntersectionObserver' in window))return;d.classList.add('js-reveal');setTimeout(function(){if(!window.revealReady)d.classList.remove('js-reveal')},3000)})(document.documentElement)</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Patrick+Hand&display=swap" rel="stylesheet">
@@ -70,23 +72,26 @@
       <a class="btn btn-big hand" data-sketch="box" href="https://www.linkedin.com/in/minhbphamm/" target="_blank" rel="noopener" data-i18n="cta.main">add me on LinkedIn with a note</a>
     </p>
     <img class="drawing" src="assets/img/hero.png" alt="A row of identical candidate profiles, and one highlighted profile that is different" width="2000" height="760">
-    <ul class="stats hand">
-      <li data-sketch="box"><strong>1,000+</strong><span data-i18n="stat.sql">SQL problems solved</span></li>
-      <li data-sketch="box"><strong data-contrib="total">4,828</strong><span data-i18n="stat.gh">GitHub contributions in a year</span></li>
-      <li data-sketch="box"><strong>110,000+</strong><span data-i18n="stat.xom">members in Xóm Data, which I moderate</span></li>
-      <li data-sketch="box"><strong id="qdbd-month">4,900+</strong><span data-i18n="stat.qdbd">downloads a month of qdbd, a tool I built</span></li>
-    </ul>
-    <figure id="contrib" class="contrib" hidden>
-      <div class="contrib-scroll" tabindex="0" role="group" aria-label="My GitHub contribution graph for the last year"></div>
-      <figcaption class="hand"><strong data-contrib="active">349</strong> <span data-i18n="contrib.cap">active days in the last year. every square is a day.</span> <a href="https://github.com/MarkPhamm" target="_blank" rel="noopener" data-i18n="contrib.link">check it on GitHub</a></figcaption>
-    </figure>
+    <!-- the proof is its own beat: it sits a full section gap below the pitch -->
+    <div class="hero-proof">
+      <ul class="stats hand" data-reveal-group>
+        <li data-sketch="box"><strong>1,000+</strong><span data-i18n="stat.sql">SQL problems solved</span></li>
+        <li data-sketch="box"><strong data-contrib="total">4,828</strong><span data-i18n="stat.gh">GitHub contributions in a year</span></li>
+        <li data-sketch="box"><strong>110,000+</strong><span data-i18n="stat.xom">members in Xóm Data, which I moderate</span></li>
+        <li data-sketch="box"><strong id="qdbd-month">4,900+</strong><span data-i18n="stat.qdbd">downloads a month of qdbd, a tool I built</span></li>
+      </ul>
+      <figure id="contrib" class="contrib" hidden data-reveal>
+        <div class="contrib-scroll" tabindex="0" role="group" aria-label="My GitHub contribution graph for the last year"></div>
+        <figcaption class="hand"><strong data-contrib="active">349</strong> <span data-i18n="contrib.cap">active days in the last year. every square is a day.</span> <a href="https://github.com/MarkPhamm" target="_blank" rel="noopener" data-i18n="contrib.link">check it on GitHub</a></figcaption>
+      </figure>
+    </div>
   </section>
 
   <!-- the confusion -->
   <section id="confused" class="section">
-    <h2 class="hand" data-i18n="confused.h2">sound familiar?</h2>
-    <p data-i18n="confused.body">MySQL or Postgres? Power BI or Tableau? pip or uv? Everyone starting out freezes at the same tool choices — and none of them is the real question. The principles transfer; we pick one stack and move.</p>
-    <div class="drawing-row">
+    <h2 class="hand" data-i18n="confused.h2" data-reveal>sound familiar?</h2>
+    <p data-i18n="confused.body" data-reveal>MySQL or Postgres? Power BI or Tableau? pip or uv? Everyone starting out freezes at the same tool choices — and none of them is the real question. The principles transfer; we pick one stack and move.</p>
+    <div class="drawing-row" data-reveal-group>
       <figure>
         <a href="https://markphammm.substack.com/p/i-dont-know-what-type-of-sql-to-learn" target="_blank" rel="noopener">
           <img class="drawing" src="assets/img/confused-sql.png" alt="MySQL, PostgreSQL, Oracle, SQL Server — which one do I learn? Just learn ANSI SQL" width="1200" height="857" loading="lazy">
@@ -106,12 +111,15 @@
         <figcaption class="hand" data-i18n="confused.cap3">pip, Poetry or uv? each has one job</figcaption>
       </figure>
     </div>
+    <!-- why the mentorship exists -->
+    <p data-i18n="confused.me" data-reveal>I've been exactly here. I struggled hard, with no direction.</p>
+    <p class="pull hand" data-reveal><span data-sketch="highlight" data-i18n="confused.pull">I built this so you don't make the same mistake.</span></p>
   </section>
 
   <!-- why me: the Lazard story -->
   <section id="why" class="section">
-    <h2 class="hand" data-i18n="why.h2">why me</h2>
-    <p data-i18n="why.p1">In the final round for my data engineering internship at Lazard, I was up against Ivy League students. The offer email went to five .edu addresses — Penn, Brown, Cornell, Columbia, Columbia — and one personal Gmail. Mine. TCU isn't a target school.</p>
+    <h2 class="hand" data-i18n="why.h2" data-reveal>why me</h2>
+    <p data-i18n="why.p1" data-reveal>In the final round for my data engineering internship at Lazard, I was up against Ivy League students. The offer email went to five .edu addresses — Penn, Brown, Cornell, Columbia, Columbia — and one personal Gmail. Mine. TCU isn't a target school.</p>
     <img class="drawing" src="assets/img/offer.png" alt="The offer email's recipient list: five .edu addresses from Penn, Brown, Cornell and Columbia, and one Gmail address, highlighted — mine" width="2000" height="1000" loading="lazy">
     <p data-i18n="why.p2">So how did I get the same offer? Not the school.</p>
     <ul class="plain-list">
@@ -125,9 +133,9 @@
 
   <!-- who it's for -->
   <section id="for" class="section">
-    <h2 class="hand" data-i18n="for.h2">who it's for</h2>
-    <p data-i18n="for.body">Students and early-career people aiming at one of three tracks. You don't need experience: you need reps.</p>
-    <div class="cards">
+    <h2 class="hand" data-i18n="for.h2" data-reveal>who it's for</h2>
+    <p data-i18n="for.body" data-reveal>Students and early-career people aiming at one of three tracks. You don't need experience: you need reps.</p>
+    <div class="cards" data-reveal-group>
       <div class="card" data-sketch="box">
         <h3 class="hand" data-i18n="for.da">data analyst</h3>
         <p data-i18n="for.da.body">SQL, dashboards people actually use, and analysis that answers a business question nobody asked you to answer.</p>
@@ -151,8 +159,8 @@
 
   <!-- what we work on -->
   <section id="work" class="section">
-    <h2 class="hand" data-i18n="work.h2">what we work on</h2>
-    <p data-i18n="work.body">Everything comes back to two questions. The copy-paste test: could 1,000 other candidates paste this line unchanged? The only-me test: what is true about you that isn't true about them?</p>
+    <h2 class="hand" data-i18n="work.h2" data-reveal>what we work on</h2>
+    <p data-i18n="work.body" data-reveal>Everything comes back to two questions. The copy-paste test: could 1,000 other candidates paste this line unchanged? The only-me test: what is true about you that isn't true about them?</p>
     <ul class="topics hand">
       <li data-sketch="underline"><a href="https://github.com/MarkPhamm/Mentorships/tree/main/mentality" target="_blank" rel="noopener" data-i18n="work.t1">mentality</a></li>
       <li data-sketch="underline"><a href="https://github.com/MarkPhamm/Mentorships/tree/main/linkedin" target="_blank" rel="noopener" data-i18n="work.t2">LinkedIn profile</a></li>
@@ -169,7 +177,7 @@
       <li><a href="https://github.com/MarkPhamm/Mentorships/tree/main/mentality/2-play-it-like-poker" target="_blank" rel="noopener">“could you defend this claim for 10 minutes while a senior engineer drills into it?”</a></li>
       <li><a href="https://github.com/MarkPhamm/Mentorships/tree/main/mentality/0-apply-like-tinder" target="_blank" rel="noopener">“a Super Like on everything is the same as a Super Like on nothing.”</a></li>
     </ul>
-    <div class="drawing-row">
+    <div class="drawing-row" data-reveal-group>
       <figure>
         <a href="https://markphammm.substack.com/p/component-of-a-technical-data-project" target="_blank" rel="noopener">
           <img class="drawing" src="assets/img/work-projects.png" alt="A data project folder structure where each folder has one job" width="1200" height="600" loading="lazy">
@@ -193,15 +201,15 @@
 
   <!-- curriculum -->
   <section id="teach" class="section">
-    <h2 class="hand" data-i18n="teach.h2">what I'll teach you</h2>
-    <p data-i18n="teach.body">From the fundamentals to Spark: the SQL that solves 80% of problems, dbt and the modern warehouse, ingestion pipelines with zero infrastructure, and Spark for when the data outgrows one machine. It's all written down in the handbook — the mentorship is applying it to your project.</p>
+    <h2 class="hand" data-i18n="teach.h2" data-reveal>what I'll teach you</h2>
+    <p data-i18n="teach.body" data-reveal>From the fundamentals to Spark: the SQL that solves 80% of problems, dbt and the modern warehouse, ingestion pipelines with zero infrastructure, and Spark for when the data outgrows one machine. It's all written down in the handbook — the mentorship is applying it to your project.</p>
     <figure class="single-figure">
       <a href="https://markphammm.substack.com/p/sql-101-the-roadmap" target="_blank" rel="noopener">
         <img class="drawing" src="assets/img/work-sql.png" alt="SQL roadmap staircase from beginner to proficient; intermediate solves 80 percent of problems" width="1200" height="857" loading="lazy">
       </a>
       <figcaption class="hand" data-i18n="teach.cap1">sql 101: a roadmap, not a course list</figcaption>
     </figure>
-    <div class="drawing-row">
+    <div class="drawing-row" data-reveal-group>
       <figure>
         <a href="https://markphammm.substack.com/p/dbt-100-dbt-foundations" target="_blank" rel="noopener">
           <img class="drawing" src="assets/img/teach-dbt.png" alt="Raw data lands in the warehouse from Salesforce, HubSpot, Postgres; dbt is the T in ELT" width="1200" height="857" loading="lazy">
@@ -215,31 +223,37 @@
         <figcaption class="hand" data-i18n="teach.cap4">dbt 101: parents first</figcaption>
       </figure>
       <figure>
-        <a href="https://markphammm.substack.com/p/dbt-202-dbt-incremental-model" target="_blank" rel="noopener">
-          <img class="drawing" src="assets/img/teach-dbt-202.png" alt="A table model rebuilds all rows every single run; an incremental model adds only new rows where updated_at is past the max" width="1200" height="857" loading="lazy">
-        </a>
-        <figcaption class="hand" data-i18n="teach.cap5">dbt 202: only the new rows</figcaption>
-      </figure>
-      <figure>
-        <a href="https://markphammm.substack.com/p/dbt-302-dbt-jinja-and-macros" target="_blank" rel="noopener">
-          <img class="drawing" src="assets/img/teach-dbt-302.png" alt="amount / 100 copy-pasted across three models, versus one cents_to_dollars macro feeding all three — change it once" width="1200" height="857" loading="lazy">
-        </a>
-        <figcaption class="hand" data-i18n="teach.cap6">dbt 302: change it once</figcaption>
-      </figure>
-      <figure>
         <a href="https://markphammm.substack.com/p/i-rebuilt-my-ingestion-pipeline-with" target="_blank" rel="noopener">
           <img class="drawing" src="assets/img/teach-pipeline.png" alt="Neon Postgres to Snowflake through the WAL, CDC and Fivetran — read the log, not the tables" width="1200" height="857" loading="lazy">
         </a>
         <figcaption class="hand" data-i18n="teach.cap3">pipelines 101: zero infrastructure</figcaption>
       </figure>
-      <figure>
-        <a href="https://markphammm.substack.com/p/all-things-spark-tldr-part-1" target="_blank" rel="noopener">
-          <img class="drawing" src="assets/img/teach-spark.png" alt="Spark execution hierarchy: application, job, stage, task; four 128MB partitions feed executor cores — 1 partition = 1 task" width="1200" height="857" loading="lazy">
-        </a>
-        <figcaption class="hand" data-i18n="teach.cap7">spark: 1 partition = 1 task</figcaption>
-      </figure>
     </div>
-    <div id="posts" hidden>
+    <!-- the rest of the curriculum opens on demand; nothing with data-sketch may go in here (a closed panel measures 0) -->
+    <details class="more">
+      <summary class="hand" data-i18n="teach.more">three more: incremental models, macros, Spark</summary>
+      <div class="drawing-row">
+        <figure>
+          <a href="https://markphammm.substack.com/p/dbt-202-dbt-incremental-model" target="_blank" rel="noopener">
+            <img class="drawing" src="assets/img/teach-dbt-202.png" alt="A table model rebuilds all rows every single run; an incremental model adds only new rows where updated_at is past the max" width="1200" height="857" loading="lazy">
+          </a>
+          <figcaption class="hand" data-i18n="teach.cap5">dbt 202: only the new rows</figcaption>
+        </figure>
+        <figure>
+          <a href="https://markphammm.substack.com/p/dbt-302-dbt-jinja-and-macros" target="_blank" rel="noopener">
+            <img class="drawing" src="assets/img/teach-dbt-302.png" alt="amount / 100 copy-pasted across three models, versus one cents_to_dollars macro feeding all three — change it once" width="1200" height="857" loading="lazy">
+          </a>
+          <figcaption class="hand" data-i18n="teach.cap6">dbt 302: change it once</figcaption>
+        </figure>
+        <figure>
+          <a href="https://markphammm.substack.com/p/all-things-spark-tldr-part-1" target="_blank" rel="noopener">
+            <img class="drawing" src="assets/img/teach-spark.png" alt="Spark execution hierarchy: application, job, stage, task; four 128MB partitions feed executor cores — 1 partition = 1 task" width="1200" height="857" loading="lazy">
+          </a>
+          <figcaption class="hand" data-i18n="teach.cap7">spark: 1 partition = 1 task</figcaption>
+        </figure>
+      </div>
+    </details>
+    <div id="posts" hidden data-reveal>
       <h3 class="hand rules-title" data-i18n="posts.h3">latest from the handbook</h3>
       <ul class="rules hand"></ul>
     </div>
@@ -247,9 +261,9 @@
 
   <!-- shipped tools and courses -->
   <section id="built" class="section">
-    <h2 class="hand" data-i18n="built.h2">things I built that you can use today</h2>
-    <p data-i18n="built.body">I don't only talk about projects nobody else has. These are mine, and they're free.</p>
-    <div class="cards">
+    <h2 class="hand" data-i18n="built.h2" data-reveal>things I built that you can use today</h2>
+    <p data-i18n="built.body" data-reveal>I don't only talk about projects nobody else has. These are mine, and they're free.</p>
+    <div class="cards" data-reveal-group>
       <div class="card" data-sketch="box">
         <h3 class="hand"><a href="https://qdbd.dev/demo/" target="_blank" rel="noopener">qdbd</a></h3>
         <p data-i18n="built.c1">Turns QuickDBD, DBML or a dbt project into an ER diagram that stays readable at 200+ tables. 40 releases, 21 live demos.</p>
@@ -271,8 +285,8 @@
 
   <!-- how it works -->
   <section id="how" class="section">
-    <h2 class="hand" data-i18n="how.h2">how it works</h2>
-    <ol class="steps">
+    <h2 class="hand" data-i18n="how.h2" data-reveal>how it works</h2>
+    <ol class="steps" data-reveal-group>
       <li data-sketch="circle"><span class="hand step-title" data-i18n="how.s1">add me with a note</span><span data-i18n="how.s1.body">Connect on LinkedIn and tell me who you are, which track you want, and where you're stuck.</span></li>
       <li data-sketch="circle"><span class="hand step-title" data-i18n="how.s2">we talk</span><span data-i18n="how.s2.body">A short intro chat. If we're a fit, you join the mentee Slack.</span></li>
       <li data-sketch="circle"><span class="hand step-title" data-i18n="how.s3">you do the reps</span><span data-i18n="how.s3.body">You work through the guides, build, and ship. Spotter, our Slack bot, posts everyone's GitHub commits daily — the group sees your reps.</span></li>
@@ -283,8 +297,8 @@
 
   <!-- proof -->
   <section id="proof" class="section">
-    <h2 class="hand" data-i18n="proof.h2">people I've taught</h2>
-    <div class="quotes">
+    <h2 class="hand" data-i18n="proof.h2" data-reveal>people I've taught</h2>
+    <div class="quotes" data-reveal-group>
       <blockquote data-sketch="box">
         <p>“He genuinely believes in his students and encourages us to think deeper instead of simply giving us the answers. He challenges us to be curious, ask better questions, and grow into more confident data professionals.”</p>
         <footer class="hand">Mia Tran — SDS &amp; Quant Econ @ Smith College</footer>
@@ -302,14 +316,14 @@
         <footer class="hand">Max Brinker — Data Analyst @ Insurify</footer>
       </blockquote>
     </div>
-    <div id="mentee-wall" class="cards" hidden></div>
+    <div id="mentee-wall" class="cards" hidden data-reveal-group></div>
     <p class="aside" data-i18n="proof.aside">Mentee projects are public: airline review pipelines, flight-delay dashboards, end-to-end dbt builds. Ask me for the repos.</p>
   </section>
 
   <!-- about -->
   <section id="about" class="section">
-    <h2 class="hand" data-i18n="about.h2">about Mark</h2>
-    <p data-i18n="about.body">Senior Analytics Engineer at Infinite Lambda — the youngest L6 there — and ex-Insurify and Lazard. I did three internships in two countries before my senior year, and I've been mentoring since 2020: a small academy that helped 20 Vietnamese students apply to US universities, the AE Academy for new hires at Insurify, and Ace Mentorships. I moderate Xóm Data, Vietnam's largest data learning community (110,000+ members), and write The Analytics Engineer's Handbook on Substack. I mentor because teaching is how I learn.</p>
+    <h2 class="hand" data-i18n="about.h2" data-reveal>about Mark</h2>
+    <p data-i18n="about.body" data-reveal>Senior Analytics Engineer at Infinite Lambda — the youngest L6 there — and ex-Insurify and Lazard. I did three internships in two countries before my senior year, and I've been mentoring since 2020: a small academy that helped 20 Vietnamese students apply to US universities, the AE Academy for new hires at Insurify, and Ace Mentorships. I moderate Xóm Data, Vietnam's largest data learning community (110,000+ members), and write The Analytics Engineer's Handbook on Substack. I mentor because teaching is how I learn.</p>
     <ul class="links hand">
       <li data-sketch="underline"><a href="https://markphammm.substack.com/" target="_blank" rel="noopener">substack</a></li>
       <li data-sketch="underline"><a href="https://github.com/MarkPhamm" target="_blank" rel="noopener">github</a></li>
@@ -320,28 +334,43 @@
 
   <!-- faq -->
   <section id="faq" class="section">
-    <h2 class="hand" data-i18n="faq.h2">faq</h2>
-    <dl class="faq">
-      <dt class="hand" data-i18n="faq.q1">do I need experience?</dt>
-      <dd data-i18n="faq.a1">No. Most mentees are students or career-switchers. You need time to do the reps, not a data job.</dd>
-      <dt class="hand" data-i18n="faq.q2">what do sessions look like?</dt>
-      <dd data-i18n="faq.a2">1:1 reviews of your profile, resume, portfolio, and projects — after you've run the checklists yourself.</dd>
-      <dt class="hand" data-i18n="faq.q5">how often do we meet?</dt>
-      <dd data-i18n="faq.a5">Weekly, or more often when you need it.</dd>
-      <dt class="hand" data-i18n="faq.q6">how many mentees do you take?</dt>
-      <dd data-i18n="faq.a6">Up to 10 at a time.</dd>
-      <dt class="hand" data-i18n="faq.q3">English or Vietnamese?</dt>
-      <dd data-i18n="faq.a3">Both. The guides are in English; we talk in whichever you think in.</dd>
-      <dt class="hand" data-i18n="faq.q7">what happens after I get an offer?</dt>
-      <dd data-i18n="faq.a7">You stay in the Slack. You keep access, and you can help the next mentees.</dd>
-      <dt class="hand" data-i18n="faq.q4">how do I join?</dt>
-      <dd data-i18n="faq.a4">Add me on LinkedIn with a note. That note is your first copy-paste test.</dd>
-    </dl>
+    <h2 class="hand" data-i18n="faq.h2" data-reveal>faq</h2>
+    <!-- the arrow is drawn in css: the language toggle replaces a summary's text, so it cannot hold a child element -->
+    <div class="faq">
+      <details open>
+        <summary class="hand" data-i18n="faq.q1">do I need experience?</summary>
+        <p data-i18n="faq.a1">No. Most mentees are students or career-switchers. You need time to do the reps, not a data job.</p>
+      </details>
+      <details>
+        <summary class="hand" data-i18n="faq.q2">what do sessions look like?</summary>
+        <p data-i18n="faq.a2">1:1 reviews of your profile, resume, portfolio, and projects — after you've run the checklists yourself.</p>
+      </details>
+      <details>
+        <summary class="hand" data-i18n="faq.q5">how often do we meet?</summary>
+        <p data-i18n="faq.a5">Weekly, or more often when you need it.</p>
+      </details>
+      <details>
+        <summary class="hand" data-i18n="faq.q6">how many mentees do you take?</summary>
+        <p data-i18n="faq.a6">Up to 10 at a time.</p>
+      </details>
+      <details>
+        <summary class="hand" data-i18n="faq.q3">English or Vietnamese?</summary>
+        <p data-i18n="faq.a3">Both. The guides are in English; we talk in whichever you think in.</p>
+      </details>
+      <details>
+        <summary class="hand" data-i18n="faq.q7">what happens after I get an offer?</summary>
+        <p data-i18n="faq.a7">You stay in the Slack. You keep access, and you can help the next mentees.</p>
+      </details>
+      <details>
+        <summary class="hand" data-i18n="faq.q4">how do I join?</summary>
+        <p data-i18n="faq.a4">Add me on LinkedIn with a note. That note is your first copy-paste test.</p>
+      </details>
+    </div>
   </section>
 
   <!-- final cta -->
   <section class="section cta-final">
-    <h2 class="hand" data-i18n="cta.h2">the note is the application</h2>
+    <h2 class="hand" data-i18n="cta.h2" data-reveal>the note is the application</h2>
     <img class="drawing" src="assets/img/note.png" alt="A LinkedIn connection note: who you are, target role, GitHub link, where you are stuck" width="2000" height="1000">
     <form id="note-builder" class="note-builder" hidden>
       <p class="hand note-title" data-i18n="note.h3">write yours here</p>

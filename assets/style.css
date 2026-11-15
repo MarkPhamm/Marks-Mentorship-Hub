@@ -6,10 +6,24 @@
   --bg: #ffffff;
   --hand: 'Architects Daughter', 'Patrick Hand', cursive;
   --body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* motion: every transition and animation on the site uses these */
+  --dur-instant: 100ms; /* press */
+  --dur-fast: 150ms;    /* hover, colour */
+  --dur-base: 220ms;    /* disclosure, lift */
+  --dur-reveal: 480ms;  /* one-off hero and scroll reveals */
+  --stagger: 50ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);    /* entering */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* moving on screen */
+  --reveal-distance: 16px;
+
+  --section-pad: clamp(56px, 9vw, 96px);
 }
 html[lang="vi"] { --hand: 'Patrick Hand', 'Architects Daughter', cursive; }
 
 * { box-sizing: border-box; }
+/* several hidden elements also set display: grid, which would otherwise win over the attribute */
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
@@ -21,7 +35,7 @@ body {
 }
 .hand { font-family: var(--hand); }
 img { max-width: 100%; height: auto; }
-a { color: var(--ink); }
+a { color: var(--ink); transition: color var(--dur-fast) var(--ease-out); }
 p { max-width: 62ch; }
 
 /* sketch layer: site.js puts a rough.js svg inside each [data-sketch] */
@@ -52,7 +66,7 @@ p { max-width: 62ch; }
   z-index: 10;
 }
 .skip-link:focus { left: 8px; }
-a:focus-visible, button:focus-visible, input:focus-visible {
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
   outline: 3px solid var(--violet);
   outline-offset: 2px;
 }
@@ -71,20 +85,25 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-height: 44px;
   text-decoration: none;
   font-size: 22px;
 }
-.site-nav { display: flex; gap: 12px; flex-wrap: wrap; font-size: 18px; }
-.site-nav a { text-decoration: none; }
-.site-nav a:hover { color: var(--violet); }
+.site-nav { display: flex; gap: 0 12px; flex-wrap: wrap; font-size: 18px; }
+/* links are 44px tall to tap; the text stays the same size */
+.site-nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+/* site.js sets aria-current on the link of the section being read */
+.site-nav a:hover, .site-nav a[aria-current] { color: var(--violet); }
 .header-actions { margin-left: auto; display: flex; align-items: center; gap: 12px; }
 .lang-toggle {
   font-size: 17px;
+  min-height: 44px;
   background: none;
   border: 2px solid var(--ink);
   border-radius: 6px;
   padding: 2px 10px;
   cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
 }
 .lang-toggle:hover { color: var(--violet); border-color: var(--violet); }
 
@@ -94,23 +113,53 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   padding: 8px 18px;
   text-decoration: none;
   font-size: 18px;
+  transition: transform var(--dur-fast) var(--ease-out);
 }
 .btn-big { font-size: 24px; padding: 12px 28px; }
-.btn:hover { transform: rotate(-1deg); }
+
+/* linked things lift under the pointer. hover: hover keeps the lift from sticking after a tap on a phone */
+#built .card, a > .drawing { transition: transform var(--dur-base) var(--ease-out); }
+@media (hover: hover) {
+  .btn:hover { transform: translateY(-2px) rotate(-1deg); }
+  #built .card:hover, a:hover > .drawing { transform: translateY(-3px) rotate(-0.4deg); }
+}
+/* after :hover, so the press wins while the pointer is still over the button */
+.btn:active { transform: scale(0.97); transition-duration: var(--dur-instant); }
 
 /* layout */
 .hero, .section {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 48px 16px;
+  padding: var(--section-pad) 16px;
 }
 .hero { text-align: center; padding-top: 56px; }
 .hero h1 { font-size: clamp(34px, 6vw, 56px); line-height: 1.2; margin: 0 0 18px; }
 .hero-sub { font-size: clamp(20px, 3vw, 26px); margin: 0 0 18px; }
 .hero h1 .swipe { display: inline-block; padding: 0 10px; }
 .hero-body { margin: 0 auto 26px; }
+.hero-cta { margin-top: 0; margin-bottom: 0; }
 .hero .drawing { margin-top: 36px; }
 .hero p { margin-left: auto; margin-right: auto; }
+
+/* hero entrance: css only, so it starts at first paint instead of waiting for the deferred scripts */
+@keyframes rise-in { from { opacity: 0; transform: translateY(var(--reveal-distance)); } }
+@keyframes fade-in { from { opacity: 0; } }
+.hero > h1, .hero > .hero-sub, .hero > .hero-body, .hero > .hero-cta, .hero > .drawing {
+  animation: rise-in var(--dur-reveal) var(--ease-out) backwards;
+}
+.hero > .hero-sub { animation-delay: 70ms; }
+.hero > .hero-body { animation-delay: 140ms; }
+.hero > .hero-cta { animation-delay: 210ms; }
+.hero > .drawing { animation-delay: 280ms; }
+
+/* hero highlight: held back until site.js has drawn it, then wiped in once (.is-wiped).
+   site.js sets .no-rough when the drawing library is missing, which brings the flat fallback back */
+.js-reveal:not(.no-rough) .hero .swipe:not(.sketched) { background: none; }
+.js-reveal .hero .swipe > svg.sketch {
+  clip-path: inset(-8px 100% -8px -8px);
+  transition: clip-path 420ms var(--ease-in-out) 150ms;
+}
+.js-reveal .hero .swipe.is-wiped > svg.sketch { clip-path: inset(-8px); }
 
 h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 16px; }
 h3 { font-size: 24px; margin: 0 0 8px; }
@@ -118,7 +167,8 @@ h3 { font-size: 24px; margin: 0 0 8px; }
 .drawing { display: block; margin: 24px auto 0; }
 
 /* proof strip */
-.stats { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.hero-proof { margin-top: var(--section-pad); }
+.stats { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .stats li { padding: 16px 12px; text-align: center; }
 .stats strong { display: block; font-size: 34px; font-weight: 400; line-height: 1.2; }
 .stats span { display: block; font-size: 17px; line-height: 1.3; }
@@ -134,10 +184,12 @@ h3 { font-size: 24px; margin: 0 0 8px; }
 /* why me + rules */
 .plain-list { padding-left: 22px; max-width: 62ch; }
 .pull { font-size: clamp(22px, 3vw, 28px); margin: 22px 0 10px; }
-.pull [data-sketch="highlight"] { padding: 2px 8px; }
+/* inline-block: a highlight that wraps is measured as one block, not as its first line */
+.pull [data-sketch="highlight"] { display: inline-block; padding: 2px 8px; }
 .rules-title { margin-top: 30px; }
-.rules { list-style: none; padding: 0; margin: 8px 0 0; font-size: 20px; display: grid; gap: 8px; }
-.rules a { text-decoration: none; }
+.rules { list-style: none; padding: 0; margin: 8px 0 0; font-size: 20px; display: grid; gap: 14px; }
+/* the padding is tap area only: on an inline link it adds no height to the line */
+.rules a { text-decoration: none; padding: 9px 0; }
 .rules a:hover, .card h3 a:hover { color: var(--violet); }
 .card h3 a { text-decoration: underline; text-underline-offset: 4px; }
 
@@ -146,6 +198,12 @@ h3 { font-size: 24px; margin: 0 0 8px; }
 #built .cards { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 .card { padding: 20px 22px; }
 .card p { margin: 0; }
+#for .card h3 { color: var(--violet); }
+/* things I built: the whole card is the link. the heading goes static so the overlay measures from the card */
+#built .card > h3 { position: static; }
+#built .card h3 a::after { content: ""; position: absolute; inset: 0; z-index: 2; }
+#built .card h3 a:focus-visible { outline: none; }
+#built .card h3 a:focus-visible::after { outline: 3px solid var(--violet); outline-offset: 2px; }
 
 /* topics */
 .topics {
@@ -160,6 +218,11 @@ h3 { font-size: 24px; margin: 0 0 8px; }
 .topics a { text-decoration: none; }
 .topics a:hover { color: var(--violet); }
 .aside { color: var(--grey); font-size: 15px; }
+
+/* tap area for the short text links: an invisible overlay, so the sketched underlines do not move */
+.topics a, .links a, .site-footer a { position: relative; }
+.topics a::after, .links a::after, .site-footer a::after { content: ""; position: absolute; inset: -8px -6px; }
+.site-footer a::after { inset: -9px -6px; } /* smaller text, so a little more, without reaching the next row */
 
 .drawing-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 12px; align-items: end; }
 .drawing-row figure { margin: 0; }
@@ -193,9 +256,52 @@ h3 { font-size: 24px; margin: 0 0 8px; }
 .links a { text-decoration: none; }
 .links a:hover { color: var(--violet); }
 
+/* disclosure: the faq, and the extra curriculum drawings. native details, so it works without JS */
+summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 44px;
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+summary::-webkit-details-marker { display: none; }
+summary:hover { color: var(--violet); }
+/* the arrow: two borders of a small square, turned to point down, flipped when open */
+summary::after {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-3px) rotate(45deg);
+  transition: transform var(--dur-base) var(--ease-in-out);
+}
+details[open] > summary::after { transform: translateY(2px) rotate(225deg); }
+/* the panel fades up in every browser; where the browser can animate to height: auto it also slides open */
+@keyframes details-in { from { opacity: 0; transform: translateY(4px); } }
+details[open] > :not(summary) { animation: details-in var(--dur-base) var(--ease-out); }
+@supports (interpolate-size: allow-keywords) {
+  details { interpolate-size: allow-keywords; }
+  details::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size var(--dur-base) var(--ease-in-out), content-visibility var(--dur-base) allow-discrete;
+  }
+  details[open]::details-content { block-size: auto; }
+}
+
 /* faq */
-.faq dt { font-size: 22px; margin-top: 18px; }
-.faq dd { margin: 4px 0 0; }
+.faq { max-width: 640px; margin-top: 8px; }
+.faq details { border-bottom: 2px solid rgba(17, 17, 17, 0.12); }
+.faq summary { justify-content: space-between; font-size: 22px; padding: 8px 0; }
+.faq details > p { margin: 0 0 18px; }
+
+/* more curriculum drawings */
+.more { margin-top: 20px; }
+.more summary { justify-content: center; font-size: 20px; }
 
 /* final cta */
 .cta-final { text-align: center; }
@@ -206,16 +312,22 @@ h3 { font-size: 24px; margin: 0 0 8px; }
 .note-builder p { margin: 0; }
 .note-title { font-size: 24px; }
 .note-builder label { display: grid; gap: 2px; font-size: 18px; }
-.note-builder input { font: 17px var(--body); color: var(--ink); padding: 8px 2px; border: 0; border-bottom: 2px solid var(--ink); border-radius: 0; background: none; }
+.note-builder input { font: 17px var(--body); color: var(--ink); padding: 8px 2px; border: 0; border-bottom: 2px solid var(--ink); border-radius: 0; background: none; transition: border-color var(--dur-fast) var(--ease-out); }
+.note-builder input:focus { border-bottom-color: var(--violet); }
 .note-out { white-space: pre-line; min-height: 7.4em; padding: 12px 14px; background: rgba(124, 58, 237, 0.1); overflow-wrap: anywhere; }
 .note-meta { font-size: 16px; color: var(--grey); }
 .note-meta strong { color: var(--ink); }
 .note-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .cta-final .note-actions .btn { margin-top: 0; }
-button.btn { background: none; color: var(--ink); cursor: pointer; }
+button.btn { background: none; color: var(--ink); cursor: pointer; min-height: 44px; }
 button.btn.sketched { border: 0; }
-button.btn:disabled { opacity: 0.4; cursor: default; }
+button.btn:disabled { opacity: 0.4; cursor: default; transform: none; }
 .post-date { color: var(--grey); font-size: 16px; margin-left: 8px; }
+/* note feedback: "copied" pops in each time it is shown; the counter line shakes once when the note goes over the limit */
+@keyframes pop { from { opacity: 0; transform: scale(0.9); } 60% { transform: scale(1.04); } }
+#note-copied { animation: pop var(--dur-base) var(--ease-out); }
+@keyframes shake { 20%, 60% { transform: translateX(-5px); } 40%, 80% { transform: translateX(5px); } }
+.shake { animation: shake 300ms var(--ease-out); }
 
 /* footer */
 .site-footer {
@@ -230,22 +342,104 @@ button.btn:disabled { opacity: 0.4; cursor: default; }
 .site-footer a { color: var(--ink); text-decoration: none; }
 .site-footer a:hover { color: var(--violet); }
 
+/* reveal on scroll. nothing is hidden unless the script in <head> has set .js-reveal.
+   site.js adds .is-visible once per element, then removes data-reveal so hover owns the transform again */
+.js-reveal [data-reveal],
+.js-reveal [data-reveal-group] > * {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+}
+.js-reveal [data-reveal] {
+  transition: opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * var(--stagger));
+}
+.js-reveal [data-reveal] + [data-reveal] { --i: 1; } /* heading first, its intro a beat later */
+.js-reveal [data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* language toggle: site.js swaps the text inside a view transition, so the page crossfades instead of jumping */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 180ms; }
+
 /* sticky only where the header is one row: the two-row tablet header would eat the screen */
 @media (max-width: 640px), (min-width: 1101px) {
   .site-header { position: sticky; top: 0; z-index: 10; background: var(--bg); }
-  [id] { scroll-margin-top: 48px; }
+  /* an ink line under the header once the page has moved (site.js sets .is-scrolled) */
+  .site-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--ink);
+    opacity: 0;
+    transition: opacity var(--dur-base) var(--ease-out);
+  }
+  .is-scrolled .site-header::after { opacity: 1; }
+  /* a section link lands its heading about 24px under the header (73px here, 109px on phones):
+     sections bring their own top padding, so most of that distance is already there */
+  [id] { scroll-margin-top: calc(100px - var(--section-pad)); }
+  #top { scroll-margin-top: 200px; } /* the logo and the skip link go all the way up */
 }
 /* below full width the nav drops to its own row, so brand and actions stay on one line */
 @media (max-width: 1100px) {
   .site-nav { order: 1; width: 100%; }
 }
 @media (max-width: 640px) {
-  /* phones: section links become one row that scrolls sideways */
-  .site-nav { flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; gap: 16px; font-size: 16px; }
-  [id] { scroll-margin-top: 76px; }
+  /* phones: section links become one row that scrolls sideways, edge to edge, fading out on the right
+     to show there is more. the negative margin keeps the row compact around 44px tall links */
+  .site-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 0;
+    font-size: 16px;
+    width: calc(100% + 32px);
+    margin: -9px -16px;
+    padding: 0 40px 0 8px;
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+  }
+  .site-nav a { padding: 0 8px; }
+  .site-nav a:focus-visible { outline-offset: -3px; } /* inside the link: the scrolling row clips anything outside */
+  [id] { scroll-margin-top: calc(132px - var(--section-pad)); }
   .site-header { gap: 10px; }
   .brand { font-size: 18px; gap: 8px; }
   .brand img { width: 36px; height: 36px; }
   .header-actions { gap: 8px; }
-  .header-actions .btn { padding: 6px 12px; }
+  .header-actions .btn { padding: 8px 12px; }
+  /* the button comes before the pitch, so it is on the first screen */
+  .hero { display: flex; flex-direction: column; padding-top: 32px; }
+  .hero-body { order: 1; margin: 22px auto 0; }
+  .hero > .drawing { order: 2; }
+  .hero-proof { order: 3; }
+  .hero > .hero-cta { animation-delay: 140ms; }
+  .hero > .hero-body { animation-delay: 210ms; }
+}
+
+/* reduced motion: nothing moves, short fades stay */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero > h1, .hero > .hero-sub, .hero > .hero-body, .hero > .hero-cta, .hero > .drawing {
+    animation-name: fade-in;
+    animation-duration: 150ms;
+    animation-delay: 0s;
+  }
+  .js-reveal .hero .swipe > svg.sketch { clip-path: none; transition: none; }
+  .js-reveal [data-reveal], .js-reveal [data-reveal-group] > * { transform: none; }
+  .js-reveal [data-reveal] { transition: opacity 150ms linear; }
+  .btn:hover, .btn:active, #built .card:hover, a:hover > .drawing { transform: none; }
+  summary::after { transition: none; }
+  details[open] > :not(summary) { animation-name: fade-in; animation-duration: 150ms; }
+  details::details-content { transition: none; }
+  #note-copied { animation-name: fade-in; animation-duration: 150ms; }
+  .shake { animation: none; }
+}
+
+/* print: everything on the page, nothing mid-animation */
+@media print {
+  .site-header { position: static; }
+  .js-reveal [data-reveal], .js-reveal [data-reveal-group] > * { opacity: 1 !important; transform: none !important; }
+  .hero > * { animation: none !important; }
+  .js-reveal .hero .swipe > svg.sketch { clip-path: none; }
+  details::details-content { content-visibility: visible; block-size: auto; } /* closed answers, when site.js could not open them */
 }

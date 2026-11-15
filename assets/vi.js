@@ -46,6 +46,8 @@ var VI = {
   'confused.cap1': 'SQL nào? query nào cũng là query',
   'confused.cap2': 'Power BI hay Tableau? sai câu hỏi',
   'confused.cap3': 'pip, Poetry hay uv? mỗi cái một việc',
+  'confused.me': 'Mình từng ở đúng chỗ này. Mình đã chật vật rất nhiều vì không có định hướng.',
+  'confused.pull': 'mình làm mentorship này để bạn không lặp lại sai lầm đó.',
 
   'teach.h2': 'mình sẽ dạy bạn gì',
   'teach.body': 'Từ nền tảng đến Spark: SQL giải 80% bài toán, dbt và warehouse hiện đại, pipeline ingestion không cần hạ tầng, và Spark khi dữ liệu vượt quá sức một máy. Tất cả đã viết trong handbook — mentorship là áp dụng nó vào dự án của bạn.',
@@ -56,6 +58,7 @@ var VI = {
   'teach.cap5': 'dbt 202: chỉ xử lý dòng mới',
   'teach.cap6': 'dbt 302: sửa một lần là đủ',
   'teach.cap7': 'spark: 1 partition = 1 task',
+  'teach.more': 'thêm ba bài: incremental model, macro, Spark',
 
   'how.h2': 'cách hoạt động',
   'how.s1': 'kết nối kèm lời nhắn',

@@ -1,9 +1,11 @@
-/* Mark Mentorship: sketch layer, language toggle, mentee wall, live data, note builder. No dependencies beyond rough.js. */
+/* Mark Mentorship: sketch layer, language toggle, mentee wall, live data, note builder, motion. No dependencies beyond rough.js. */
 (function () {
   'use strict';
 
   var VIOLET = '#7c3aed';
   var INK = '#111';
+  var root = document.documentElement;
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /* ---- sketch layer ---- */
   function drawSketches() {
@@ -49,6 +51,15 @@
     redrawTimer = setTimeout(drawSketches, 150);
   });
 
+  // the hero highlight wipes in once. style.css keeps its svg clipped until .is-wiped is set, and
+  // only transitions an svg that was already on the page, so later redraws show it without replaying
+  function wipeHighlight() {
+    var swipe = document.querySelector('.hero .swipe');
+    if (!swipe || swipe.classList.contains('is-wiped')) return;
+    void swipe.offsetWidth; // commit the clipped state first, or there is nothing to transition from
+    swipe.classList.add('is-wiped');
+  }
+
   /* ---- language toggle ---- */
   var toggle = document.getElementById('lang-toggle');
   var EN = {}; // filled lazily from the DOM before the first swap to Vietnamese
@@ -79,7 +90,13 @@
       if (new URLSearchParams(location.search).has('lang')) {
         history.replaceState(null, '', location.pathname + location.hash);
       }
-      setLang(document.documentElement.getAttribute('lang') === 'vi' ? 'en' : 'vi');
+      var next = root.getAttribute('lang') === 'vi' ? 'en' : 'vi';
+      // crossfade the swap where the browser can; the text changes length, so a hard cut jumps
+      if (document.startViewTransition && !reducedMotion.matches) {
+        document.startViewTransition(function () { setLang(next); });
+      } else {
+        setLang(next);
+      }
     });
   }
 
@@ -191,27 +208,136 @@
     var out = document.getElementById('note-out');
     var copy = document.getElementById('note-copy');
     var copied = document.getElementById('note-copied');
+    var meta = form.querySelector('.note-meta');
+    var wasOver = false;
     function build() {
       var note = NOTE_LINES.map(function (line) {
         var value = form.elements[line[0]].value.trim();
         return value && line[1] + value;
       }).filter(Boolean).join('\n');
+      var over = note.length > NOTE_FREE_LIMIT;
       out.textContent = note;
       document.getElementById('note-count').textContent = note.length;
-      document.getElementById('note-over').hidden = note.length <= NOTE_FREE_LIMIT;
+      document.getElementById('note-over').hidden = !over;
+      if (over && !wasOver) { // shake the counter line once, at the moment the note crosses the limit
+        meta.classList.remove('shake');
+        void meta.offsetWidth; // restart the animation if it is still on from last time
+        meta.classList.add('shake');
+      }
+      wasOver = over;
       copy.disabled = !note;
       copied.hidden = true;
     }
+    function showCopied() {
+      copied.hidden = true;
+      void copied.offsetWidth; // a second click replays the pop
+      copied.hidden = false;
+    }
+    // no clipboard access (plain http, or the browser said no): select the note so it can be copied by hand
+    function selectNote() {
+      var range = document.createRange();
+      range.selectNodeContents(out);
+      var selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      try {
+        if (document.execCommand('copy')) { // the old route still works in most of those cases
+          selection.removeAllRanges();
+          showCopied();
+        }
+      } catch (e) {}
+    }
     form.addEventListener('input', build);
     copy.addEventListener('click', function () {
-      navigator.clipboard.writeText(out.textContent).then(function () { copied.hidden = false; });
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(out.textContent).then(showCopied, selectNote);
+      } else {
+        selectNote();
+      }
     });
     form.hidden = false;
     build();
   }
 
+  /* ---- reveal on scroll ---- */
+  // the script in <head> set .js-reveal before first paint; if it is gone, its failsafe already showed everything
+  var REVEAL_DONE = 1100; // ms: the longest stagger (8 x 50) plus the 480 fade, with slack
+  function initReveal() {
+    if (!root.classList.contains('js-reveal')) return;
+    document.querySelectorAll('[data-reveal-group]').forEach(function (group) {
+      Array.prototype.forEach.call(group.children, function (child, i) {
+        child.setAttribute('data-reveal', '');
+        child.style.setProperty('--i', Math.min(i, 8)); // cap the stagger so a long row does not lag
+      });
+      group.removeAttribute('data-reveal-group');
+    });
+    // the observed area runs from far above the page down to 8% short of the viewport's bottom edge, so
+    // an element counts once it scrolls in, and also when a reload or a jump lands below it: nothing
+    // stays blank behind the reader. a hidden element never counts, and waits here until it is unhidden
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        io.unobserve(el); // once only
+        el.classList.add('is-visible');
+        setTimeout(function () {
+          // done: drop the hooks, so the reveal's transition and delay do not leak into hover
+          el.removeAttribute('data-reveal');
+          el.classList.remove('is-visible');
+          el.style.removeProperty('--i');
+        }, REVEAL_DONE);
+      });
+    }, { rootMargin: '99999px 0px -8% 0px' });
+    document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+    window.revealReady = true; // tells the failsafe in <head> to stand down
+  }
+
+  /* ---- header: scrolled line, current section ---- */
+  function initHeader() {
+    function onScroll() { root.classList.toggle('is-scrolled', window.scrollY > 8); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    var nav = document.querySelector('.site-nav');
+    if (!nav || !('IntersectionObserver' in window)) return;
+    var links = nav.querySelectorAll('a[href^="#"]');
+    function mark(id) {
+      links.forEach(function (a) {
+        if (a.getAttribute('href') !== '#' + id) { a.removeAttribute('aria-current'); return; }
+        a.setAttribute('aria-current', 'location');
+        // phones: the nav is a row that scrolls sideways, so bring the current link to its middle
+        if (nav.scrollWidth > nav.clientWidth) {
+          nav.scrollLeft = a.offsetLeft - nav.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2;
+        }
+      });
+    }
+    // the root is squeezed to a line 30% down the viewport: the section crossing it is the one being read.
+    // sections without a nav link (the hero, the faq) clear the mark
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { if (entry.isIntersecting) mark(entry.target.id); });
+    }, { rootMargin: '-30% 0px -70% 0px' });
+    document.querySelectorAll('main > section').forEach(function (section) { spy.observe(section); });
+  }
+
+  /* ---- print ---- */
+  // closed answers would be missing from the paper: open them for the print, close them again after
+  var openedForPrint = [];
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('details:not([open])').forEach(function (d) {
+      d.open = true;
+      openedForPrint.push(d);
+    });
+  });
+  window.addEventListener('afterprint', function () {
+    openedForPrint.forEach(function (d) { d.open = false; });
+    openedForPrint = [];
+  });
+
   /* ---- boot ---- */
+  if (typeof rough === 'undefined') root.classList.add('no-rough'); // style.css: keep the flat highlight
   renderMentees();
+  initReveal(); // after the mentee wall, so its cards are staggered too
+  initHeader();
   initNoteBuilder();
   // live data is optional: without a file its section stays hidden and stats keep their static numbers
   function load(file, render) {
@@ -228,7 +354,11 @@
   if (startLang === 'vi') setLang('vi'); else snapshotEnglish();
   // fonts shift element sizes; draw after they load, with a fallback
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(drawSketches);
+    document.fonts.ready.then(function () {
+      drawSketches();
+      wipeHighlight(); // sizes are final now, so the wipe will not be cut off by another redraw
+    });
   }
   drawSketches();
+  setTimeout(wipeHighlight, 1500); // fonts that never settle must not leave the highlight hidden
 })();
