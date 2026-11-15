@@ -1,4 +1,4 @@
-/* Mark Mentorship: sketch layer, language toggle, mentee wall. No dependencies beyond rough.js. */
+/* Mark Mentorship: sketch layer, language toggle, mentee wall, contribution graph. No dependencies beyond rough.js. */
 (function () {
   'use strict';
 
@@ -127,8 +127,43 @@
     wall.hidden = false;
   }
 
+  /* ---- contribution graph ---- */
+  // assets/contrib.json comes from scripts/fetch-contrib.sh: one level digit (0-4) per day, oldest first
+  function renderContrib(data) {
+    var fig = document.getElementById('contrib');
+    if (!fig || typeof rough === 'undefined') return;
+    var levels = data.levels;
+    var offset = new Date(data.start).getUTCDay(); // the first week starts mid-column
+    var step = 22; // 18px cell + 4px gap
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + Math.ceil((offset + levels.length) / 7) * step + ' ' + 7 * step);
+    svg.setAttribute('aria-hidden', 'true');
+    var rc = rough.svg(svg);
+    for (var i = 0; i < levels.length; i++) {
+      var level = +levels[i];
+      var cell = rc.rectangle(Math.floor((offset + i) / 7) * step + 2, (offset + i) % 7 * step + 2, 18, 18, level
+        ? { stroke: 'none', fill: VIOLET, fillStyle: 'solid', roughness: 0.9, seed: i + 1 }
+        : { stroke: INK, strokeWidth: 1, roughness: 1, seed: i + 1 });
+      cell.setAttribute('opacity', level ? 0.1 + 0.225 * level : 0.3);
+      svg.appendChild(cell);
+    }
+    var numbers = { total: data.total.toLocaleString('en-US'), active: levels.replace(/0/g, '').length };
+    document.querySelectorAll('[data-contrib]').forEach(function (el) {
+      el.textContent = numbers[el.getAttribute('data-contrib')];
+    });
+    var scroller = fig.querySelector('.contrib-scroll');
+    scroller.appendChild(svg);
+    fig.hidden = false;
+    scroller.scrollLeft = scroller.scrollWidth; // narrow screens open on the most recent weeks
+  }
+
   /* ---- boot ---- */
   renderMentees();
+  // no file, no graph: the figure stays hidden and the stat keeps its static number
+  fetch('assets/contrib.json')
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+    .then(renderContrib)
+    .catch(function () {});
   if (startLang === 'vi') setLang('vi'); else snapshotEnglish();
   // fonts shift element sizes; draw after they load, with a fallback
   if (document.fonts && document.fonts.ready) {

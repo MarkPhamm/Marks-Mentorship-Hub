@@ -1,0 +1,27 @@
+name: Update contribution data
+
+on:
+  schedule:
+    - cron: '17 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch contribution calendar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: scripts/fetch-contrib.sh "$GITHUB_REPOSITORY_OWNER"
+      - name: Commit if changed
+        run: |
+          git add assets/contrib.json
+          git diff --cached --quiet && exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update contribution data'
+          git push

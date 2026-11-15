@@ -3,3 +3,4 @@ drawing/package-lock.json
 .DS_Store
 images/
 drawing/*.png
+assets/contrib.json.tmp

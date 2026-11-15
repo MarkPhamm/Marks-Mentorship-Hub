@@ -71,6 +71,8 @@ var VI = {
   'stat.gh': 'contribution GitHub trong một năm',
   'stat.xom': 'thành viên Xóm Data, nơi mình làm moderator',
   'stat.qdbd': 'lượt tải mỗi tháng của qdbd, tool mình tự làm',
+  'contrib.cap': 'ngày hoạt động trong năm qua. mỗi ô là một ngày.',
+  'contrib.link': 'kiểm chứng trên GitHub',
 
   'why.h2': 'vì sao là mình',
   'why.p1': 'Ở vòng cuối cho kỳ thực tập data engineering tại Lazard, mình đấu với sinh viên Ivy League. Email báo offer gửi tới năm địa chỉ .edu — Penn, Brown, Cornell, Columbia, Columbia — và một Gmail cá nhân. Của mình. TCU không phải target school.',
