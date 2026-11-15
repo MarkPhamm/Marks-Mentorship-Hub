@@ -17,8 +17,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: scripts/fetch-contrib.sh "$GITHUB_REPOSITORY_OWNER"
-      - name: Fetch downloads and posts
-        run: scripts/fetch-feeds.sh
+      - name: Fetch downloads
+        run: scripts/fetch-feeds.sh qdbd
       - name: Commit if changed
         run: |
           git add assets/*.json
