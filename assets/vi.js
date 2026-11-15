@@ -52,6 +52,9 @@ var VI = {
   'teach.cap1': 'sql 101: một lộ trình, không phải danh sách khóa học',
   'teach.cap2': 'dbt 100: chữ T trong ELT',
   'teach.cap3': 'pipelines 101: không cần hạ tầng',
+  'teach.cap4': 'dbt 101: model cha chạy trước',
+  'teach.cap5': 'dbt 202: chỉ xử lý dòng mới',
+  'teach.cap6': 'dbt 302: sửa một lần là đủ',
 
   'how.h2': 'cách hoạt động',
   'how.s1': 'kết nối kèm lời nhắn',

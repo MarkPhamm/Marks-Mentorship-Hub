@@ -23,11 +23,11 @@ Drawings are made with the `draw-like-me` style: rough.js + Architects Daughter,
 ```bash
 cd drawing
 npm i                                   # roughjs + font, first time only
-uv run --with playwright python3 make.py hero   # or: how, note
+uv run --with playwright python3 make.py hero   # or: how, note, offer
 cp hero.png ../assets/img/
 ```
 
-Each drawing is a small JS file (`drawing/hero.js`, `how.js`, `note.js`) rendered by `make.py`.
+Each drawing is a small JS file (`drawing/hero.js`, `how.js`, `note.js`, `offer.js`) rendered by `make.py`.
 
 ## Preview locally
 
@@ -47,6 +47,8 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 ## Deploy
 
-Push to `main`. GitHub Pages serves the repo root (`CNAME` points at markmentorship.com, `.nojekyll` disables Jekyll).
+Push to `main`. GitHub Pages serves the repo root at https://markphamm.github.io/Marks-Mentorship-Hub/ (`.nojekyll` disables Jekyll).
+
+The custom domain is not set up yet. When markmentorship.com is registered: add a `CNAME` file containing `markmentorship.com`, then replace `https://markphamm.github.io/Marks-Mentorship-Hub/` with `https://markmentorship.com/` in `index.html`, `404.html`, `sitemap.xml` and `robots.txt`. `launch/` already uses the domain.
 
 `images/` holds the Substack drawing archive and is not referenced by the site; only copies in `assets/img/` ship.
