@@ -74,7 +74,7 @@
       <li data-sketch="box"><strong>1,000+</strong><span data-i18n="stat.sql">SQL problems solved</span></li>
       <li data-sketch="box"><strong data-contrib="total">4,828</strong><span data-i18n="stat.gh">GitHub contributions in a year</span></li>
       <li data-sketch="box"><strong>110,000+</strong><span data-i18n="stat.xom">members in Xóm Data, which I moderate</span></li>
-      <li data-sketch="box"><strong>4,700+</strong><span data-i18n="stat.qdbd">downloads a month of qdbd, a tool I built</span></li>
+      <li data-sketch="box"><strong id="qdbd-month">4,900+</strong><span data-i18n="stat.qdbd">downloads a month of qdbd, a tool I built</span></li>
     </ul>
     <figure id="contrib" class="contrib" hidden>
       <div class="contrib-scroll" tabindex="0" role="group" aria-label="My GitHub contribution graph for the last year"></div>
@@ -239,6 +239,10 @@
         <figcaption class="hand" data-i18n="teach.cap7">spark: 1 partition = 1 task</figcaption>
       </figure>
     </div>
+    <div id="posts" hidden>
+      <h3 class="hand rules-title" data-i18n="posts.h3">latest from the handbook</h3>
+      <ul class="rules hand"></ul>
+    </div>
   </section>
 
   <!-- shipped tools and courses -->
@@ -339,6 +343,19 @@
   <section class="section cta-final">
     <h2 class="hand" data-i18n="cta.h2">the note is the application</h2>
     <img class="drawing" src="assets/img/note.png" alt="A LinkedIn connection note: who you are, target role, GitHub link, where you are stuck" width="2000" height="1000">
+    <form id="note-builder" class="note-builder" hidden>
+      <p class="hand note-title" data-i18n="note.h3">write yours here</p>
+      <label><span class="hand" data-i18n="note.who">who you are</span><input name="who" maxlength="80" autocomplete="off" placeholder="An, junior at UEH"></label>
+      <label><span class="hand" data-i18n="note.aiming">the role you want</span><input name="aiming" maxlength="60" autocomplete="off" placeholder="analytics engineer"></label>
+      <label><span class="hand" data-i18n="note.built">something you built (a link)</span><input name="built" maxlength="80" autocomplete="off" placeholder="github.com/an-sql/metro-dbt"></label>
+      <label><span class="hand" data-i18n="note.stuck">where you are stuck</span><input name="stuck" maxlength="80" autocomplete="off" placeholder="nobody reviews my models"></label>
+      <p id="note-out" class="note-out"></p>
+      <p class="note-meta hand"><span id="note-count">0</span> / 200 <span data-i18n="note.limit">characters. LinkedIn allows 200 on a free account, 300 on Premium.</span> <strong id="note-over" hidden data-i18n="note.over">over the free limit: cut it down.</strong></p>
+      <p class="note-actions">
+        <button id="note-copy" class="btn hand" type="button" data-sketch="box" data-i18n="note.copy">copy the note</button>
+        <span id="note-copied" class="hand" role="status" hidden data-i18n="note.copied">copied. now add me and paste it.</span>
+      </p>
+    </form>
     <p>
       <a class="btn btn-big hand" data-sketch="box" href="https://www.linkedin.com/in/minhbphamm/" target="_blank" rel="noopener" data-i18n="cta.main2">add me on LinkedIn with a note</a>
     </p>

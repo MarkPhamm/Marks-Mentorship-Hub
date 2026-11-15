@@ -115,5 +115,15 @@ var VI = {
   'faq.a4': 'Kết nối LinkedIn kèm lời nhắn. Lời nhắn đó chính là bài copy-paste test đầu tiên của bạn.',
 
   'cta.h2': 'lời nhắn chính là đơn ứng tuyển',
+  'posts.h3': 'bài mới nhất trên handbook',
+  'note.h3': 'viết lời nhắn của bạn ở đây',
+  'note.who': 'bạn là ai',
+  'note.aiming': 'vị trí bạn nhắm tới',
+  'note.built': 'thứ bạn đã làm (một đường link)',
+  'note.stuck': 'bạn đang kẹt ở đâu',
+  'note.limit': 'ký tự. LinkedIn cho 200 ký tự với tài khoản thường, 300 với Premium.',
+  'note.over': 'quá giới hạn tài khoản thường: cắt bớt nhé.',
+  'note.copy': 'copy lời nhắn',
+  'note.copied': 'đã copy. giờ kết nối với mình và dán vào.',
   'footer.line': 'vẽ tay, như mọi thứ ở đây.'
 };

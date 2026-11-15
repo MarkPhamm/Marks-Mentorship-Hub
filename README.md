@@ -10,9 +10,9 @@ markmentorship.com — one-page site for Mark's data mentorship. Plain HTML/CSS/
 
 ## Refresh the numbers
 
-The stats in `index.html` drift. Sources: SQL problems (the `Mentorships` playbook), Xóm Data members (the Facebook group), qdbd downloads (`https://pypistats.org/packages/quickdbd-cli`, last month), releases and stars (GitHub). Checked 2026-11-15.
+The stats in `index.html` drift. Sources: SQL problems (the `Mentorships` playbook), Xóm Data members (the Facebook group), releases and stars (GitHub). Checked 2026-11-15.
 
-GitHub contributions refresh themselves. `.github/workflows/contrib.yml` runs `scripts/fetch-contrib.sh` every night and commits `assets/contrib.json` (total, start date, and one level digit 0-4 per day). `assets/site.js` draws the graph under the hero stats from that file and fills the contributions stat. Run the script by hand with `gh` logged in to refresh it now. If the file is missing the graph stays hidden.
+Three things refresh themselves. `.github/workflows/contrib.yml` runs every night and commits whatever changed: `scripts/fetch-feeds.sh` writes `assets/qdbd.json` (last month's qdbd downloads from pypistats, shown rounded down to the hundred) and `assets/posts.json` (the latest three Substack posts, listed under "what I'll teach you"); a source that fails keeps its previous file. `scripts/fetch-contrib.sh` writes `assets/contrib.json` (total, start date, and one level digit 0-4 per day). `assets/site.js` draws the graph under the hero stats from that file and fills the contributions stat. Run the script by hand with `gh` logged in to refresh it now. If the file is missing the graph stays hidden.
 
 ## Add mentees
 

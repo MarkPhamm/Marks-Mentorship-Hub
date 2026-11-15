@@ -1,4 +1,4 @@
-name: Update contribution data
+name: Update live data
 
 on:
   schedule:
@@ -17,11 +17,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: scripts/fetch-contrib.sh "$GITHUB_REPOSITORY_OWNER"
+      - name: Fetch downloads and posts
+        run: scripts/fetch-feeds.sh
       - name: Commit if changed
         run: |
-          git add assets/contrib.json
+          git add assets/*.json
           git diff --cached --quiet && exit 0
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Update contribution data'
+          git commit -m 'Update live data'
           git push
