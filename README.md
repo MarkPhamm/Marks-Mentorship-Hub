@@ -51,8 +51,8 @@ python3 -m http.server 8000   # then open http://localhost:8000
 
 ## Deploy
 
-Push to `main`. GitHub Pages serves the repo root at https://markphamm.github.io/Marks-Mentorship-Hub/ (`.nojekyll` disables Jekyll).
+Push to `main`. GitHub Pages serves the repo root at https://markmentorship.com/ (`CNAME` sets the domain, `.nojekyll` disables Jekyll). The old https://markphamm.github.io/Marks-Mentorship-Hub/ address redirects there.
 
-The custom domain is not set up yet. When markmentorship.com is registered: add a `CNAME` file containing `markmentorship.com`, then replace `https://markphamm.github.io/Marks-Mentorship-Hub/` with `https://markmentorship.com/` in `index.html`, `404.html`, `sitemap.xml` and `robots.txt`. `launch/` already uses the domain.
+The full URL is written out in `index.html` (canonical, og and twitter tags, JSON-LD), `404.html` (`<base>`), `sitemap.xml` and `robots.txt`. Change all of them if the domain ever changes.
 
 `images/` holds the Substack drawing archive and is not referenced by the site; only copies in `assets/img/` ship.
