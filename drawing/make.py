@@ -5,7 +5,7 @@ from playwright.sync_api import sync_playwright
 NAME = sys.argv[1]
 SIZES = {'hero': (2000, 760), 'how': (2000, 900), 'note': (2000, 1000), 'offer': (2000, 1000), 'og': (1200, 630), 'square': (1600, 1600),
          'hero-m': (1100, 720), 'offer-m': (1100, 1000), 'note-m': (1100, 960), 'how-m': (1100, 980), 'portrait': (900, 1050),
-         'projects': (2400, 1150), 'projects-m': (1100, 1930), 'findings': (2000, 1060), 'findings-m': (1100, 1000)}
+         'projects': (2400, 1150), 'projects-m': (1100, 1930), 'findings': (2000, 1060), 'findings-m': (1100, 1000), 'explorer': (1600, 900)}
 W, H = SIZES[NAME]
 OUT = NAME + '.png'
 

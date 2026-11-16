@@ -218,6 +218,7 @@ picture.drawing img { display: block; margin: 0 auto; } /* phones get the -m cut
 :is(#built, #projects) .card h3 a:focus-visible::after { outline: 3px solid var(--violet); outline-offset: 2px; }
 #projects .card h3 { font-size: 21px; overflow-wrap: anywhere; } /* repo names are one long word */
 #projects .card .aside { margin: 0 0 6px; }
+#projects .card .shot { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-bottom: 14px; border: 2px solid var(--ink); border-radius: 2px; } /* a picture from the mentee's own repo */
 
 /* topics */
 .topics {
