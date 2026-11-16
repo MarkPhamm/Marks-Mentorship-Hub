@@ -106,6 +106,7 @@ var VI = {
   'projects.c3': 'Frontier so với các hãng giá rẻ cùng phân khúc.',
   'projects.c4': 'Spirit: đào sâu vào sự không hài lòng kéo dài.',
   'projects.c5': 'Một explorer bằng Next.js trên cùng bộ dữ liệu.',
+  'projects.c6': 'Cùng bộ review trên một laptop: DuckDB, dbt và Streamlit, không cần cloud.',
 
   'about.h2': 'về Mark',
   'about.body': 'Senior Analytics Engineer tại Infinite Lambda — L6 trẻ nhất ở đó — từng làm ở Insurify và Lazard. Mình thực tập ba nơi ở hai nước trước năm cuối đại học, và mentor từ 2020: một academy nhỏ giúp 20 học sinh Việt Nam nộp hồ sơ đại học Mỹ, AE Academy cho người mới ở Insurify, và Ace Mentorships. Mình là moderator của Xóm Data, cộng đồng học data lớn nhất Việt Nam (hơn 110.000 thành viên), và viết The Analytics Engineer’s Handbook trên Substack. Mình mentor vì dạy là cách mình học.',
