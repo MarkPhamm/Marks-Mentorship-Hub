@@ -1,0 +1,34 @@
+// mentee projects, phone cut: the same pipeline top to bottom, mentee dashboards under the violet swipe
+const box=(x,y,w,h,label,sub,size=44)=>{rect(x,y,w,h);text(label,x+w/2,y+(sub?h/2-2:h/2+14),size);if(sub)text(sub,x+w/2,y+h/2+42,32,'middle','#666');};
+const dash={strokeWidth:2,strokeLineDash:[12,14],roughness:1};
+const down=(x,y1,y2)=>arrow([[x,y1],[x+6,(y1+y2)/2],[x,y2]],{strokeWidth:2.4});
+highlight(100,1410,900,320);
+box(300,40,500,120,'terraform · gha · oidc','provision + deploy');
+curve([[800,100],[1040,250],[1040,700],[772,705]],dash);
+curve([[1040,700],[1050,1000],[1040,1200],[902,1210]],dash);
+box(330,230,440,130,'airlinequality','site closed',46);
+down(550,362,418);
+box(120,420,400,110,'python scraper',null);
+box(580,420,400,110,'python cleaner',null);
+arrow([[520,475],[550,470],[578,475]],{strokeWidth:2.4});
+arrow([[780,532],[700,580],[620,618]],{strokeWidth:2.4});
+rect(330,620,440,190);
+text('S3',550,720,80); text('raw · processed',550,775,34,'middle','#666');
+down(550,812,878);
+box(120,880,400,110,'copy into',null);
+box(580,880,400,110,'load_audit',null);
+down(550,992,1078);
+rect(200,1080,700,270);
+text('snowflake + dbt',550,1150,50);
+text('stg · int · dims · fct',550,1210,36,'middle','#666');
+text('one row per review_id',550,1265,38);
+text('slim ci/cd',550,1320,34,'middle','#666');
+down(550,1352,1428);
+[['mode · delta',120,1440],['mode · frontier',580,1440],['mode · spirit',120,1590],['next.js explorer',580,1590]].forEach(([t,x,y])=>box(x,y,400,110,t,null,40));
+// airflow runs along the side
+arrow([[60,440],[52,880],[60,1330]],{strokeWidth:3});
+const af=svg.appendChild(document.createElementNS('http://www.w3.org/2000/svg','text'));
+af.setAttribute('x',30);af.setAttribute('y',880);af.setAttribute('font-size',38);af.setAttribute('text-anchor','middle');af.setAttribute('transform','rotate(-90 30 880)');af.textContent='airflow';
+arrow([[470,1825],[480,1785],[500,1735]],{strokeWidth:2.6,stroke:BLUE});
+text('mentees built these',440,1875,48,'middle',BLUE);
+text('mark mentorship',W-60,H-30,34,'end','#666');

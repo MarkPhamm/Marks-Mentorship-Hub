@@ -130,14 +130,55 @@
       </blockquote>
     </div>
     <div id="mentee-wall" class="cards" hidden data-reveal-group></div>
-    <p class="aside" data-i18n="proof.aside">Mentee projects are public: airline review pipelines, flight-delay dashboards, end-to-end dbt builds. Some of them, all on GitHub:</p>
-    <ul class="rules hand repos">
-      <li><a href="https://github.com/MarkPhamm/skytrax_reviews" target="_blank" rel="noopener">skytrax_reviews</a><span class="repo-by">Mark · pipeline</span></li>
-      <li><a href="https://github.com/alyssaqle/airline_customer_exp_analysis" target="_blank" rel="noopener">airline_customer_exp_analysis</a><span class="repo-by">Alyssa Le · Delta</span></li>
-      <li><a href="https://github.com/gwenniehub/frontier-reviews-dashboard" target="_blank" rel="noopener">frontier-reviews-dashboard</a><span class="repo-by">Gwen Nguyen · Frontier</span></li>
-      <li><a href="https://github.com/MiaTran1112/spirit_airlines_dashboard" target="_blank" rel="noopener">spirit_airlines_dashboard</a><span class="repo-by">Mia Tran · Spirit</span></li>
-      <li><a href="https://github.com/nguyentienTCU/skytrax_reviews_dashboard" target="_blank" rel="noopener">skytrax_reviews_dashboard</a><span class="repo-by">Tien Nguyen · explorer</span></li>
-    </ul>
+  </section>
+
+  <!-- mentee projects -->
+  <section id="projects" class="section">
+    <h2 class="hand" data-i18n="projects.h2" data-reveal>what my mentees built</h2>
+    <p data-i18n="projects.body" data-reveal>One real pipeline, built together: 117,000 airline reviews scraped from Skytrax, staged on S3, loaded into Snowflake and modelled in dbt, run by Airflow and shipped with Terraform. Then each mentee took one airline and shipped a dashboard on top of it.</p>
+    <figure class="single-figure wide">
+      <a href="https://markphamm.github.io/skytrax_reviews/" target="_blank" rel="noopener">
+        <picture class="drawing">
+          <source media="(max-width: 640px)" srcset="assets/img/projects-m.png" width="1100" height="1930">
+          <img src="assets/img/projects.png" alt="The skytrax_reviews pipeline: AirlineQuality reviews scraped and cleaned in Python, staged on S3, loaded into Snowflake with COPY INTO and a load audit, modelled in dbt, then four mentee dashboards on top, highlighted. Airflow runs it; Terraform, GitHub Actions and OIDC provision and deploy it" width="2400" height="1150" loading="lazy">
+        </picture>
+      </a>
+      <figcaption class="hand" data-i18n="projects.cap1">skytrax_reviews: from scrape to dashboard</figcaption>
+    </figure>
+    <figure class="single-figure">
+        <picture class="drawing">
+          <source media="(max-width: 640px)" srcset="assets/img/findings-m.png" width="1100" height="1000">
+          <img src="assets/img/findings.png" alt="Average rating per carrier: industry 2.59 with 40% recommending, Delta 2.49 and 29%, Spirit 1.59 and 12.1%, Frontier 1.43 and 5.7%, highlighted as the lowest" width="2000" height="1060" loading="lazy">
+        </picture>
+      <figcaption class="hand" data-i18n="projects.cap2">what the dashboards found: Spirit and Frontier sit far below the industry</figcaption>
+    </figure>
+    <div class="cards" data-reveal-group>
+      <div class="card" data-sketch="box">
+        <h3 class="hand"><a href="https://github.com/MarkPhamm/skytrax_reviews" target="_blank" rel="noopener">skytrax_reviews</a></h3>
+        <p class="aside">Mark + mentees</p>
+        <p data-i18n="projects.c1">The shared pipeline: scraper, S3, Snowflake, a dbt star schema, Terraform and slim CI/CD.</p>
+      </div>
+      <div class="card" data-sketch="box">
+        <h3 class="hand"><a href="https://github.com/alyssaqle/airline_customer_exp_analysis" target="_blank" rel="noopener">airline_customer_exp_analysis</a></h3>
+        <p class="aside">Alyssa Le</p>
+        <p data-i18n="projects.c2">Delta: why Economy and Premium passengers are happy for different reasons.</p>
+      </div>
+      <div class="card" data-sketch="box">
+        <h3 class="hand"><a href="https://github.com/gwenniehub/frontier-reviews-dashboard" target="_blank" rel="noopener">frontier-reviews-dashboard</a></h3>
+        <p class="aside">Gwen Nguyen</p>
+        <p data-i18n="projects.c3">Frontier against its ultra-low-cost peers.</p>
+      </div>
+      <div class="card" data-sketch="box">
+        <h3 class="hand"><a href="https://github.com/MiaTran1112/spirit_airlines_dashboard" target="_blank" rel="noopener">spirit_airlines_dashboard</a></h3>
+        <p class="aside">Mia Tran</p>
+        <p data-i18n="projects.c4">Spirit: a deep dive into chronic dissatisfaction.</p>
+      </div>
+      <div class="card" data-sketch="box">
+        <h3 class="hand"><a href="https://github.com/nguyentienTCU/skytrax_reviews_dashboard" target="_blank" rel="noopener">skytrax_reviews_dashboard</a></h3>
+        <p class="aside">Tien Nguyen</p>
+        <p data-i18n="projects.c5">A Next.js explorer over the same data.</p>
+      </div>
+    </div>
   </section>
 
   <!-- the confusion -->

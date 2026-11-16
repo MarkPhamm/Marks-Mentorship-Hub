@@ -118,10 +118,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 .btn-big { font-size: 24px; padding: 12px 28px; }
 
 /* linked things lift under the pointer. hover: hover keeps the lift from sticking after a tap on a phone */
-#built .card, .stats li, a > .drawing { transition: transform var(--dur-base) var(--ease-out); }
+#built .card, #projects .card, .stats li, a > .drawing { transition: transform var(--dur-base) var(--ease-out); }
 @media (hover: hover) {
   .btn:hover { transform: translateY(-2px) rotate(-1deg); }
-  #built .card:hover, .stats li:hover, a:hover > .drawing { transform: translateY(-3px) rotate(-0.4deg); }
+  #built .card:hover, #projects .card:hover, .stats li:hover, a:hover > .drawing { transform: translateY(-3px) rotate(-0.4deg); }
 }
 /* after :hover, so the press wins while the pointer is still over the button */
 .btn:active { transform: scale(0.97); transition-duration: var(--dur-instant); }
@@ -211,11 +211,13 @@ picture.drawing img { display: block; margin: 0 auto; } /* phones get the -m cut
 .card { padding: 20px 22px; }
 .card p { margin: 0; }
 #for .card h3 { color: var(--violet); }
-/* things I built: the whole card is the link. the heading goes static so the overlay measures from the card */
-#built .card > h3 { position: static; }
-#built .card h3 a::after { content: ""; position: absolute; inset: 0; z-index: 2; }
-#built .card h3 a:focus-visible { outline: none; }
-#built .card h3 a:focus-visible::after { outline: 3px solid var(--violet); outline-offset: 2px; }
+/* things I built, mentee projects: the whole card is the link. the heading goes static so the overlay measures from the card */
+:is(#built, #projects) .card > h3 { position: static; }
+:is(#built, #projects) .card h3 a::after { content: ""; position: absolute; inset: 0; z-index: 2; }
+:is(#built, #projects) .card h3 a:focus-visible { outline: none; }
+:is(#built, #projects) .card h3 a:focus-visible::after { outline: 3px solid var(--violet); outline-offset: 2px; }
+#projects .card h3 { font-size: 21px; overflow-wrap: anywhere; } /* repo names are one long word */
+#projects .card .aside { margin: 0 0 6px; }
 
 /* topics */
 .topics {
@@ -241,6 +243,7 @@ picture.drawing img { display: block; margin: 0 auto; } /* phones get the -m cut
 .drawing-row figcaption { text-align: center; margin-top: 8px; font-size: 18px; }
 .single-figure { margin: 28px 0 0; }
 .single-figure .drawing { max-width: min(760px, 100%); }
+.single-figure.wide .drawing { max-width: 100%; }
 .single-figure figcaption { text-align: center; margin-top: 8px; font-size: 18px; }
 
 /* steps */
@@ -340,9 +343,7 @@ details[open] > :not(summary) { animation: details-in var(--dur-base) var(--ease
 button.btn { background: none; color: var(--ink); cursor: pointer; min-height: 44px; }
 button.btn.sketched { border: 0; }
 button.btn:disabled { opacity: 0.4; cursor: default; transform: none; }
-.post-date, .repo-by { color: var(--grey); font-size: 16px; margin-left: 8px; }
-.repos { margin-top: 4px; }
-.repo-by { display: inline-block; white-space: nowrap; } /* a name never splits across lines */
+.post-date { color: var(--grey); font-size: 16px; margin-left: 8px; }
 /* note feedback: "copied" pops in each time it is shown; the counter line shakes once when the note goes over the limit */
 @keyframes pop { from { opacity: 0; transform: scale(0.9); } 60% { transform: scale(1.04); } }
 #note-copied { animation: pop var(--dur-base) var(--ease-out); }
@@ -448,7 +449,7 @@ button.btn:disabled { opacity: 0.4; cursor: default; transform: none; }
   .js-reveal .hero .swipe > svg.sketch { clip-path: none; transition: none; }
   .js-reveal [data-reveal], .js-reveal [data-reveal-group] > * { transform: none; }
   .js-reveal [data-reveal] { transition: opacity 150ms linear; }
-  .btn:hover, .btn:active, #built .card:hover, .stats li:hover, a:hover > .drawing { transform: none; }
+  .btn:hover, .btn:active, #built .card:hover, #projects .card:hover, .stats li:hover, a:hover > .drawing { transform: none; }
   summary::after { transition: none; }
   details[open] > :not(summary) { animation-name: fade-in; animation-duration: 150ms; }
   details::details-content { transition: none; }

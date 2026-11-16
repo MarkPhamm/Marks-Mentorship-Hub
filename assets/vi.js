@@ -96,7 +96,16 @@ var VI = {
   'built.c4': 'Chín bài thực hành, mỗi bài có checkpoint.',
 
   'proof.h2': 'những người mình đã dạy',
-  'proof.aside': 'Dự án của mentee đều công khai: pipeline review hàng không, dashboard chuyến bay trễ, dbt end-to-end. Một vài dự án, đều trên GitHub:',
+
+  'projects.h2': 'mentee của mình đã làm gì',
+  'projects.body': 'Một pipeline thật, làm cùng nhau: 117.000 review hàng không scrape từ Skytrax, đưa lên S3, load vào Snowflake và model bằng dbt, chạy bằng Airflow và triển khai bằng Terraform. Sau đó mỗi mentee nhận một hãng bay và ship một dashboard trên nền đó.',
+  'projects.cap1': 'skytrax_reviews: từ scrape đến dashboard',
+  'projects.cap2': 'các dashboard tìm ra gì: Spirit và Frontier thấp hơn hẳn mức chung',
+  'projects.c1': 'Pipeline chung: scraper, S3, Snowflake, star schema bằng dbt, Terraform và slim CI/CD.',
+  'projects.c2': 'Delta: vì sao khách Economy và Premium hài lòng vì những lý do khác nhau.',
+  'projects.c3': 'Frontier so với các hãng giá rẻ cùng phân khúc.',
+  'projects.c4': 'Spirit: đào sâu vào sự không hài lòng kéo dài.',
+  'projects.c5': 'Một explorer bằng Next.js trên cùng bộ dữ liệu.',
 
   'about.h2': 'về Mark',
   'about.body': 'Senior Analytics Engineer tại Infinite Lambda — L6 trẻ nhất ở đó — từng làm ở Insurify và Lazard. Mình thực tập ba nơi ở hai nước trước năm cuối đại học, và mentor từ 2020: một academy nhỏ giúp 20 học sinh Việt Nam nộp hồ sơ đại học Mỹ, AE Academy cho người mới ở Insurify, và Ace Mentorships. Mình là moderator của Xóm Data, cộng đồng học data lớn nhất Việt Nam (hơn 110.000 thành viên), và viết The Analytics Engineer’s Handbook trên Substack. Mình mentor vì dạy là cách mình học.',
