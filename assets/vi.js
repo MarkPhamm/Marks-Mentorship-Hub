@@ -58,13 +58,13 @@ var VI = {
   'teach.cap5': 'dbt 202: chỉ xử lý dòng mới',
   'teach.cap6': 'dbt 302: sửa một lần là đủ',
   'teach.cap7': 'spark: 1 partition = 1 task',
-  'teach.more': 'thêm ba bài: incremental model, macro, Spark',
+  'teach.more': 'thêm bảy bài: dự án, CV, cài laptop, dbt 101 đến 302, Spark',
 
   'how.h2': 'cách hoạt động',
   'how.s1': 'kết nối kèm lời nhắn',
   'how.s1.body': 'Kết nối trên LinkedIn và cho mình biết bạn là ai, muốn theo hướng nào, và đang kẹt ở đâu.',
   'how.s2': 'mình nói chuyện',
-  'how.s2.body': 'Một buổi trò chuyện ngắn. Hợp thì bạn vào Slack của nhóm mentee.',
+  'how.s2.body': 'Một buổi gọi 30 phút để làm quen. Hợp thì bạn vào Slack của nhóm mentee.',
   'how.s3': 'bạn luyện tập',
   'how.s3.body': 'Bạn đọc guide, build, và ship. Spotter, bot Slack của nhóm, đăng commit GitHub của mọi người mỗi ngày — cả nhóm thấy bạn luyện.',
   'how.s4': 'mình review phần khó',
@@ -96,7 +96,7 @@ var VI = {
   'built.c4': 'Chín bài thực hành, mỗi bài có checkpoint.',
 
   'proof.h2': 'những người mình đã dạy',
-  'proof.aside': 'Dự án của mentee đều công khai: pipeline review hàng không, dashboard chuyến bay trễ, dbt end-to-end. Hỏi mình để lấy repo.',
+  'proof.aside': 'Dự án của mentee đều công khai: pipeline review hàng không, dashboard chuyến bay trễ, dbt end-to-end. Một vài dự án, đều trên GitHub:',
 
   'about.h2': 'về Mark',
   'about.body': 'Senior Analytics Engineer tại Infinite Lambda — L6 trẻ nhất ở đó — từng làm ở Insurify và Lazard. Mình thực tập ba nơi ở hai nước trước năm cuối đại học, và mentor từ 2020: một academy nhỏ giúp 20 học sinh Việt Nam nộp hồ sơ đại học Mỹ, AE Academy cho người mới ở Insurify, và Ace Mentorships. Mình là moderator của Xóm Data, cộng đồng học data lớn nhất Việt Nam (hơn 110.000 thành viên), và viết The Analytics Engineer’s Handbook trên Substack. Mình mentor vì dạy là cách mình học.',
@@ -114,6 +114,8 @@ var VI = {
   'faq.a3': 'Cả hai. Guide viết bằng tiếng Anh; mình nói chuyện bằng ngôn ngữ bạn nghĩ.',
   'faq.q7': 'có offer rồi thì sao?',
   'faq.a7': 'Bạn vẫn ở lại Slack. Bạn vẫn có quyền truy cập, và có thể giúp các mentee đi sau.',
+  'faq.q8': 'chi phí bao nhiêu, và kéo dài bao lâu?',
+  'faq.a8': 'Chi phí, thời gian và số giờ mỗi tuần, mình nói hết trong buổi gặp 30 phút đầu tiên.',
   'faq.q4': 'tham gia bằng cách nào?',
   'faq.a4': 'Kết nối LinkedIn kèm lời nhắn. Lời nhắn đó chính là bài copy-paste test đầu tiên của bạn.',
 

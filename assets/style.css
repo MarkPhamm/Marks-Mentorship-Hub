@@ -118,10 +118,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 .btn-big { font-size: 24px; padding: 12px 28px; }
 
 /* linked things lift under the pointer. hover: hover keeps the lift from sticking after a tap on a phone */
-#built .card, a > .drawing { transition: transform var(--dur-base) var(--ease-out); }
+#built .card, .stats li, a > .drawing { transition: transform var(--dur-base) var(--ease-out); }
 @media (hover: hover) {
   .btn:hover { transform: translateY(-2px) rotate(-1deg); }
-  #built .card:hover, a:hover > .drawing { transform: translateY(-3px) rotate(-0.4deg); }
+  #built .card:hover, .stats li:hover, a:hover > .drawing { transform: translateY(-3px) rotate(-0.4deg); }
 }
 /* after :hover, so the press wins while the pointer is still over the button */
 .btn:active { transform: scale(0.97); transition-duration: var(--dur-instant); }
@@ -165,11 +165,23 @@ h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 16px; }
 h3 { font-size: 24px; margin: 0 0 8px; }
 
 .drawing { display: block; margin: 24px auto 0; }
+picture.drawing img { display: block; margin: 0 auto; } /* phones get the -m cut of the drawing, with bigger labels */
+
+/* about: text left, the sketched portrait right; one column on phones */
+.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 40px; align-items: start; }
+.about-grid > .drawing { margin-top: 0; }
+@media (max-width: 640px) {
+  .about-grid { grid-template-columns: 1fr; gap: 8px; }
+  .about-grid > .drawing { max-width: 240px; }
+}
 
 /* proof strip */
 .hero-proof { margin-top: var(--section-pad); }
 .stats { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-.stats li { padding: 16px 12px; text-align: center; }
+.stats li { text-align: center; }
+/* each stat links to where it can be checked */
+.stats a { display: block; height: 100%; padding: 16px 12px; text-decoration: none; }
+.stats a:hover { color: var(--violet); }
 .stats strong { display: block; font-size: 34px; font-weight: 400; line-height: 1.2; }
 .stats span { display: block; font-size: 17px; line-height: 1.3; }
 @media (max-width: 640px) { .stats { grid-template-columns: repeat(2, 1fr); } }
@@ -234,13 +246,17 @@ h3 { font-size: 24px; margin: 0 0 8px; }
 /* steps */
 .steps { list-style: none; counter-reset: step; padding: 0; margin: 28px 0 0; display: grid; gap: 18px; }
 .steps li { counter-increment: step; padding: 14px 18px 14px 64px; position: relative; }
+/* the digit fills the 36px box that site.js draws its ring around (centre 32, 26) */
 .steps li::before {
   content: counter(step);
   font-family: var(--hand);
   font-size: 26px;
   position: absolute;
-  left: 20px;
-  top: 12px;
+  left: 14px;
+  top: 8px;
+  width: 36px;
+  line-height: 36px;
+  text-align: center;
   z-index: 1;
 }
 .step-title { display: block; font-size: 22px; }
@@ -305,6 +321,7 @@ details[open] > :not(summary) { animation: details-in var(--dur-base) var(--ease
 
 /* final cta */
 .cta-final { text-align: center; }
+.cta-final > p { margin-inline: auto; } /* p has a max-width, so without this the button sits left of centre */
 .cta-final .btn { margin-top: 28px; }
 
 /* note builder: site.js unhides it and assembles the note */
@@ -315,6 +332,7 @@ details[open] > :not(summary) { animation: details-in var(--dur-base) var(--ease
 .note-builder input { font: 17px var(--body); color: var(--ink); padding: 8px 2px; border: 0; border-bottom: 2px solid var(--ink); border-radius: 0; background: none; transition: border-color var(--dur-fast) var(--ease-out); }
 .note-builder input:focus { border-bottom-color: var(--violet); }
 .note-out { white-space: pre-line; min-height: 7.4em; padding: 12px 14px; background: rgba(124, 58, 237, 0.1); overflow-wrap: anywhere; }
+.note-out:empty::before { content: attr(data-placeholder); color: var(--grey); } /* the example, until they type */
 .note-meta { font-size: 16px; color: var(--grey); }
 .note-meta strong { color: var(--ink); }
 .note-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
@@ -322,7 +340,9 @@ details[open] > :not(summary) { animation: details-in var(--dur-base) var(--ease
 button.btn { background: none; color: var(--ink); cursor: pointer; min-height: 44px; }
 button.btn.sketched { border: 0; }
 button.btn:disabled { opacity: 0.4; cursor: default; transform: none; }
-.post-date { color: var(--grey); font-size: 16px; margin-left: 8px; }
+.post-date, .repo-by { color: var(--grey); font-size: 16px; margin-left: 8px; }
+.repos { margin-top: 4px; }
+.repo-by { display: inline-block; white-space: nowrap; } /* a name never splits across lines */
 /* note feedback: "copied" pops in each time it is shown; the counter line shakes once when the note goes over the limit */
 @keyframes pop { from { opacity: 0; transform: scale(0.9); } 60% { transform: scale(1.04); } }
 #note-copied { animation: pop var(--dur-base) var(--ease-out); }
@@ -407,6 +427,7 @@ button.btn:disabled { opacity: 0.4; cursor: default; transform: none; }
   .brand img { width: 36px; height: 36px; }
   .header-actions { gap: 8px; }
   .header-actions .btn { padding: 8px 12px; }
+  .btn-big { font-size: 20px; padding: 12px 18px; } /* one line at 360px */
   /* the button comes before the pitch, so it is on the first screen */
   .hero { display: flex; flex-direction: column; padding-top: 32px; }
   .hero-body { order: 1; margin: 22px auto 0; }
@@ -427,7 +448,7 @@ button.btn:disabled { opacity: 0.4; cursor: default; transform: none; }
   .js-reveal .hero .swipe > svg.sketch { clip-path: none; transition: none; }
   .js-reveal [data-reveal], .js-reveal [data-reveal-group] > * { transform: none; }
   .js-reveal [data-reveal] { transition: opacity 150ms linear; }
-  .btn:hover, .btn:active, #built .card:hover, a:hover > .drawing { transform: none; }
+  .btn:hover, .btn:active, #built .card:hover, .stats li:hover, a:hover > .drawing { transform: none; }
   summary::after { transition: none; }
   details[open] > :not(summary) { animation-name: fade-in; animation-duration: 150ms; }
   details::details-content { transition: none; }

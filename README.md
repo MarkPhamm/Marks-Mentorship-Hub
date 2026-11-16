@@ -31,7 +31,7 @@ uv run --with playwright python3 make.py hero   # or: how, note, offer
 cp hero.png ../assets/img/
 ```
 
-Each drawing is a small JS file (`drawing/hero.js`, `how.js`, `note.js`, `offer.js`) rendered by `make.py`.
+Each drawing is a small JS file (`drawing/hero.js`, `how.js`, `note.js`, `offer.js`) rendered by `make.py`. Each of those four has a phone cut (`hero-m.js` and so on, 1100px wide with bigger labels) that `index.html` serves below 640px through `<picture>`; change both when you change one. `portrait.js` is the sketch in the about section.
 
 ## Preview locally
 

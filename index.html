@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mark Mentorship</title>
+<title>Mark Mentorship | 1:1 mentorship to land your first data job</title>
 <meta name="description" content="1:1 mentorship for students and early-career people going into data roles: data analyst, analytics engineer, data engineer.">
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
 <meta property="og:title" content="Mark Mentorship">
@@ -49,15 +49,15 @@
   </a>
   <nav class="site-nav hand" aria-label="Sections">
     <a href="#why" data-i18n="nav.why">why me</a>
-    <a href="#work" data-i18n="nav.work">what we work on</a>
-    <a href="#how" data-i18n="nav.how">how it works</a>
-    <a href="#built" data-i18n="nav.built">what I built</a>
     <a href="#proof" data-i18n="nav.proof">who I've taught</a>
+    <a href="#work" data-i18n="nav.work">what we work on</a>
+    <a href="#built" data-i18n="nav.built">what I built</a>
+    <a href="#how" data-i18n="nav.how">how it works</a>
     <a href="#about" data-i18n="nav.about">about</a>
   </nav>
   <div class="header-actions">
     <button id="lang-toggle" class="lang-toggle hand" type="button" aria-label="Switch language">VI</button>
-    <a class="btn hand" data-sketch="box" href="https://www.linkedin.com/in/minhbphamm/" target="_blank" rel="noopener" data-i18n="cta.short">add me</a>
+    <a class="btn hand" data-sketch="box" href="#note" data-i18n="cta.short">add me</a>
   </div>
 </header>
 
@@ -69,22 +69,75 @@
     <p class="hero-sub hand" data-i18n="hero.outcome">1:1 mentorship to land your first data job</p>
     <p class="hero-body" data-i18n="hero.body">I'm Mark, a senior analytics engineer. I help students and early-career people build the profile a recruiter can't scroll past: projects nobody else has, a GitHub that proves your resume, a story only you can tell.</p>
     <p class="hero-cta">
-      <a class="btn btn-big hand" data-sketch="box" href="https://www.linkedin.com/in/minhbphamm/" target="_blank" rel="noopener" data-i18n="cta.main">add me on LinkedIn with a note</a>
+      <a class="btn btn-big hand" data-sketch="box" href="#note" data-i18n="cta.main">add me on LinkedIn with a note</a>
     </p>
-    <img class="drawing" src="assets/img/hero.png" alt="A row of identical candidate profiles, and one highlighted profile that is different" width="2000" height="760">
+    <picture class="drawing">
+      <source media="(max-width: 640px)" srcset="assets/img/hero-m.png" width="1100" height="720">
+      <img src="assets/img/hero.png" alt="A row of identical candidate profiles, and one highlighted profile that is different" width="2000" height="760">
+    </picture>
     <!-- the proof is its own beat: it sits a full section gap below the pitch -->
     <div class="hero-proof">
       <ul class="stats hand" data-reveal-group>
-        <li data-sketch="box"><strong>1,000+</strong><span data-i18n="stat.sql">SQL problems solved</span></li>
-        <li data-sketch="box"><strong data-contrib="total">4,828</strong><span data-i18n="stat.gh">GitHub contributions in a year</span></li>
-        <li data-sketch="box"><strong>110,000+</strong><span data-i18n="stat.xom">members in Xóm Data, which I moderate</span></li>
-        <li data-sketch="box"><strong id="qdbd-month">4,900+</strong><span data-i18n="stat.qdbd">downloads a month of qdbd, a tool I built</span></li>
+        <li data-sketch="box"><a href="https://leetcode.com/u/markphammm/" target="_blank" rel="noopener"><strong>1,000+</strong><span data-i18n="stat.sql">SQL problems solved</span></a></li>
+        <li data-sketch="box"><a href="https://github.com/MarkPhamm" target="_blank" rel="noopener"><strong data-contrib="total">4,828</strong><span data-i18n="stat.gh">GitHub contributions in a year</span></a></li>
+        <li data-sketch="box"><a href="https://www.facebook.com/groups/xomdata" target="_blank" rel="noopener"><strong>110,000+</strong><span data-i18n="stat.xom">members in Xóm Data, which I moderate</span></a></li>
+        <li data-sketch="box"><a href="https://pypistats.org/packages/quickdbd-cli" target="_blank" rel="noopener"><strong id="qdbd-month">4,900+</strong><span data-i18n="stat.qdbd">downloads a month of qdbd, a tool I built</span></a></li>
       </ul>
       <figure id="contrib" class="contrib" hidden data-reveal>
         <div class="contrib-scroll" tabindex="0" role="group" aria-label="My GitHub contribution graph for the last year"></div>
         <figcaption class="hand"><strong data-contrib="active">349</strong> <span data-i18n="contrib.cap">active days in the last year. every square is a day.</span> <a href="https://github.com/MarkPhamm" target="_blank" rel="noopener" data-i18n="contrib.link">check it on GitHub</a></figcaption>
       </figure>
     </div>
+  </section>
+
+  <!-- why me: the Lazard story -->
+  <section id="why" class="section">
+    <h2 class="hand" data-i18n="why.h2" data-reveal>why me</h2>
+    <p data-i18n="why.p1" data-reveal>In the final round for my data engineering internship at Lazard, I was up against Ivy League students. The offer email went to five .edu addresses — Penn, Brown, Cornell, Columbia, Columbia — and one personal Gmail. Mine. TCU isn't a target school.</p>
+    <picture class="drawing">
+      <source media="(max-width: 640px)" srcset="assets/img/offer-m.png" width="1100" height="1000">
+      <img src="assets/img/offer.png" alt="The offer email's recipient list: five .edu addresses from Penn, Brown, Cornell and Columbia, and one Gmail address, highlighted — mine" width="2000" height="1000" loading="lazy">
+    </picture>
+    <p data-i18n="why.p2">So how did I get the same offer? Not the school.</p>
+    <ul class="plain-list">
+      <li data-i18n="why.l1">I studied exactly the tech stack they used.</li>
+      <li data-i18n="why.l2">I networked with people on the team before the interview.</li>
+      <li data-i18n="why.l3">I spent two days studying Snowflake non-stop.</li>
+    </ul>
+    <p class="pull hand"><span data-sketch="highlight" data-i18n="why.pull">you won't out-school them. you can out-prepare them.</span></p>
+    <p class="aside"><a href="https://github.com/MarkPhamm/Mentorships/tree/main/mentality/4-competitive-advantage" target="_blank" rel="noopener" data-i18n="why.link">read the full story in the playbook</a></p>
+  </section>
+
+  <!-- proof -->
+  <section id="proof" class="section">
+    <h2 class="hand" data-i18n="proof.h2" data-reveal>people I've taught</h2>
+    <div class="quotes" data-reveal-group>
+      <blockquote data-sketch="box">
+        <p>“He genuinely believes in his students and encourages us to think deeper instead of simply giving us the answers. He challenges us to be curious, ask better questions, and grow into more confident data professionals.”</p>
+        <footer class="hand"><a href="https://www.linkedin.com/in/miatran1207/" target="_blank" rel="noopener">Mia Tran</a> — SDS &amp; Quant Econ @ Smith College</footer>
+      </blockquote>
+      <blockquote data-sketch="box">
+        <p>“Mark is the kind of mentor that will push you forward and is very critical of your work — he will not let you look back on failures without lessons attached. I believe working with Mark is the fastest way to level up your skills in a corporate setting.”</p>
+        <footer class="hand"><a href="https://www.linkedin.com/in/gwennienguyen/" target="_blank" rel="noopener">Gwen Nguyen</a> — Cloud &amp; Data Engineer Intern @ Arch Insurance</footer>
+      </blockquote>
+      <blockquote data-sketch="box">
+        <p>“He took me from 0 to 1 — teaching me dbt, Airflow, and GitHub, and walking me through my first PR. As a business analyst with no prior data engineering experience, it was one of the most impactful months since I started working.”</p>
+        <footer class="hand"><a href="https://www.linkedin.com/in/yuki-fang/" target="_blank" rel="noopener">Yuki Fang</a> — Data @ Insurify</footer>
+      </blockquote>
+      <blockquote data-sketch="box">
+        <p>“I've learned more technical skills from him than from everyone else combined.”</p>
+        <footer class="hand"><a href="https://www.linkedin.com/in/max-brinker-b15b461a0/" target="_blank" rel="noopener">Max Brinker</a> — Data Analyst @ Insurify</footer>
+      </blockquote>
+    </div>
+    <div id="mentee-wall" class="cards" hidden data-reveal-group></div>
+    <p class="aside" data-i18n="proof.aside">Mentee projects are public: airline review pipelines, flight-delay dashboards, end-to-end dbt builds. Some of them, all on GitHub:</p>
+    <ul class="rules hand repos">
+      <li><a href="https://github.com/MarkPhamm/skytrax_reviews" target="_blank" rel="noopener">skytrax_reviews</a><span class="repo-by">Mark · pipeline</span></li>
+      <li><a href="https://github.com/alyssaqle/airline_customer_exp_analysis" target="_blank" rel="noopener">airline_customer_exp_analysis</a><span class="repo-by">Alyssa Le · Delta</span></li>
+      <li><a href="https://github.com/gwenniehub/frontier-reviews-dashboard" target="_blank" rel="noopener">frontier-reviews-dashboard</a><span class="repo-by">Gwen Nguyen · Frontier</span></li>
+      <li><a href="https://github.com/MiaTran1112/spirit_airlines_dashboard" target="_blank" rel="noopener">spirit_airlines_dashboard</a><span class="repo-by">Mia Tran · Spirit</span></li>
+      <li><a href="https://github.com/nguyentienTCU/skytrax_reviews_dashboard" target="_blank" rel="noopener">skytrax_reviews_dashboard</a><span class="repo-by">Tien Nguyen · explorer</span></li>
+    </ul>
   </section>
 
   <!-- the confusion -->
@@ -94,19 +147,19 @@
     <div class="drawing-row" data-reveal-group>
       <figure>
         <a href="https://markphammm.substack.com/p/i-dont-know-what-type-of-sql-to-learn" target="_blank" rel="noopener">
-          <img class="drawing" src="assets/img/confused-sql.png" alt="MySQL, PostgreSQL, Oracle, SQL Server — which one do I learn? Just learn ANSI SQL" width="1200" height="857" loading="lazy">
+          <img class="drawing" src="assets/img/confused-sql.webp" alt="MySQL, PostgreSQL, Oracle, SQL Server — which one do I learn? Just learn ANSI SQL" width="1200" height="857" loading="lazy">
         </a>
         <figcaption class="hand" data-i18n="confused.cap1">which SQL? a query is a query</figcaption>
       </figure>
       <figure>
         <a href="https://markphammm.substack.com/p/power-bi-or-tableau-wrong-question" target="_blank" rel="noopener">
-          <img class="drawing" src="assets/img/confused-bi.png" alt="The BI tool changes every few years; the principles — accurate, clear, empowering, succinct — don't" width="1200" height="857" loading="lazy">
+          <img class="drawing" src="assets/img/confused-bi.webp" alt="The BI tool changes every few years; the principles — accurate, clear, empowering, succinct — don't" width="1200" height="857" loading="lazy">
         </a>
         <figcaption class="hand" data-i18n="confused.cap2">Power BI or Tableau? wrong question</figcaption>
       </figure>
       <figure>
         <a href="https://markphammm.substack.com/p/understanding-pip-poetry-and-uv" target="_blank" rel="noopener">
-          <img class="drawing" src="assets/img/confused-pip.png" alt="pip for quick scripts, Poetry for long-lived projects, uv for speed" width="1200" height="857" loading="lazy">
+          <img class="drawing" src="assets/img/confused-pip.webp" alt="pip for quick scripts, Poetry for long-lived projects, uv for speed" width="1200" height="857" loading="lazy">
         </a>
         <figcaption class="hand" data-i18n="confused.cap3">pip, Poetry or uv? each has one job</figcaption>
       </figure>
@@ -114,21 +167,6 @@
     <!-- why the mentorship exists -->
     <p data-i18n="confused.me" data-reveal>I've been exactly here. I struggled hard, with no direction.</p>
     <p class="pull hand" data-reveal><span data-sketch="highlight" data-i18n="confused.pull">I built this so you don't make the same mistake.</span></p>
-  </section>
-
-  <!-- why me: the Lazard story -->
-  <section id="why" class="section">
-    <h2 class="hand" data-i18n="why.h2" data-reveal>why me</h2>
-    <p data-i18n="why.p1" data-reveal>In the final round for my data engineering internship at Lazard, I was up against Ivy League students. The offer email went to five .edu addresses — Penn, Brown, Cornell, Columbia, Columbia — and one personal Gmail. Mine. TCU isn't a target school.</p>
-    <img class="drawing" src="assets/img/offer.png" alt="The offer email's recipient list: five .edu addresses from Penn, Brown, Cornell and Columbia, and one Gmail address, highlighted — mine" width="2000" height="1000" loading="lazy">
-    <p data-i18n="why.p2">So how did I get the same offer? Not the school.</p>
-    <ul class="plain-list">
-      <li data-i18n="why.l1">I studied exactly the tech stack they used.</li>
-      <li data-i18n="why.l2">I networked with people on the team before the interview.</li>
-      <li data-i18n="why.l3">I spent two days studying Snowflake non-stop.</li>
-    </ul>
-    <p class="pull hand"><span data-sketch="highlight" data-i18n="why.pull">you won't out-school them. you can out-prepare them.</span></p>
-    <p class="aside"><a href="https://github.com/MarkPhamm/Mentorships/tree/main/mentality/4-competitive-advantage" target="_blank" rel="noopener" data-i18n="why.link">read the full story in the playbook</a></p>
   </section>
 
   <!-- who it's for -->
@@ -151,7 +189,7 @@
     </div>
     <figure class="single-figure">
       <a href="https://markphammm.substack.com/p/i-tell-people-im-an-ae-so-wtf-does" target="_blank" rel="noopener">
-        <img class="drawing" src="assets/img/for-tracks.png" alt="DE hunts and hauls the data in, AE cooks it, DA and DS run the dining room" width="1200" height="857" loading="lazy">
+        <img class="drawing" src="assets/img/for-tracks.webp" alt="DE hunts and hauls the data in, AE cooks it, DA and DS run the dining room" width="1200" height="857" loading="lazy">
       </a>
       <figcaption class="hand" data-i18n="for.cap">where each track sits in the kitchen</figcaption>
     </figure>
@@ -177,77 +215,71 @@
       <li><a href="https://github.com/MarkPhamm/Mentorships/tree/main/mentality/2-play-it-like-poker" target="_blank" rel="noopener">“could you defend this claim for 10 minutes while a senior engineer drills into it?”</a></li>
       <li><a href="https://github.com/MarkPhamm/Mentorships/tree/main/mentality/0-apply-like-tinder" target="_blank" rel="noopener">“a Super Like on everything is the same as a Super Like on nothing.”</a></li>
     </ul>
+    <h3 class="hand rules-title" data-i18n="teach.h2">what I'll teach you</h3>
+    <p data-i18n="teach.body">From the fundamentals to Spark: the SQL that solves 80% of problems, dbt and the modern warehouse, ingestion pipelines with zero infrastructure, and Spark for when the data outgrows one machine. It's all written down in the handbook — the mentorship is applying it to your project.</p>
     <div class="drawing-row" data-reveal-group>
       <figure>
-        <a href="https://markphammm.substack.com/p/component-of-a-technical-data-project" target="_blank" rel="noopener">
-          <img class="drawing" src="assets/img/work-projects.png" alt="A data project folder structure where each folder has one job" width="1200" height="600" loading="lazy">
+        <a href="https://markphammm.substack.com/p/sql-101-the-roadmap" target="_blank" rel="noopener">
+          <img class="drawing" src="assets/img/work-sql.webp" alt="SQL roadmap staircase from beginner to proficient; intermediate solves 80 percent of problems" width="1200" height="857" loading="lazy">
         </a>
-        <figcaption class="hand" data-i18n="work.cap1">projects that don't look like everyone else's</figcaption>
+        <figcaption class="hand" data-i18n="teach.cap1">sql 101: a roadmap, not a course list</figcaption>
       </figure>
-      <figure>
-        <a href="https://markphammm.substack.com/p/people-version-control-everything" target="_blank" rel="noopener">
-          <img class="drawing" src="assets/img/work-resume.png" alt="Resume files named final, final v2, final real, versus a clean git history" width="1200" height="857" loading="lazy">
-        </a>
-        <figcaption class="hand" data-i18n="work.cap2">a resume treated like a product</figcaption>
-      </figure>
-      <figure>
-        <a href="https://markphammm.substack.com/p/i-got-a-new-mac-and-refused-to-set" target="_blank" rel="noopener">
-          <img class="drawing" src="assets/img/work-mac.png" alt="Four laptops set up by hand, all different — versus one repo and four scripts, about 20 minutes" width="1200" height="857" loading="lazy">
-        </a>
-        <figcaption class="hand" data-i18n="work.cap4">a laptop that sets itself up</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- curriculum -->
-  <section id="teach" class="section">
-    <h2 class="hand" data-i18n="teach.h2" data-reveal>what I'll teach you</h2>
-    <p data-i18n="teach.body" data-reveal>From the fundamentals to Spark: the SQL that solves 80% of problems, dbt and the modern warehouse, ingestion pipelines with zero infrastructure, and Spark for when the data outgrows one machine. It's all written down in the handbook — the mentorship is applying it to your project.</p>
-    <figure class="single-figure">
-      <a href="https://markphammm.substack.com/p/sql-101-the-roadmap" target="_blank" rel="noopener">
-        <img class="drawing" src="assets/img/work-sql.png" alt="SQL roadmap staircase from beginner to proficient; intermediate solves 80 percent of problems" width="1200" height="857" loading="lazy">
-      </a>
-      <figcaption class="hand" data-i18n="teach.cap1">sql 101: a roadmap, not a course list</figcaption>
-    </figure>
-    <div class="drawing-row" data-reveal-group>
       <figure>
         <a href="https://markphammm.substack.com/p/dbt-100-dbt-foundations" target="_blank" rel="noopener">
-          <img class="drawing" src="assets/img/teach-dbt.png" alt="Raw data lands in the warehouse from Salesforce, HubSpot, Postgres; dbt is the T in ELT" width="1200" height="857" loading="lazy">
+          <img class="drawing" src="assets/img/teach-dbt.webp" alt="Raw data lands in the warehouse from Salesforce, HubSpot, Postgres; dbt is the T in ELT" width="1200" height="857" loading="lazy">
         </a>
         <figcaption class="hand" data-i18n="teach.cap2">dbt 100: the T in ELT</figcaption>
       </figure>
       <figure>
-        <a href="https://markphammm.substack.com/p/dbt-101-dbt-fundamental" target="_blank" rel="noopener">
-          <img class="drawing" src="assets/img/teach-dbt-101.png" alt="Ad-hoc SQL scripts with no clear order, version control or testing; dbt run builds source, staging model, mart model — parents first" width="1200" height="857" loading="lazy">
-        </a>
-        <figcaption class="hand" data-i18n="teach.cap4">dbt 101: parents first</figcaption>
-      </figure>
-      <figure>
         <a href="https://markphammm.substack.com/p/i-rebuilt-my-ingestion-pipeline-with" target="_blank" rel="noopener">
-          <img class="drawing" src="assets/img/teach-pipeline.png" alt="Neon Postgres to Snowflake through the WAL, CDC and Fivetran — read the log, not the tables" width="1200" height="857" loading="lazy">
+          <img class="drawing" src="assets/img/teach-pipeline.webp" alt="Neon Postgres to Snowflake through the WAL, CDC and Fivetran — read the log, not the tables" width="1200" height="857" loading="lazy">
         </a>
         <figcaption class="hand" data-i18n="teach.cap3">pipelines 101: zero infrastructure</figcaption>
       </figure>
     </div>
-    <!-- the rest of the curriculum opens on demand; nothing with data-sketch may go in here (a closed panel measures 0) -->
+    <!-- the rest opens on demand; nothing with data-sketch may go in here (a closed panel measures 0) -->
     <details class="more">
-      <summary class="hand" data-i18n="teach.more">three more: incremental models, macros, Spark</summary>
+      <summary class="hand" data-i18n="teach.more">seven more: projects, resume, laptop setup, dbt 101 to 302, Spark</summary>
       <div class="drawing-row">
         <figure>
+          <a href="https://markphammm.substack.com/p/component-of-a-technical-data-project" target="_blank" rel="noopener">
+            <img class="drawing" src="assets/img/work-projects.webp" alt="A data project folder structure where each folder has one job" width="1200" height="600" loading="lazy">
+          </a>
+          <figcaption class="hand" data-i18n="work.cap1">projects that don't look like everyone else's</figcaption>
+        </figure>
+        <figure>
+          <a href="https://markphammm.substack.com/p/people-version-control-everything" target="_blank" rel="noopener">
+            <img class="drawing" src="assets/img/work-resume.webp" alt="Resume files named final, final v2, final real, versus a clean git history" width="1200" height="857" loading="lazy">
+          </a>
+          <figcaption class="hand" data-i18n="work.cap2">a resume treated like a product</figcaption>
+        </figure>
+        <figure>
+          <a href="https://markphammm.substack.com/p/i-got-a-new-mac-and-refused-to-set" target="_blank" rel="noopener">
+            <img class="drawing" src="assets/img/work-mac.webp" alt="Four laptops set up by hand, all different — versus one repo and four scripts, about 20 minutes" width="1200" height="857" loading="lazy">
+          </a>
+          <figcaption class="hand" data-i18n="work.cap4">a laptop that sets itself up</figcaption>
+        </figure>
+        <figure>
+          <a href="https://markphammm.substack.com/p/dbt-101-dbt-fundamental" target="_blank" rel="noopener">
+            <img class="drawing" src="assets/img/teach-dbt-101.webp" alt="Ad-hoc SQL scripts with no clear order, version control or testing; dbt run builds source, staging model, mart model — parents first" width="1200" height="857" loading="lazy">
+          </a>
+          <figcaption class="hand" data-i18n="teach.cap4">dbt 101: parents first</figcaption>
+        </figure>
+        <figure>
           <a href="https://markphammm.substack.com/p/dbt-202-dbt-incremental-model" target="_blank" rel="noopener">
-            <img class="drawing" src="assets/img/teach-dbt-202.png" alt="A table model rebuilds all rows every single run; an incremental model adds only new rows where updated_at is past the max" width="1200" height="857" loading="lazy">
+            <img class="drawing" src="assets/img/teach-dbt-202.webp" alt="A table model rebuilds all rows every single run; an incremental model adds only new rows where updated_at is past the max" width="1200" height="857" loading="lazy">
           </a>
           <figcaption class="hand" data-i18n="teach.cap5">dbt 202: only the new rows</figcaption>
         </figure>
         <figure>
           <a href="https://markphammm.substack.com/p/dbt-302-dbt-jinja-and-macros" target="_blank" rel="noopener">
-            <img class="drawing" src="assets/img/teach-dbt-302.png" alt="amount / 100 copy-pasted across three models, versus one cents_to_dollars macro feeding all three — change it once" width="1200" height="857" loading="lazy">
+            <img class="drawing" src="assets/img/teach-dbt-302.webp" alt="amount / 100 copy-pasted across three models, versus one cents_to_dollars macro feeding all three — change it once" width="1200" height="857" loading="lazy">
           </a>
           <figcaption class="hand" data-i18n="teach.cap6">dbt 302: change it once</figcaption>
         </figure>
         <figure>
           <a href="https://markphammm.substack.com/p/all-things-spark-tldr-part-1" target="_blank" rel="noopener">
-            <img class="drawing" src="assets/img/teach-spark.png" alt="Spark execution hierarchy: application, job, stage, task; four 128MB partitions feed executor cores — 1 partition = 1 task" width="1200" height="857" loading="lazy">
+            <img class="drawing" src="assets/img/teach-spark.webp" alt="Spark execution hierarchy: application, job, stage, task; four 128MB partitions feed executor cores — 1 partition = 1 task" width="1200" height="857" loading="lazy">
           </a>
           <figcaption class="hand" data-i18n="teach.cap7">spark: 1 partition = 1 task</figcaption>
         </figure>
@@ -288,48 +320,33 @@
     <h2 class="hand" data-i18n="how.h2" data-reveal>how it works</h2>
     <ol class="steps" data-reveal-group>
       <li data-sketch="circle"><span class="hand step-title" data-i18n="how.s1">add me with a note</span><span data-i18n="how.s1.body">Connect on LinkedIn and tell me who you are, which track you want, and where you're stuck.</span></li>
-      <li data-sketch="circle"><span class="hand step-title" data-i18n="how.s2">we talk</span><span data-i18n="how.s2.body">A short intro chat. If we're a fit, you join the mentee Slack.</span></li>
+      <li data-sketch="circle"><span class="hand step-title" data-i18n="how.s2">we talk</span><span data-i18n="how.s2.body">A 30-minute intro call. If we're a fit, you join the mentee Slack.</span></li>
       <li data-sketch="circle"><span class="hand step-title" data-i18n="how.s3">you do the reps</span><span data-i18n="how.s3.body">You work through the guides, build, and ship. Spotter, our Slack bot, posts everyone's GitHub commits daily — the group sees your reps.</span></li>
       <li data-sketch="circle"><span class="hand step-title" data-i18n="how.s4">I review the hard parts</span><span data-i18n="how.s4.body">Send work only after the checklist passes. Sessions go to the hard parts, not typos.</span></li>
     </ol>
-    <img class="drawing" src="assets/img/how.png" alt="A commit timeline growing day by day into a chart trending up" width="2000" height="900" loading="lazy">
-  </section>
-
-  <!-- proof -->
-  <section id="proof" class="section">
-    <h2 class="hand" data-i18n="proof.h2" data-reveal>people I've taught</h2>
-    <div class="quotes" data-reveal-group>
-      <blockquote data-sketch="box">
-        <p>“He genuinely believes in his students and encourages us to think deeper instead of simply giving us the answers. He challenges us to be curious, ask better questions, and grow into more confident data professionals.”</p>
-        <footer class="hand">Mia Tran — SDS &amp; Quant Econ @ Smith College</footer>
-      </blockquote>
-      <blockquote data-sketch="box">
-        <p>“Mark is the kind of mentor that will push you forward and is very critical of your work — he will not let you look back on failures without lessons attached. I believe working with Mark is the fastest way to level up your skills in a corporate setting.”</p>
-        <footer class="hand">Gwen Nguyen — Cloud &amp; Data Engineer Intern @ Arch Insurance</footer>
-      </blockquote>
-      <blockquote data-sketch="box">
-        <p>“He took me from 0 to 1 — teaching me dbt, Airflow, and GitHub, and walking me through my first PR. As a business analyst with no prior data engineering experience, it was one of the most impactful months since I started working.”</p>
-        <footer class="hand">Yuki Fang — Data @ Insurify</footer>
-      </blockquote>
-      <blockquote data-sketch="box">
-        <p>“I've learned more technical skills from him than from everyone else combined.”</p>
-        <footer class="hand">Max Brinker — Data Analyst @ Insurify</footer>
-      </blockquote>
-    </div>
-    <div id="mentee-wall" class="cards" hidden data-reveal-group></div>
-    <p class="aside" data-i18n="proof.aside">Mentee projects are public: airline review pipelines, flight-delay dashboards, end-to-end dbt builds. Ask me for the repos.</p>
+    <picture class="drawing">
+      <source media="(max-width: 640px)" srcset="assets/img/how-m.png" width="1100" height="980">
+      <img src="assets/img/how.png" alt="A commit timeline growing day by day into a chart trending up" width="2000" height="900" loading="lazy">
+    </picture>
   </section>
 
   <!-- about -->
   <section id="about" class="section">
     <h2 class="hand" data-i18n="about.h2" data-reveal>about Mark</h2>
-    <p data-i18n="about.body" data-reveal>Senior Analytics Engineer at Infinite Lambda — the youngest L6 there — and ex-Insurify and Lazard. I did three internships in two countries before my senior year, and I've been mentoring since 2020: a small academy that helped 20 Vietnamese students apply to US universities, the AE Academy for new hires at Insurify, and Ace Mentorships. I moderate Xóm Data, Vietnam's largest data learning community (110,000+ members), and write The Analytics Engineer's Handbook on Substack. I mentor because teaching is how I learn.</p>
-    <ul class="links hand">
-      <li data-sketch="underline"><a href="https://markphammm.substack.com/" target="_blank" rel="noopener">substack</a></li>
-      <li data-sketch="underline"><a href="https://github.com/MarkPhamm" target="_blank" rel="noopener">github</a></li>
-      <li data-sketch="underline"><a href="https://minhbpham.com" target="_blank" rel="noopener">portfolio</a></li>
-      <li data-sketch="underline"><a href="https://www.facebook.com/groups/xomdata" target="_blank" rel="noopener">xóm data</a></li>
-    </ul>
+    <div class="about-grid">
+      <div>
+        <p data-i18n="about.body" data-reveal>Senior Analytics Engineer at Infinite Lambda — the youngest L6 there — and ex-Insurify and Lazard. I did three internships in two countries before my senior year, and I've been mentoring since 2020: a small academy that helped 20 Vietnamese students apply to US universities, the AE Academy for new hires at Insurify, and Ace Mentorships. I moderate Xóm Data, Vietnam's largest data learning community (110,000+ members), and write The Analytics Engineer's Handbook on Substack. I mentor because teaching is how I learn.</p>
+        <ul class="links hand">
+          <li data-sketch="underline"><a href="https://markphammm.substack.com/" target="_blank" rel="noopener">substack</a></li>
+          <li data-sketch="underline"><a href="https://github.com/MarkPhamm" target="_blank" rel="noopener">github</a></li>
+          <li data-sketch="underline"><a href="https://minhbpham.com" target="_blank" rel="noopener">portfolio</a></li>
+          <li data-sketch="underline"><a href="https://www.facebook.com/groups/xomdata" target="_blank" rel="noopener">xóm data</a></li>
+        <li data-sketch="underline"><a href="https://leetcode.com/u/markphammm/" target="_blank" rel="noopener">leetcode</a></li>
+        <li data-sketch="underline"><a href="https://platform.stratascratch.com/user/SmartPersonality1862" target="_blank" rel="noopener">stratascratch</a></li>
+        </ul>
+      </div>
+      <img class="drawing" src="assets/img/portrait.png" alt="A sketched portrait in a frame, labelled mark" width="900" height="1050" loading="lazy">
+    </div>
   </section>
 
   <!-- faq -->
@@ -362,6 +379,10 @@
         <p data-i18n="faq.a7">You stay in the Slack. You keep access, and you can help the next mentees.</p>
       </details>
       <details>
+        <summary class="hand" data-i18n="faq.q8">what does it cost, and how long does it take?</summary>
+        <p data-i18n="faq.a8">We go through cost, how long it takes and how many hours a week in our first 30-minute meeting.</p>
+      </details>
+      <details>
         <summary class="hand" data-i18n="faq.q4">how do I join?</summary>
         <p data-i18n="faq.a4">Add me on LinkedIn with a note. That note is your first copy-paste test.</p>
       </details>
@@ -369,16 +390,19 @@
   </section>
 
   <!-- final cta -->
-  <section class="section cta-final">
+  <section id="note" class="section cta-final">
     <h2 class="hand" data-i18n="cta.h2" data-reveal>the note is the application</h2>
-    <img class="drawing" src="assets/img/note.png" alt="A LinkedIn connection note: who you are, target role, GitHub link, where you are stuck" width="2000" height="1000">
+    <picture class="drawing">
+      <source media="(max-width: 640px)" srcset="assets/img/note-m.png" width="1100" height="960">
+      <img src="assets/img/note.png" alt="A LinkedIn connection note: who you are, target role, GitHub link, where you are stuck" width="2000" height="1000" loading="lazy">
+    </picture>
     <form id="note-builder" class="note-builder" hidden>
       <p class="hand note-title" data-i18n="note.h3">write yours here</p>
       <label><span class="hand" data-i18n="note.who">who you are</span><input name="who" maxlength="80" autocomplete="off" placeholder="An, junior at UEH"></label>
       <label><span class="hand" data-i18n="note.aiming">the role you want</span><input name="aiming" maxlength="60" autocomplete="off" placeholder="analytics engineer"></label>
       <label><span class="hand" data-i18n="note.built">something you built (a link)</span><input name="built" maxlength="80" autocomplete="off" placeholder="github.com/an-sql/metro-dbt"></label>
       <label><span class="hand" data-i18n="note.stuck">where you are stuck</span><input name="stuck" maxlength="80" autocomplete="off" placeholder="nobody reviews my models"></label>
-      <p id="note-out" class="note-out"></p>
+      <p id="note-out" class="note-out" data-placeholder="Hi Mark - I'm An, junior at UEH&#10;Aiming: analytics engineer&#10;Built: github.com/an-sql/metro-dbt&#10;Stuck: nobody reviews my models"></p>
       <p class="note-meta hand"><span id="note-count">0</span> / 200 <span data-i18n="note.limit">characters. LinkedIn allows 200 on a free account, 300 on Premium.</span> <strong id="note-over" hidden data-i18n="note.over">over the free limit: cut it down.</strong></p>
       <p class="note-actions">
         <button id="note-copy" class="btn hand" type="button" data-sketch="box" data-i18n="note.copy">copy the note</button>
@@ -386,7 +410,7 @@
       </p>
     </form>
     <p>
-      <a class="btn btn-big hand" data-sketch="box" href="https://www.linkedin.com/in/minhbphamm/" target="_blank" rel="noopener" data-i18n="cta.main2">add me on LinkedIn with a note</a>
+      <a id="note-go" class="btn btn-big hand" data-sketch="box" href="https://www.linkedin.com/in/minhbphamm/" target="_blank" rel="noopener" data-i18n="cta.main2">add me on LinkedIn with a note</a>
     </p>
   </section>
 

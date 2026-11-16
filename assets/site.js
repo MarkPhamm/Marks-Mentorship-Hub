@@ -247,14 +247,18 @@
         }
       } catch (e) {}
     }
-    form.addEventListener('input', build);
-    copy.addEventListener('click', function () {
+    function copyNote() {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(out.textContent).then(showCopied, selectNote);
       } else {
         selectNote();
       }
-    });
+    }
+    form.addEventListener('input', build);
+    copy.addEventListener('click', copyNote);
+    // the LinkedIn button copies a written note on the way out; the link itself still opens LinkedIn
+    var go = document.getElementById('note-go');
+    if (go) go.addEventListener('click', function () { if (out.textContent) copyNote(); });
     form.hidden = false;
     build();
   }
