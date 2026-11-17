@@ -140,5 +140,12 @@ var VI = {
   'note.over': 'quá giới hạn tài khoản thường: cắt bớt nhé.',
   'note.copy': 'copy lời nhắn',
   'note.copied': 'đã copy. giờ kết nối với mình và dán vào.',
-  'footer.line': 'vẽ tay, như mọi thứ ở đây.'
+  'footer.line': 'vẽ tay, như mọi thứ ở đây.',
+  'footer.privacy': 'Google Analytics và Microsoft Clarity đếm lượt xem và ghi lại click, cuộn trang; chỉ dùng cookie khi bạn đồng ý. Lời nhắn bạn gõ ở đây không bao giờ bị ghi lại.',
+  'footer.google': 'chính sách của Google',
+  'footer.microsoft': 'chính sách quyền riêng tư của Microsoft',
+  'footer.cookies': 'chọn lại cookie',
+  'consent.body': 'Cho mình đếm lượt xem của bạn nhé? Google Analytics và Microsoft Clarity cho mình biết phần nào của trang có ích. Chúng chỉ dùng cookie khi bạn đồng ý.',
+  'consent.yes': 'đồng ý',
+  'consent.no': 'không, cảm ơn'
 };

@@ -363,6 +363,30 @@ button.btn:disabled { opacity: 0.4; cursor: default; transform: none; }
 .site-footer nav { margin-top: 10px; display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; }
 .site-footer a { color: var(--ink); text-decoration: none; }
 .site-footer a:hover { color: var(--violet); }
+.privacy { max-width: 640px; margin: 18px auto 0; font-size: 15px; }
+.privacy a, .linklike { margin-left: 8px; }
+.privacy a { text-decoration: underline; }
+.linklike { background: none; border: 0; padding: 0; font: inherit; color: var(--ink); text-decoration: underline; cursor: pointer; }
+.linklike:hover { color: var(--violet); }
+
+/* cookie choice: a small card in the corner, never a wall in front of the page */
+.consent {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  max-width: 420px;
+  margin-left: auto;
+  z-index: 20;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  padding: 14px 16px;
+  font-size: 15px;
+  animation: pop var(--dur-base) var(--ease-out);
+}
+.consent p { margin: 0; }
+.consent .consent-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.consent .btn { border: 2px solid var(--ink); }
 
 /* reveal on scroll. nothing is hidden unless the script in <head> has set .js-reveal.
    site.js adds .is-visible once per element, then removes data-reveal so hover owns the transform again */

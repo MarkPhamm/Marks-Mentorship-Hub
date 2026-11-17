@@ -248,6 +248,9 @@
       } catch (e) {}
     }
     function copyNote() {
+      // the one conversion worth counting: a visitor who wrote a note and took it
+      gtag('event', 'note_copy');
+      clarity('event', 'note_copy');
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(out.textContent).then(showCopied, selectNote);
       } else {
@@ -337,12 +340,33 @@
     openedForPrint = [];
   });
 
+  /* ---- cookie choice ---- */
+  // the <head> script already applied a stored choice; this asks once and lets the footer reopen it
+  function initConsent() {
+    var banner = document.getElementById('consent');
+    if (!banner) return;
+    var choice;
+    try { choice = localStorage.getItem('consent'); } catch (e) {}
+    banner.hidden = choice === 'yes' || choice === 'no';
+    banner.addEventListener('click', function (e) {
+      var answer = e.target.getAttribute('data-consent');
+      if (!answer) return;
+      var a = answer === 'yes' ? 'granted' : 'denied';
+      gtag('consent', 'update', { analytics_storage: a });
+      clarity('consentv2', { analytics_Storage: a, ad_Storage: 'denied' });
+      try { localStorage.setItem('consent', answer); } catch (e) {}
+      banner.hidden = true;
+    });
+    document.getElementById('consent-open').addEventListener('click', function () { banner.hidden = false; });
+  }
+
   /* ---- boot ---- */
   if (typeof rough === 'undefined') root.classList.add('no-rough'); // style.css: keep the flat highlight
   renderMentees();
   initReveal(); // after the mentee wall, so its cards are staggered too
   initHeader();
   initNoteBuilder();
+  initConsent();
   // live data is optional: without a file its section stays hidden and stats keep their static numbers
   function load(file, render) {
     fetch(file)

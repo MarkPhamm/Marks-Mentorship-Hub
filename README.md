@@ -49,6 +49,10 @@ python3 -m http.server 8000   # then open http://localhost:8000
 - `assets/img/og.png`: the social preview card (og:image, 1200x630).
 - `robots.txt`, `sitemap.xml`: SEO plumbing, nothing to maintain.
 
+## Analytics
+
+Google Tag Manager `GTM-KVM572XB` loads GA4 `G-QJ2R5R43M1`; Microsoft Clarity project `zevcpmfyfc`. Both snippets sit in the `<head>` of `index.html` and `404.html`, after a consent script that denies cookies until the visitor says yes in the banner (`initConsent` in `assets/site.js`, choice kept in `localStorage.consent`). Copying a LinkedIn note sends a `note_copy` event to both. The note builder carries `data-clarity-mask` so typed notes never show in recordings.
+
 ## Deploy
 
 Push to `main`. GitHub Pages serves the repo root at https://markmentorship.com/ (`CNAME` sets the domain, `.nojekyll` disables Jekyll). The old https://markphamm.github.io/Marks-Mentorship-Hub/ address redirects there.

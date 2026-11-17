@@ -38,6 +38,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Patrick+Hand&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<!-- analytics consent: no cookies until the visitor says yes (the banner is in assets/site.js); this runs before both tags load -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.clarity = window.clarity || function(){(clarity.q = clarity.q || []).push(arguments);};
+(function () {
+  var choice; try { choice = localStorage.getItem('consent'); } catch (e) {}
+  var a = choice === 'yes' ? 'granted' : 'denied';
+  gtag('consent', 'default', { analytics_storage: a, ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+  clarity('consentv2', { analytics_Storage: a, ad_Storage: 'denied' });
+})();
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -490,7 +502,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a href="https://www.linkedin.com/in/minhbphamm/" target="_blank" rel="noopener">linkedin</a>
     <a href="https://minhbpham.com" target="_blank" rel="noopener">minhbpham.com</a>
   </nav>
+  <p class="privacy">
+    <span data-i18n="footer.privacy">Google Analytics and Microsoft Clarity count visits and record clicks and scrolling, with cookies only if you say yes. Notes you type here are never recorded.</span>
+    <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener" data-i18n="footer.google">google's policy</a>
+    <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener" data-i18n="footer.microsoft">microsoft's privacy statement</a>
+    <button type="button" id="consent-open" class="linklike hand" data-i18n="footer.cookies">cookie choice</button>
+  </p>
 </footer>
+
+<div id="consent" class="consent" role="region" aria-label="Cookie choice" hidden>
+  <p data-i18n="consent.body">Can I count your visit? Google Analytics and Microsoft Clarity show me which parts of this page help. They set cookies only if you say yes.</p>
+  <p class="consent-actions">
+    <button type="button" class="btn hand" data-consent="yes" data-i18n="consent.yes">yes, count me</button>
+    <button type="button" class="btn hand" data-consent="no" data-i18n="consent.no">no thanks</button>
+  </p>
+</div>
 
 <script src="assets/vendor/rough.js" defer></script>
 <script src="assets/vi.js" defer></script>
