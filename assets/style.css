@@ -186,6 +186,13 @@ picture.drawing img { display: block; margin: 0 auto; } /* phones get the -m cut
 .stats span { display: block; font-size: 17px; line-height: 1.3; }
 @media (max-width: 640px) { .stats { grid-template-columns: repeat(2, 1fr); } }
 
+/* the two profile scoreboards under the sql stat. each drawing is the link. */
+.sql-proof { margin: 28px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+.sql-proof a { display: block; text-decoration: none; color: inherit; }
+.sql-proof .drawing { margin-top: 0; }
+.sql-cap { display: block; text-align: center; margin-top: 8px; font-size: 18px; }
+@media (max-width: 640px) { .sql-proof { grid-template-columns: 1fr; } }
+
 /* contribution graph: site.js draws it from assets/contrib.json; narrow screens scroll it sideways */
 .contrib { margin: 32px 0 0; }
 .contrib-scroll { overflow-x: auto; }
