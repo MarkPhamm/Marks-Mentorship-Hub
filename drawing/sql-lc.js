@@ -15,9 +15,11 @@ diffs.forEach((d, i) => {
   text(d[1], 750, y + 64, 44);
 });
 
-text('1,174 submissions', 550, 1120, 46);
-text('155 active days', 550, 1185, 44, 'middle', '#666');
-text('max streak 12', 550, 1250, 44, 'middle', '#666');
-highlight(200, 1280, 700, 76);
-text('100 days badge', 550, 1332, 46);
+highlight(170, 1120, 760, 150);
+text('database', 550, 1180, 44);
+text('318 / 323', 550, 1240, 56);
+text('1,174 submissions', 550, 1360, 44);
+text('155 active days', 550, 1425, 40, 'middle', '#666');
+text('max streak 12', 550, 1485, 40, 'middle', '#666');
+text('100 days badge', 550, 1550, 40, 'middle', '#666');
 signature();
