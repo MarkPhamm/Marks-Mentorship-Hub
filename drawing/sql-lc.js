@@ -1,25 +1,25 @@
-// leetcode profile. 772 = 362 + 334 + 76, out of 4,115.
-// this is every problem on the site, so the label says so. not a sql count.
-text('leetcode', 550, 120, 68);
-text('772', 550, 310, 120);
-text('solved', 550, 390, 50);
-text('of 4,115', 550, 460, 40, 'middle', '#666');
-text('all problems', 550, 520, 40, 'middle', '#666');
-text('9 attempting', 550, 590, 40, 'middle', '#666');
+// leetcode scoreboard. same layout as sql-ss.js so the pair lines up.
+// the headline is the database set. the difficulty rows are all problems:
+// 772 = 362 + 334 + 76, out of 4,115.
+text('leetcode', 550, 110, 72);
+highlight(240, 245, 620, 150);
+text('318 / 323', 550, 360, 120);
+text('database problems solved', 550, 470, 44);
 
-const diffs = [['easy', '362 / 976'], ['medium', '334 / 2,148'], ['hard', '76 / 991']];
-diffs.forEach((d, i) => {
-  const y = 680 + i * 130;
-  text(d[0], 120, y + 58, 46, 'start');
-  rect(520, y, 460, 96);
-  text(d[1], 750, y + 64, 44);
+text('all problems: 772 / 4,115', 550, 590, 40, 'middle', '#666');
+[['easy', 362, 976], ['medium', 334, 2148], ['hard', 76, 991]].forEach(([name, done, all], i) => {
+  const y = 630 + i * 105;
+  text(name, 60, y + 46, 44, 'start');
+  rect(290, y, 480, 60, {strokeWidth: 2.4});
+  rect(290, y, Math.round(480 * done / all), 60, {stroke: 'none', fill: INK, fillStyle: 'hachure', hachureGap: 11, fillWeight: 2});
+  text(`${done} / ${all.toLocaleString('en-US')}`, 1040, y + 46, 40, 'end');
 });
 
-highlight(170, 1120, 760, 150);
-text('database', 550, 1180, 44);
-text('318 / 323', 550, 1240, 56);
-text('1,174 submissions', 550, 1360, 44);
-text('155 active days', 550, 1425, 40, 'middle', '#666');
-text('max streak 12', 550, 1485, 40, 'middle', '#666');
-text('100 days badge', 550, 1550, 40, 'middle', '#666');
+text('activity', 550, 1020, 40, 'middle', '#666');
+[['submits', '1,174'], ['days active', '155'], ['streak', '12'], ['badge', '100 days']].forEach(([name, n], i) => {
+  const x = 60 + i * 250;
+  rect(x, 1050, 230, 150, {strokeWidth: 2.4});
+  text(name, x + 115, 1108, name.length > 8 ? 34 : 38);
+  text(n, x + 115, 1172, n.length > 5 ? 42 : 54);
+});
 signature();
