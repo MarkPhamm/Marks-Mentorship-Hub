@@ -6,7 +6,7 @@ var VI = {
   'nav.built': 'mình đã làm gì',
   'nav.work': 'làm gì cùng nhau',
   'nav.how': 'cách hoạt động',
-  'nav.proof': 'mình đã dạy ai',
+  'nav.proof': 'người khác nói gì',
   'nav.about': 'về Mark',
   'cta.short': 'kết nối',
   'cta.main': 'kết nối LinkedIn kèm lời nhắn',
@@ -95,7 +95,11 @@ var VI = {
   'built.c3': 'Một dự án dbt trên DuckDB hoặc Snowflake. Cùng model, source và test — chỉ đổi target. 40 sao, 12 fork.',
   'built.c4': 'Chín bài thực hành, mỗi bài có checkpoint. Bạn dựng dev, ci và prod, rồi chạy slim CI trên một pull request thật.',
 
-  'proof.h2': 'những người mình đã dạy',
+  'proof.h2': 'người khác nói gì',
+  'proof.body': '18 lời nhận xét, một khung đọc. Mở một file.',
+  'proof.files': 'file',
+  'proof.linkedin': 'tất cả trên LinkedIn',
+  'proof.letter': 'thư giới thiệu Lazard',
 
   'projects.h2': 'mentee của mình đã làm gì',
   'projects.body': 'Một pipeline thật, làm cùng nhau: 117.000 review hàng không scrape từ Skytrax, đưa lên S3, load vào Snowflake và model bằng dbt, chạy bằng Airflow và triển khai bằng Terraform. Sau đó mỗi mentee nhận một hãng bay và ship một dashboard trên nền đó.',
