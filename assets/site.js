@@ -363,7 +363,6 @@
   /* ---- boot ---- */
   if (typeof rough === 'undefined') root.classList.add('no-rough'); // style.css: keep the flat highlight
   renderMentees();
-  if (typeof initRecs === 'function') initRecs();
   initReveal(); // after the mentee wall, so its cards are staggered too
   initHeader();
   initNoteBuilder();

@@ -272,51 +272,11 @@ picture.drawing img { display: block; margin: 0 auto; } /* phones get the -m cut
 }
 .step-title { display: block; font-size: 22px; }
 
-/* recommendations: the same file window as the portfolio, drawn in the site's ink */
-.rec-themes { display: flex; gap: 14px; overflow-x: auto; margin-top: 22px; padding: 4px 2px 10px; }
-.rec-theme { flex: 0 0 240px; text-align: left; background: var(--bg); border: 0; padding: 14px 16px 12px; cursor: pointer; font: inherit; color: inherit; white-space: normal; }
-.rec-theme .hand { display: block; font-size: 18px; }
-.rec-theme p { margin: 6px 0 0; font-size: 13px; line-height: 1.4; color: var(--grey); white-space: normal; }
-.rec-theme.is-on { background: rgba(124, 58, 237, 0.12); }
-.rec-faces { display: flex; flex-wrap: wrap; gap: 2px 6px; margin-top: 10px; }
-.rec-faces img { width: 32px; height: 44px; object-fit: contain; }
-.rec-ide { margin-top: 8px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
-.rec-bar, .rec-status { display: flex; align-items: center; gap: 12px; padding: 10px 14px; }
-.rec-bar { border-bottom: 1px solid rgba(17, 17, 17, 0.15); }
-.rec-dots { display: flex; gap: 6px; }
-.rec-dots i { width: 11px; height: 11px; border: 1.5px solid var(--ink); border-radius: 50%; display: block; }
-.rec-title { color: var(--grey); }
-.rec-files-btn { display: none; margin-left: auto; background: none; border: 1px solid var(--ink); font: inherit; padding: 2px 8px; cursor: pointer; }
-.rec-body { display: grid; grid-template-columns: 220px minmax(0, 1fr); height: 520px; }
-.rec-tree, .rec-editor, .rec-tabs { min-height: 0; }
-.rec-tree { display: flex; flex-direction: column; align-items: stretch; overflow: auto; border-right: 1px solid rgba(17, 17, 17, 0.15); padding: 10px 0; }
-.rec-kicker { margin: 0 0 6px; padding: 0 12px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grey); }
-.rec-folder, .rec-file, .rec-tab-name, .rec-tab-x { background: none; border: 0; font: inherit; color: inherit; cursor: pointer; }
-.rec-folder, .rec-file { display: flex; width: 100%; text-align: left; padding-top: 4px; padding-bottom: 4px; padding-right: 10px; }
-.rec-count { margin-left: auto; font-size: 10px; color: var(--grey); }
-.rec-file.is-on { background: rgba(124, 58, 237, 0.16); color: var(--ink); }
-.rec-main { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
-.rec-tabs { display: flex; overflow-x: auto; border-bottom: 1px solid rgba(17, 17, 17, 0.15); }
-.rec-tab { display: flex; align-items: center; gap: 4px; border-right: 1px solid rgba(17, 17, 17, 0.15); padding: 6px 8px 6px 10px; white-space: nowrap; }
-.rec-tab.is-on { background: rgba(124, 58, 237, 0.16); }
-.rec-tab-x { color: var(--grey); padding: 0 4px; }
-.rec-editor { overflow: auto; padding: 12px 0 20px; line-height: 1.55; }
-.rec-line { display: grid; grid-template-columns: 36px minmax(0, 1fr); }
-.rec-ln { color: var(--grey); text-align: right; padding-right: 10px; user-select: none; }
-.rec-code { white-space: pre-wrap; overflow-wrap: anywhere; }
-.rec-line.is-quote { background: rgba(124, 58, 237, 0.1); }
-.rec-key { color: var(--violet); }
-.rec-muted { color: var(--grey); }
-.rec-status { border-top: 1px solid rgba(17, 17, 17, 0.15); color: var(--grey); }
-.rec-status a { color: var(--ink); }
-.rec-more { margin-top: 16px; }
-@media (max-width: 800px) {
-  .rec-files-btn { display: inline; }
-  .rec-body { grid-template-columns: 1fr; height: auto; }
-  .rec-tree { display: none; border-right: 0; border-bottom: 1px solid rgba(17, 17, 17, 0.15); max-height: 280px; }
-  .rec-ide.is-files .rec-tree { display: flex; }
-  .rec-editor { height: 420px; }
-}
+/* quotes */
+.quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 22px; margin-top: 28px; }
+.quotes blockquote { margin: 0; padding: 20px 22px; }
+.quotes blockquote p { margin: 0 0 12px; }
+.quotes footer { color: var(--grey); font-size: 17px; }
 
 /* about links */
 .links { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 14px 26px; font-size: 22px; }
