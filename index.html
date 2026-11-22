@@ -73,7 +73,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <img src="assets/img/logo.png" alt="Mark Mentorship logo" width="44" height="44">
     <span class="hand" data-i18n="brand">Mark Mentorship</span>
   </a>
-  <nav class="site-nav hand" aria-label="Sections">
+  <nav class="site-nav hand" data-i18n-aria="aria.sections" aria-label="Sections">
     <a href="#why" data-i18n="nav.why">why me</a>
     <a href="#proof" data-i18n="nav.proof">who I've taught</a>
     <a href="#work" data-i18n="nav.work">what we work on</a>
@@ -82,7 +82,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a href="#about" data-i18n="nav.about">about</a>
   </nav>
   <div class="header-actions">
-    <button id="lang-toggle" class="lang-toggle hand" type="button" aria-label="Switch language">VI</button>
+    <button id="lang-toggle" class="lang-toggle hand" type="button">VI</button>
     <a class="btn hand" data-sketch="box" href="#note" data-i18n="cta.short">add me</a>
   </div>
 </header>
@@ -120,7 +120,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </a>
       </div>
       <figure id="contrib" class="contrib" hidden data-reveal>
-        <div class="contrib-scroll" tabindex="0" role="group" aria-label="My GitHub contribution graph for the last year"></div>
+        <div class="contrib-scroll" tabindex="0" role="group" data-i18n-aria="aria.contrib" aria-label="My GitHub contribution graph for the last year"></div>
         <figcaption class="hand"><strong data-contrib="active">347</strong> <span data-i18n="contrib.cap">active days in the last year. every square is a day.</span> <a href="https://github.com/MarkPhamm" target="_blank" rel="noopener" data-i18n="contrib.link">check it on GitHub</a></figcaption>
       </figure>
     </div>
@@ -548,11 +548,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </picture>
     <form id="note-builder" class="note-builder" data-clarity-mask="True" hidden>
       <p class="hand note-title" data-i18n="note.h3">write yours here</p>
-      <label><span class="hand" data-i18n="note.who">who you are</span><input name="who" maxlength="80" autocomplete="off" placeholder="An, junior at UEH"></label>
-      <label><span class="hand" data-i18n="note.aiming">the role you want</span><input name="aiming" maxlength="60" autocomplete="off" placeholder="analytics engineer"></label>
-      <label><span class="hand" data-i18n="note.built">something you built (a link)</span><input name="built" maxlength="80" autocomplete="off" placeholder="github.com/an-sql/metro-dbt"></label>
-      <label><span class="hand" data-i18n="note.stuck">where you are stuck</span><input name="stuck" maxlength="80" autocomplete="off" placeholder="nobody reviews my models"></label>
-      <p id="note-out" class="note-out" data-placeholder="Hi Mark - I'm An, junior at UEH&#10;Aiming: analytics engineer&#10;Built: github.com/an-sql/metro-dbt&#10;Stuck: nobody reviews my models"></p>
+      <label><span class="hand" data-i18n="note.who">who you are</span><input name="who" maxlength="80" autocomplete="off" data-i18n-placeholder="note.who.ph" data-i18n-prefix="note.line.who" data-prefix="Hi Mark - I'm " placeholder="An, junior at UEH"></label>
+      <label><span class="hand" data-i18n="note.aiming">the role you want</span><input name="aiming" maxlength="60" autocomplete="off" data-i18n-placeholder="note.aiming.ph" data-i18n-prefix="note.line.aiming" data-prefix="Aiming: " placeholder="analytics engineer"></label>
+      <label><span class="hand" data-i18n="note.built">something you built (a link)</span><input name="built" maxlength="80" autocomplete="off" data-i18n-placeholder="note.built.ph" data-i18n-prefix="note.line.built" data-prefix="Built: " placeholder="github.com/an-sql/metro-dbt"></label>
+      <label><span class="hand" data-i18n="note.stuck">where you are stuck</span><input name="stuck" maxlength="80" autocomplete="off" data-i18n-placeholder="note.stuck.ph" data-i18n-prefix="note.line.stuck" data-prefix="Stuck: " placeholder="nobody reviews my models"></label>
+      <p id="note-out" class="note-out" data-i18n-placeholder="note.example" data-placeholder="Hi Mark - I'm An, junior at UEH&#10;Aiming: analytics engineer&#10;Built: github.com/an-sql/metro-dbt&#10;Stuck: nobody reviews my models"></p>
       <p class="note-meta hand"><span id="note-count">0</span> / 200 <span data-i18n="note.limit">characters. LinkedIn allows 200 on a free account, 300 on Premium.</span> <strong id="note-over" hidden data-i18n="note.over">over the free limit: cut it down.</strong></p>
       <p class="note-actions">
         <button id="note-copy" class="btn hand" type="button" data-sketch="box" data-i18n="note.copy">copy the note</button>
@@ -568,7 +568,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <footer class="site-footer hand">
   <span data-i18n="footer.line">drawn by hand, like everything else here.</span>
-  <nav aria-label="Links">
+  <nav data-i18n-aria="aria.links" aria-label="Links">
     <a href="https://aehandbook.substack.com/" target="_blank" rel="noopener">substack</a>
     <a href="https://github.com/MarkPhamm/Mentorships" target="_blank" rel="noopener">the playbook</a>
     <a href="https://www.linkedin.com/in/minhbphamm/" target="_blank" rel="noopener">linkedin</a>
@@ -582,7 +582,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </p>
 </footer>
 
-<div id="consent" class="consent" role="region" aria-label="Cookie choice" hidden>
+<div id="consent" class="consent" role="region" data-i18n-aria="aria.consent" aria-label="Cookie choice" hidden>
   <p data-i18n="consent.body">Can I count your visit? Google Analytics and Microsoft Clarity show me which parts of this page help. They set cookies only if you say yes.</p>
   <p class="consent-actions">
     <button type="button" class="btn hand" data-consent="yes" data-i18n="consent.yes">yes, count me</button>
