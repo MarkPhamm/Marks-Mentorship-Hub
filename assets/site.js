@@ -252,6 +252,11 @@
       copied.hidden = false;
     }
     // no clipboard access (plain http, or the browser said no): select the note so it can be copied by hand
+    function recordCopy() {
+      // only after the text is actually on the clipboard
+      gtag('event', 'note_copy');
+      clarity('event', 'note_copy');
+    }
     function selectNote() {
       var range = document.createRange();
       range.selectNodeContents(out);
@@ -261,16 +266,17 @@
       try {
         if (document.execCommand('copy')) { // the old route still works in most of those cases
           selection.removeAllRanges();
+          recordCopy();
           showCopied();
         }
       } catch (e) {}
     }
     function copyNote() {
-      // the one conversion worth counting: a visitor who wrote a note and took it
-      gtag('event', 'note_copy');
-      clarity('event', 'note_copy');
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(out.textContent).then(showCopied, selectNote);
+        navigator.clipboard.writeText(out.textContent).then(function () {
+          recordCopy();
+          showCopied();
+        }, selectNote);
       } else {
         selectNote();
       }
