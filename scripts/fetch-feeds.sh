@@ -23,9 +23,9 @@ for source in ${@:-qdbd posts}; do
         | save assets/qdbd.json '.last_month > 0' ;;
     posts)
       # Substack answers 403 to GitHub's runners, so the nightly workflow skips this one: run it from a laptop
-      curl -fsS -m 20 -A 'Mozilla/5.0' 'https://markphammm.substack.com/api/v1/archive?sort=new&limit=3' \
+      curl -fsSL -m 20 -A 'Mozilla/5.0' 'https://aehandbook.substack.com/api/v1/archive?sort=new&limit=3' \
         | jq '[.posts[] | {title, url: .canonical_url, date: .post_date[:10]}]' \
-        | save assets/posts.json 'length == 3 and all(.[]; (.title | length > 0) and (.url | startswith("https://markphammm.substack.com/p/")))' ;;
+        | save assets/posts.json 'length == 3 and all(.[]; (.title | length > 0) and (.url | startswith("https://aehandbook.substack.com/p/")))' ;;
     *) echo "unknown source: $source" >&2; exit 2 ;;
   esac
 done
