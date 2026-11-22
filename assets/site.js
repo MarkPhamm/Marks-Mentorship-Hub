@@ -99,9 +99,12 @@
 
   if (toggle) {
     toggle.addEventListener('click', function () {
-      // a manual choice outranks a shared ?lang= link: drop the param so reload keeps the choice
-      if (new URLSearchParams(location.search).has('lang')) {
-        history.replaceState(null, '', location.pathname + location.hash);
+      // a manual choice outranks a shared ?lang= link: drop only that param so reload keeps the choice
+      var params = new URLSearchParams(location.search);
+      if (params.has('lang')) {
+        params.delete('lang');
+        var search = params.toString();
+        history.replaceState(null, '', location.pathname + (search ? '?' + search : '') + location.hash);
       }
       var next = root.getAttribute('lang') === 'vi' ? 'en' : 'vi';
       // crossfade the swap where the browser can; the text changes length, so a hard cut jumps
