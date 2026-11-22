@@ -177,7 +177,9 @@
       cell.setAttribute('opacity', level ? 0.1 + 0.225 * level : 0.3);
       svg.appendChild(cell);
     }
-    var numbers = { total: data.total.toLocaleString('en-US'), active: levels.replace(/0/g, '').length };
+    // the calendar runs a few days past a year; the caption counts the last 365 only
+    var year = levels.length > 365 ? levels.slice(-365) : levels;
+    var numbers = { total: data.total.toLocaleString('en-US'), active: year.replace(/0/g, '').length };
     document.querySelectorAll('[data-contrib]').forEach(function (el) {
       el.textContent = numbers[el.getAttribute('data-contrib')];
     });
