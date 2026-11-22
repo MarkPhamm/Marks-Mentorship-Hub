@@ -65,7 +65,7 @@ p { max-width: 62ch; }
   padding: 8px 16px;
   z-index: 10;
 }
-.skip-link:focus { left: 8px; }
+.skip-link:focus { position: fixed; left: 8px; top: 8px; z-index: 30; }
 a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
   outline: 3px solid var(--violet);
   outline-offset: 2px;
@@ -503,6 +503,7 @@ button.btn:disabled { opacity: 0.4; cursor: default; transform: none; }
 /* print: everything on the page, nothing mid-animation */
 @media print {
   .site-header { position: static; }
+  .consent { display: none; }
   .js-reveal [data-reveal], .js-reveal [data-reveal-group] > * { opacity: 1 !important; transform: none !important; }
   .hero > * { animation: none !important; }
   .js-reveal .hero .swipe > svg.sketch { clip-path: none; }

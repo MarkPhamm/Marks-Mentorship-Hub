@@ -130,9 +130,12 @@
 
   if (toggle) {
     toggle.addEventListener('click', function () {
-      // a manual choice outranks a shared ?lang= link: drop the param so reload keeps the choice
-      if (new URLSearchParams(location.search).has('lang')) {
-        history.replaceState(null, '', location.pathname + location.hash);
+      // a manual choice outranks a shared ?lang= link: drop only that param so reload keeps the choice
+      var params = new URLSearchParams(location.search);
+      if (params.has('lang')) {
+        params.delete('lang');
+        var search = params.toString();
+        history.replaceState(null, '', location.pathname + (search ? '?' + search : '') + location.hash);
       }
       var next = root.getAttribute('lang') === 'vi' ? 'en' : 'vi';
       // crossfade the swap where the browser can; the text changes length, so a hard cut jumps
@@ -208,7 +211,9 @@
       cell.setAttribute('opacity', level ? 0.1 + 0.225 * level : 0.3);
       svg.appendChild(cell);
     }
-    var numbers = { total: data.total.toLocaleString('en-US'), active: levels.replace(/0/g, '').length };
+    // the calendar runs a few days past a year; the caption counts the last 365 only
+    var year = levels.length > 365 ? levels.slice(-365) : levels;
+    var numbers = { total: data.total.toLocaleString('en-US'), active: year.replace(/0/g, '').length };
     document.querySelectorAll('[data-contrib]').forEach(function (el) {
       el.textContent = numbers[el.getAttribute('data-contrib')];
     });
@@ -288,6 +293,11 @@
       copied.hidden = false;
     }
     // no clipboard access (plain http, or the browser said no): select the note so it can be copied by hand
+    function recordCopy() {
+      // only after the text is actually on the clipboard
+      gtag('event', 'note_copy');
+      clarity('event', 'note_copy');
+    }
     function selectNote() {
       var range = document.createRange();
       range.selectNodeContents(out);
@@ -297,16 +307,17 @@
       try {
         if (document.execCommand('copy')) { // the old route still works in most of those cases
           selection.removeAllRanges();
+          recordCopy();
           showCopied();
         }
       } catch (e) {}
     }
     function copyNote() {
-      // the one conversion worth counting: a visitor who wrote a note and took it
-      gtag('event', 'note_copy');
-      clarity('event', 'note_copy');
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(out.textContent).then(showCopied, selectNote);
+        navigator.clipboard.writeText(out.textContent).then(function () {
+          recordCopy();
+          showCopied();
+        }, selectNote);
       } else {
         selectNote();
       }
@@ -432,6 +443,8 @@
   load('assets/contrib.json', renderContrib);
   load('assets/posts.json', renderPosts);
   load('assets/qdbd.json', function (data) {
+    // a string such as "unavailable" would render as NaN+; the refresh script rejects those, this is the backstop
+    if (typeof data.last_month !== 'number' || !(data.last_month > 0)) return;
     document.getElementById('qdbd-month').textContent = (Math.floor(data.last_month / 100) * 100).toLocaleString('en-US') + '+';
   });
   if (startLang === 'vi') setLang('vi'); else snapshotEnglish();
