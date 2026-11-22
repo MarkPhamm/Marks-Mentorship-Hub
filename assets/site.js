@@ -390,6 +390,8 @@
   load('assets/contrib.json', renderContrib);
   load('assets/posts.json', renderPosts);
   load('assets/qdbd.json', function (data) {
+    // a string such as "unavailable" would render as NaN+; the refresh script rejects those, this is the backstop
+    if (typeof data.last_month !== 'number' || !(data.last_month > 0)) return;
     document.getElementById('qdbd-month').textContent = (Math.floor(data.last_month / 100) * 100).toLocaleString('en-US') + '+';
   });
   if (startLang === 'vi') setLang('vi'); else snapshotEnglish();
