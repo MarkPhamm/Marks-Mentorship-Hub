@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const viSrc = readFileSync(new URL('../assets/vi.js', import.meta.url), 'utf8');
 
-const htmlKeys = new Set([...html.matchAll(/data-i18n="([^"]+)"/g)].map(m => m[1]));
+const htmlKeys = new Set([...html.matchAll(/data-i18n(?:-placeholder|-aria|-prefix)?="([^"]+)"/g)].map(m => m[1]));
 const viKeys = new Set([...viSrc.matchAll(/'([^']+)':/g)].map(m => m[1]));
 
 const missing = [...htmlKeys].filter(k => !viKeys.has(k));

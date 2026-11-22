@@ -76,12 +76,29 @@
   /* ---- language toggle ---- */
   var toggle = document.getElementById('lang-toggle');
   var EN = {}; // filled lazily from the DOM before the first swap to Vietnamese
+  var latestPosts = null;
+  var rebuildNote = function () {};
 
   function snapshotEnglish() {
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
       if (!(key in EN)) EN[key] = el.textContent;
     });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (!(key in EN)) EN[key] = el.getAttribute('placeholder') || el.getAttribute('data-placeholder') || '';
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-aria');
+      if (!(key in EN)) EN[key] = el.getAttribute('aria-label') || '';
+    });
+  }
+
+  // the visible letters stay VI/EN; the accessible name has to include them (WCAG 2.5.3)
+  function labelLangToggle(lang) {
+    if (!toggle) return;
+    toggle.textContent = lang === 'vi' ? 'EN' : 'VI';
+    toggle.setAttribute('aria-label', lang === 'vi' ? 'EN, English' : 'VI, Tiếng Việt');
   }
 
   function setLang(lang) {
@@ -91,11 +108,25 @@
       var key = el.getAttribute('data-i18n');
       if (dict[key]) el.textContent = dict[key];
     });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (!dict[key]) return;
+      if (el.hasAttribute('placeholder')) el.setAttribute('placeholder', dict[key]);
+      else el.setAttribute('data-placeholder', dict[key]);
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      var key = el.getAttribute('data-i18n-aria');
+      if (dict[key]) el.setAttribute('aria-label', dict[key]);
+    });
     document.documentElement.setAttribute('lang', lang);
-    if (toggle) toggle.textContent = lang === 'vi' ? 'EN' : 'VI';
+    labelLangToggle(lang);
     try { localStorage.setItem('lang', lang); } catch (e) {}
+    if (latestPosts) renderPosts(latestPosts);
+    rebuildNote();
     drawSketches(); // text length changed, boxes must follow
   }
+
+  labelLangToggle('en');
 
   if (toggle) {
     toggle.addEventListener('click', function () {
@@ -192,6 +223,10 @@
   function renderPosts(posts) {
     var box = document.getElementById('posts');
     if (!box) return;
+    latestPosts = posts;
+    var ul = box.querySelector('ul');
+    ul.textContent = '';
+    var locale = document.documentElement.getAttribute('lang') === 'vi' ? 'vi-VN' : 'en-US';
     posts.forEach(function (post) {
       if (post.url.indexOf('https://') !== 0) return;
       var li = document.createElement('li');
@@ -202,17 +237,17 @@
       a.textContent = post.title;
       var date = document.createElement('span');
       date.className = 'post-date';
-      date.textContent = new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+      date.textContent = new Date(post.date).toLocaleDateString(locale, { month: 'short', day: 'numeric', timeZone: 'UTC' });
       li.appendChild(a);
       li.appendChild(date);
-      box.querySelector('ul').appendChild(li);
+      ul.appendChild(li);
     });
     box.hidden = false;
   }
 
   /* ---- note builder ---- */
   // one line per field, in the order of the drawing above it
-  var NOTE_LINES = [['who', "Hi Mark - I'm "], ['aiming', 'Aiming: '], ['built', 'Built: '], ['stuck', 'Stuck: ']];
+  var NOTE_LINES = ['who', 'aiming', 'built', 'stuck'];
   var NOTE_FREE_LIMIT = 200; // LinkedIn: 200 characters on a free account, 300 on Premium
 
   function initNoteBuilder() {
@@ -223,10 +258,16 @@
     var copied = document.getElementById('note-copied');
     var meta = form.querySelector('.note-meta');
     var wasOver = false;
+    function linePrefix(input) {
+      var key = input.getAttribute('data-i18n-prefix');
+      if (root.getAttribute('lang') === 'vi' && typeof VI !== 'undefined' && key && VI[key]) return VI[key];
+      return input.getAttribute('data-prefix') || '';
+    }
     function build() {
-      var note = NOTE_LINES.map(function (line) {
-        var value = form.elements[line[0]].value.trim();
-        return value && line[1] + value;
+      var note = NOTE_LINES.map(function (name) {
+        var input = form.elements[name];
+        var value = input.value.trim();
+        return value && linePrefix(input) + value;
       }).filter(Boolean).join('\n');
       var over = note.length > NOTE_FREE_LIMIT;
       out.textContent = note;
@@ -270,6 +311,7 @@
         selectNote();
       }
     }
+    rebuildNote = build;
     form.addEventListener('input', build);
     copy.addEventListener('click', copyNote);
     // the LinkedIn button copies a written note on the way out; the link itself still opens LinkedIn

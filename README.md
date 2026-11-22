@@ -6,7 +6,7 @@ markmentorship.com — one-page site for Mark's data mentorship. Plain HTML/CSS/
 
 - English lives in `index.html`. Every translatable element has a `data-i18n="key"`.
 - Vietnamese lives in `assets/vi.js`, keyed by those attributes.
-- After editing either, run `node scripts/check-i18n.mjs` — it fails if a key is missing on one side.
+- After editing either, run `node scripts/check-i18n.mjs` — it fails if a key is missing on one side. The same check runs on every push and pull request. Placeholders, accessible names, and note-line prefixes use `data-i18n-placeholder`, `data-i18n-aria`, and `data-i18n-prefix`.
 
 ## Refresh the numbers
 
