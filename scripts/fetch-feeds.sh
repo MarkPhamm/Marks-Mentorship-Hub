@@ -22,9 +22,15 @@ for source in ${@:-qdbd posts}; do
         | jq '{last_month: .data.last_month}' \
         | save assets/qdbd.json '(.last_month | type) == "number" and .last_month > 0' ;;
     posts)
-      # Substack answers 403 to GitHub's runners, so the nightly workflow skips this one: run it from a laptop
+      # Substack answers 403 to GitHub's runners, so the nightly workflow skips this one: run it from a laptop.
+      # The archive list can keep an old title after a published post is renamed, so read each post for its current one.
       curl -fsSL -m 20 -A 'Mozilla/5.0' 'https://aehandbook.substack.com/api/v1/archive?sort=new&limit=3' \
-        | jq '[.posts[] | {title, url: .canonical_url, date: .post_date[:10]}]' \
+        | jq -r '.posts[].slug' \
+        | while read -r slug; do
+            curl -fsSL -m 20 -A 'Mozilla/5.0' "https://aehandbook.substack.com/api/v1/posts/$slug" \
+              | jq '{title, url: .canonical_url, date: .post_date[:10]}'
+          done \
+        | jq -s 'sort_by(.date) | reverse' \
         | save assets/posts.json 'length == 3 and all(.[]; (.title | length > 0) and (.url | startswith("https://aehandbook.substack.com/p/")))' ;;
     *) echo "unknown source: $source" >&2; exit 2 ;;
   esac
