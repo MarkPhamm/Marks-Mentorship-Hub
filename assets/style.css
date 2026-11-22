@@ -278,8 +278,6 @@ picture.drawing img { display: block; margin: 0 auto; } /* phones get the -m cut
 .quotes blockquote p { margin: 0 0 12px; }
 .quotes footer { color: var(--grey); font-size: 17px; }
 #proof h3 { margin-top: 36px; }
-/* full-width 5th student box so it is not left alone */
-.quotes > blockquote:last-child:nth-child(odd) { grid-column: 1 / -1; }
 /* worked-with rows: a still row that scrolls sideways; site.js adds .is-looping to slide it */
 .marquee { overflow-x: auto; margin-top: 14px; }
 .marquee .track { display: flex; gap: 16px; width: max-content; padding: 4px 0; }
