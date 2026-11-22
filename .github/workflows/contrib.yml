@@ -14,16 +14,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Fetch contribution calendar
+        id: contrib
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
         run: scripts/fetch-contrib.sh "$GITHUB_REPOSITORY_OWNER"
       - name: Fetch downloads
+        id: downloads
+        continue-on-error: true
         run: scripts/fetch-feeds.sh qdbd
+      - name: Stamp homepage fallbacks
+        if: always()
+        run: node scripts/stamp-stats.mjs
       - name: Commit if changed
+        if: always()
         run: |
-          git add assets/*.json
+          git add assets/*.json index.html
           git diff --cached --quiet && exit 0
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'Update live data'
           git push
+      - name: Fail when a fetch failed
+        if: always() && (steps.contrib.outcome == 'failure' || steps.downloads.outcome == 'failure')
+        run: exit 1
