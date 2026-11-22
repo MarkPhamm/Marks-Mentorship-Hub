@@ -38,12 +38,17 @@ body{{margin:0}} svg{{display:block;background:#fff}} text{{font-family:hand}}</
 <svg id=s width={W} height={H} viewBox="0 0 {W} {H}"></svg>
 <script>{rough}</script><script>const W={W},H={H};{helpers}{drawing}</script>"""
 
+errors = []
 with sync_playwright() as p:
     b = p.chromium.launch()
     pg = b.new_page(viewport={'width': W, 'height': H})
-    pg.on('pageerror', lambda e: print('JS ERROR:', e))
+    pg.on('pageerror', lambda e: errors.append(e))
     pg.set_content(html)
     pg.wait_for_timeout(500)
+    if errors:
+        print('JS ERROR:', errors[0], file=sys.stderr)
+        b.close()
+        sys.exit(1)
     pg.screenshot(path=OUT)
     b.close()
 print('saved', OUT)
