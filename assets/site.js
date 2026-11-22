@@ -7,6 +7,19 @@
   var root = document.documentElement;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  /* ---- worked-with rows: copy each row once so the slide loops without a gap ---- */
+  if (!reducedMotion.matches) {
+    document.querySelectorAll('.marquee .track').forEach(function (track) {
+      Array.prototype.slice.call(track.children).forEach(function (q) {
+        var copy = q.cloneNode(true);
+        copy.setAttribute('aria-hidden', 'true');
+        copy.querySelectorAll('a').forEach(function (a) { a.tabIndex = -1; });
+        track.appendChild(copy);
+      });
+      track.parentNode.classList.add('is-looping');
+    });
+  }
+
   /* ---- sketch layer ---- */
   function drawSketches() {
     if (typeof rough === 'undefined') return;
