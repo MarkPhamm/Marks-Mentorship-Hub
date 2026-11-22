@@ -20,7 +20,7 @@ for source in ${@:-qdbd posts}; do
     qdbd)
       curl -fsS -m 20 https://pypistats.org/api/packages/quickdbd-cli/recent \
         | jq '{last_month: .data.last_month}' \
-        | save assets/qdbd.json '.last_month > 0' ;;
+        | save assets/qdbd.json '(.last_month | type) == "number" and .last_month > 0' ;;
     posts)
       # Substack answers 403 to GitHub's runners, so the nightly workflow skips this one: run it from a laptop
       curl -fsS -m 20 -A 'Mozilla/5.0' 'https://markphammm.substack.com/api/v1/archive?sort=new&limit=3' \
