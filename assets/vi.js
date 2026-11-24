@@ -71,6 +71,7 @@ var VI = {
   'how.s4.body': 'Chỉ gửi bài khi checklist đã pass. Buổi học dành cho phần khó, không phải lỗi chính tả.',
 
   'stat.sql': 'bài SQL đã giải',
+  'stat.sql.more': 'cộng thêm HackerRank và các trang khác, không hiện ở đây.',
   'stat.gh': 'contribution GitHub trong một năm',
   'stat.xom': 'thành viên Xóm Data, nơi mình làm moderator',
   'stat.qdbd': 'lượt tải mỗi tháng của qdbd, tool mình tự làm',
