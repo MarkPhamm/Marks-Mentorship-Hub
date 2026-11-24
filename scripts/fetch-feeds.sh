@@ -30,9 +30,9 @@ for source in ${@:-qdbd posts}; do
         | jq -r '.posts[].slug' \
         | while read -r slug; do
             curl -fsSL -m 20 -A 'Mozilla/5.0' "https://aehandbook.substack.com/api/v1/posts/$slug" \
-              | jq '{title, url: .canonical_url, date: .post_date[:10]}'
+              | jq '{title, url: .canonical_url, date: .post_date}'
           done \
-        | jq -s 'sort_by(.date) | reverse' \
+        | jq -s 'sort_by(.date) | reverse | map(.date |= .[:10])' \
         | save assets/posts.json 'length == 3 and all(.[]; (.title | length > 0) and (.url | startswith("https://aehandbook.substack.com/p/")))' || failed=1 ;;
     *) echo "unknown source: $source" >&2; exit 2 ;;
   esac
