@@ -34,10 +34,12 @@
       svg.setAttribute('class', 'sketch');
       svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
       svg.setAttribute('aria-hidden', 'true');
+      var kind = el.getAttribute('data-sketch');
+      // stretch with the element when its shape changes before a redraw (print layout never fires resize); the ring keeps its shape
+      if (kind !== 'circle') svg.setAttribute('preserveAspectRatio', 'none');
       var rc = rough.svg(svg);
       var seed = i + 7; // fixed per element: no jitter on redraw
       var opts = { stroke: INK, strokeWidth: 2.2, roughness: 1.6, bowing: 1.2, seed: seed };
-      var kind = el.getAttribute('data-sketch');
       try {
         if (kind === 'box') {
           svg.appendChild(rc.rectangle(3, 3, w - 6, h - 6, opts));
