@@ -192,6 +192,7 @@ picture.drawing img { display: block; margin: 0 auto; } /* phones get the -m cut
 .sql-proof a { display: block; text-decoration: none; color: inherit; }
 .sql-proof .drawing { margin-top: 0; }
 .sql-cap { display: block; text-align: center; margin-top: 8px; font-size: 18px; }
+.sql-more { grid-column: 1 / -1; margin: 0; color: var(--grey); } /* the count above includes sites without a scoreboard here */
 @media (max-width: 640px) { .sql-proof { grid-template-columns: 1fr; } }
 
 /* contribution graph: site.js draws it from assets/contrib.json; narrow screens scroll it sideways */
