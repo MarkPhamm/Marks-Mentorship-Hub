@@ -314,9 +314,10 @@
     }
     function copyNote() {
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(out.textContent).then(function () {
+        var text = out.textContent;
+        navigator.clipboard.writeText(text).then(function () {
           recordCopy();
-          showCopied();
+          if (out.textContent === text) showCopied(); // edited while the write was pending: the clipboard holds the old draft
         }, selectNote);
       } else {
         selectNote();
