@@ -6,7 +6,7 @@ NAME = sys.argv[1]
 SIZES = {'hero': (2000, 760), 'how': (2000, 900), 'note': (2000, 1000), 'offer': (2000, 1000), 'og': (1200, 630), 'square': (1600, 1600),
          'hero-m': (1100, 720), 'offer-m': (1100, 1000), 'note-m': (1100, 960), 'how-m': (1100, 980), 'portrait': (900, 1050),
          'projects': (2400, 1150), 'projects-m': (1100, 1930), 'findings': (2000, 1060), 'findings-m': (1100, 1000), 'explorer': (1600, 900),
-         'sql-ss': (1100, 1300), 'sql-lc': (1100, 1300),
+         'sql-ss': (1100, 1300), 'taught': (1600, 860), 'tests': (1600, 820), 'taught-m': (1100, 1250), 'ask': (1600, 920), 'handbook': (1600, 820), 'built': (1600, 840), 'built-m': (1100, 1500), 'handbook-m': (1100, 1250), 'ask-m': (1100, 1300), 'monday': (1600, 920), 'monday-m': (1100, 1350), 'tests-m': (1100, 1360), 'sql-lc': (1100, 1300),
          **{n: (1200, 675) for n in ['proj-skytrax', 'proj-delta', 'proj-frontier', 'proj-spirit', 'proj-local']}}
 W, H = SIZES[NAME]
 OUT = NAME + '.png'
