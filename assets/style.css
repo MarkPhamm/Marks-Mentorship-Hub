@@ -49,6 +49,7 @@ p { max-width: 62ch; }
   pointer-events: none;
   z-index: 0;
 }
+[data-sketch] > svg.sketch path { vector-effect: non-scaling-stroke; } /* a stretched box keeps its pen width */
 [data-sketch] > :not(svg.sketch) { position: relative; z-index: 1; }
 /* no-JS fallback: plain ink borders, removed once the sketch draws */
 [data-sketch="box"]:not(.sketched) { border: 2px solid var(--ink); }
