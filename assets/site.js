@@ -279,6 +279,7 @@
       var over = note.length > NOTE_FREE_LIMIT;
       out.textContent = note;
       document.getElementById('note-count').textContent = note.length;
+      document.getElementById('note-limit').textContent = NOTE_FREE_LIMIT; // the page shows the same limit the warning uses
       document.getElementById('note-over').hidden = !over;
       if (over && !wasOver) { // shake the counter line once, at the moment the note crosses the limit
         meta.classList.remove('shake');

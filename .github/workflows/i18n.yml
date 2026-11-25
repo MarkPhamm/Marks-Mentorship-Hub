@@ -6,3 +6,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: node scripts/check-i18n.mjs
+      - run: node scripts/check-assets.mjs
