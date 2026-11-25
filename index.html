@@ -416,58 +416,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <figcaption class="hand" data-i18n="teach.cap3">pipelines 101: zero infrastructure</figcaption>
       </figure>
     </div>
-    <!-- the rest opens on demand; nothing with data-sketch may go in here (a closed panel measures 0) -->
-    <details class="more">
-      <summary class="hand" data-i18n="teach.more">seven more: projects, resume, laptop setup, dbt 101 to 302, Spark</summary>
-      <div class="drawing-row">
-        <figure>
-          <a href="https://aehandbook.substack.com/p/component-of-a-technical-data-project" target="_blank" rel="noopener">
-            <img class="drawing" src="assets/img/work-projects.webp" alt="A data project folder structure where each folder has one job" width="1200" height="600" loading="lazy">
-          </a>
-          <figcaption class="hand" data-i18n="work.cap1">projects that don't look like everyone else's</figcaption>
-        </figure>
-        <figure>
-          <a href="https://aehandbook.substack.com/p/people-version-control-everything" target="_blank" rel="noopener">
-            <img class="drawing" src="assets/img/work-resume.webp" alt="Resume files named final, final v2, final real, versus a clean git history" width="1200" height="857" loading="lazy">
-          </a>
-          <figcaption class="hand" data-i18n="work.cap2">a resume treated like a product</figcaption>
-        </figure>
-        <figure>
-          <a href="https://aehandbook.substack.com/p/i-got-a-new-mac-and-refused-to-set" target="_blank" rel="noopener">
-            <img class="drawing" src="assets/img/work-mac.webp" alt="Four laptops set up by hand, all different — versus one repo and four scripts, about 20 minutes" width="1200" height="857" loading="lazy">
-          </a>
-          <figcaption class="hand" data-i18n="work.cap4">a laptop that sets itself up</figcaption>
-        </figure>
-        <figure>
-          <a href="https://aehandbook.substack.com/p/dbt-101-dbt-fundamental" target="_blank" rel="noopener">
-            <img class="drawing" src="assets/img/teach-dbt-101.webp" alt="Ad-hoc SQL scripts with no clear order, version control or testing; dbt run builds source, staging model, mart model — parents first" width="1200" height="857" loading="lazy">
-          </a>
-          <figcaption class="hand" data-i18n="teach.cap4">dbt 101: parents first</figcaption>
-        </figure>
-        <figure>
-          <a href="https://aehandbook.substack.com/p/dbt-202-dbt-incremental-model" target="_blank" rel="noopener">
-            <img class="drawing" src="assets/img/teach-dbt-202.webp" alt="A table model rebuilds all rows every single run; an incremental model adds only new rows where updated_at is past the max" width="1200" height="857" loading="lazy">
-          </a>
-          <figcaption class="hand" data-i18n="teach.cap5">dbt 202: only the new rows</figcaption>
-        </figure>
-        <figure>
-          <a href="https://aehandbook.substack.com/p/dbt-302-dbt-jinja-and-macros" target="_blank" rel="noopener">
-            <img class="drawing" src="assets/img/teach-dbt-302.webp" alt="amount / 100 copy-pasted across three models, versus one cents_to_dollars macro feeding all three — change it once" width="1200" height="857" loading="lazy">
-          </a>
-          <figcaption class="hand" data-i18n="teach.cap6">dbt 302: change it once</figcaption>
-        </figure>
-        <figure>
-          <a href="https://aehandbook.substack.com/p/all-things-spark-tldr-part-1" target="_blank" rel="noopener">
-            <img class="drawing" src="assets/img/teach-spark.webp" alt="Spark execution hierarchy: application, job, stage, task; four 128MB partitions feed executor cores — 1 partition = 1 task" width="1200" height="857" loading="lazy">
-          </a>
-          <figcaption class="hand" data-i18n="teach.cap7">spark: 1 partition = 1 task</figcaption>
-        </figure>
-      </div>
-    </details>
+    <h3 class="hand" data-i18n="teach.courses.h3" data-reveal>three hands-on courses you'll work through</h3>
+    <p data-i18n="teach.courses.body" data-reveal>Built with Vu Trinh: command-line courses for dbt, Airflow and Spark. You write the code, a checker runs it, and you fix it until it passes. 92 exercises, from your first model to production patterns.</p>
+    <div class="drawing-row" data-reveal-group>
+      <figure>
+        <img class="drawing" src="assets/img/course-dbt.webp" alt="dbt lineage from raw csv through stg__orders and int_order_payments to fct_orders with 99 rows; the dbt-learn check fails, then passes after the fix" width="1200" height="675" loading="lazy">
+        <figcaption class="hand" data-i18n="teach.course1">learn dbt: 8 stages, 34 exercises</figcaption>
+      </figure>
+      <figure>
+        <img class="drawing" src="assets/img/course-airflow.webp" alt="Airflow DAG extract, transform, load; load retries twice with a 5 second delay and succeeds on try 3" width="1200" height="675" loading="lazy">
+        <figcaption class="hand" data-i18n="teach.course2">learn airflow: 32 exercises</figcaption>
+      </figure>
+      <figure>
+        <img class="drawing" src="assets/img/course-spark.webp" alt="Spark broadcast join: the small orders table is copied to three executors, each joins its own lineitem partition with no shuffle" width="1200" height="675" loading="lazy">
+        <figcaption class="hand" data-i18n="teach.course3">learn spark: 26 exercises</figcaption>
+      </figure>
+    </div>
   </section>
 
-  <!-- latest from the handbook: site.js fills the list from assets/posts.json and unhides the section -->
-  <section id="posts" class="section" hidden>
+  <!-- latest from the handbook: site.js fills the list from assets/posts.json; the full archive panel below works without JS -->
+  <section id="posts" class="section">
     <h2 class="hand" data-i18n="posts.h3" data-reveal>latest from the handbook</h2>
     <figure class="single-figure">
       <picture class="drawing">
@@ -476,6 +444,95 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </picture>
     </figure>
     <ul class="rules hand"></ul>
+    <!-- the rest opens on demand; nothing with data-sketch may go in here (a closed panel measures 0) -->
+    <details class="more">
+      <summary class="hand" data-i18n="teach.more">everything I've written: 35 posts in 6 tracks</summary>
+      <div class="drawing-row">
+        <figure class="track">
+          <a href="https://aehandbook.substack.com/p/sql-101-the-roadmap" target="_blank" rel="noopener">
+            <img class="drawing" src="assets/img/confused-sql.webp" alt="MySQL, PostgreSQL, Oracle, SQL Server — which one do I learn? Just learn ANSI SQL" width="1200" height="857" loading="lazy">
+          </a>
+          <figcaption class="hand" data-i18n="teach.track.sql">sql and leetcode (7)</figcaption>
+          <ul>
+            <li><a href="https://aehandbook.substack.com/p/sql-101-the-roadmap" target="_blank" rel="noopener">SQL 101: the roadmap</a></li>
+            <li><a href="https://aehandbook.substack.com/p/i-dont-know-what-type-of-sql-to-learn" target="_blank" rel="noopener">I don't know what type of SQL to learn</a></li>
+            <li><a href="https://aehandbook.substack.com/p/leetcode-stratascratch-series-first" target="_blank" rel="noopener">first day retention rate</a></li>
+            <li><a href="https://aehandbook.substack.com/p/leetcode-series-analyze-organization" target="_blank" rel="noopener">analyze organization hierarchy</a></li>
+            <li><a href="https://aehandbook.substack.com/p/leetcode-series-gaps-and-islands" target="_blank" rel="noopener">gaps and islands 1: one framework</a></li>
+            <li><a href="https://aehandbook.substack.com/p/gaps-and-islands-part-2-the-scd2" target="_blank" rel="noopener">gaps and islands 2: the SCD2 table</a></li>
+            <li><a href="https://aehandbook.substack.com/p/gaps-and-islands-part-3-the-row-number" target="_blank" rel="noopener">gaps and islands 3: the row number way</a></li>
+          </ul>
+        </figure>
+        <figure class="track">
+          <a href="https://aehandbook.substack.com/p/dbt-100-dbt-foundations" target="_blank" rel="noopener">
+            <img class="drawing" src="assets/img/teach-dbt-202.webp" alt="A table model rebuilds all rows every single run; an incremental model adds only new rows where updated_at is past the max" width="1200" height="857" loading="lazy">
+          </a>
+          <figcaption class="hand" data-i18n="teach.track.dbt">dbt, 100 to 303 (8)</figcaption>
+          <ul>
+            <li><a href="https://aehandbook.substack.com/p/dbt-100-dbt-foundations" target="_blank" rel="noopener">dbt 100: the foundations</a></li>
+            <li><a href="https://aehandbook.substack.com/p/dbt-101-dbt-fundamental" target="_blank" rel="noopener">dbt 101: fundamentals</a></li>
+            <li><a href="https://aehandbook.substack.com/p/dbt-102-dbt-analyses-and-seeds" target="_blank" rel="noopener">dbt 102: analyses and seeds</a></li>
+            <li><a href="https://aehandbook.substack.com/p/dbt-201-dbt-materialization" target="_blank" rel="noopener">dbt 201: materializations</a></li>
+            <li><a href="https://aehandbook.substack.com/p/dbt-202-dbt-incremental-model" target="_blank" rel="noopener">dbt 202: incremental models</a></li>
+            <li><a href="https://aehandbook.substack.com/p/dbt-203-dbt-snapshots" target="_blank" rel="noopener">dbt 203: snapshots</a></li>
+            <li><a href="https://aehandbook.substack.com/p/dbt-302-dbt-jinja-and-macros" target="_blank" rel="noopener">dbt 302: Jinja and macros</a></li>
+            <li><a href="https://aehandbook.substack.com/p/dbt-303-dbt-exposures" target="_blank" rel="noopener">dbt 303: exposures</a></li>
+          </ul>
+        </figure>
+        <figure class="track">
+          <a href="https://aehandbook.substack.com/p/all-things-spark-tldr-part-1" target="_blank" rel="noopener">
+            <img class="drawing" src="assets/img/teach-spark.webp" alt="Spark execution hierarchy: application, job, stage, task; four 128MB partitions feed executor cores — 1 partition = 1 task" width="1200" height="857" loading="lazy">
+          </a>
+          <figcaption class="hand" data-i18n="teach.track.spark">spark (7)</figcaption>
+          <ul>
+            <li><a href="https://aehandbook.substack.com/p/all-things-spark-tldr-part-1" target="_blank" rel="noopener">TL;DR 1: the basics</a></li>
+            <li><a href="https://aehandbook.substack.com/p/all-things-spark-tldr-part-2-rdd" target="_blank" rel="noopener">TL;DR 2: RDDs</a></li>
+            <li><a href="https://aehandbook.substack.com/p/all-things-spark-tldr-part-3-deploys" target="_blank" rel="noopener">TL;DR 3: deploys, spark-submit, executors</a></li>
+            <li><a href="https://aehandbook.substack.com/p/all-things-spark-tldr-part-4-dynamic" target="_blank" rel="noopener">TL;DR 4: dynamic allocation, Catalyst, caching</a></li>
+            <li><a href="https://aehandbook.substack.com/p/all-things-spark-tldr-part-5-joins" target="_blank" rel="noopener">TL;DR 5: joins and aggregations</a></li>
+            <li><a href="https://aehandbook.substack.com/p/i-re-learn-spark-again-part-1" target="_blank" rel="noopener">I re-learn Spark (again), part 1</a></li>
+            <li><a href="https://aehandbook.substack.com/p/i-re-learn-spark-again-part-2" target="_blank" rel="noopener">I re-learn Spark (again), part 2</a></li>
+          </ul>
+        </figure>
+        <figure class="track">
+          <a href="https://aehandbook.substack.com/p/i-rebuilt-my-ingestion-pipeline-with" target="_blank" rel="noopener">
+            <img class="drawing" src="assets/img/teach-pipeline.webp" alt="Neon Postgres to Snowflake through the WAL, CDC and Fivetran — read the log, not the tables" width="1200" height="857" loading="lazy">
+          </a>
+          <figcaption class="hand" data-i18n="teach.track.pipe">pipelines (3)</figcaption>
+          <ul>
+            <li><a href="https://aehandbook.substack.com/p/i-rebuilt-my-ingestion-pipeline-with" target="_blank" rel="noopener">zero-infra pipeline 1: WAL, Snowflake, Fivetran CDC</a></li>
+            <li><a href="https://aehandbook.substack.com/p/i-rebuilt-my-ingestion-pipeline-with-02e" target="_blank" rel="noopener">zero-infra pipeline 2: dbt, run by Fivetran</a></li>
+            <li><a href="https://aehandbook.substack.com/p/i-rebuilt-my-ingestion-pipeline-with-85c" target="_blank" rel="noopener">zero-infra pipeline 3: the two numbers that came out wrong</a></li>
+          </ul>
+        </figure>
+        <figure class="track">
+          <a href="https://aehandbook.substack.com/p/understanding-pip-poetry-and-uv" target="_blank" rel="noopener">
+            <img class="drawing" src="assets/img/work-mac.webp" alt="Four laptops set up by hand, all different — versus one repo and four scripts, about 20 minutes" width="1200" height="857" loading="lazy">
+          </a>
+          <figcaption class="hand" data-i18n="teach.track.tools">tools and workflow (5)</figcaption>
+          <ul>
+            <li><a href="https://aehandbook.substack.com/p/understanding-pip-poetry-and-uv" target="_blank" rel="noopener">pip, Poetry and uv</a></li>
+            <li><a href="https://aehandbook.substack.com/p/i-got-a-new-mac-and-refused-to-set" target="_blank" rel="noopener">a Mac that sets itself up</a></li>
+            <li><a href="https://aehandbook.substack.com/p/the-productivity-stack-i-actually" target="_blank" rel="noopener">my productivity stack</a></li>
+            <li><a href="https://aehandbook.substack.com/p/i-just-wanted-to-send-someone-an" target="_blank" rel="noopener">an ERD CLI and VS Code extension</a></li>
+            <li><a href="https://aehandbook.substack.com/p/i-let-a-coding-agent-build-my-dashboard" target="_blank" rel="noopener">a coding agent built my dashboard, not the math</a></li>
+          </ul>
+        </figure>
+        <figure class="track">
+          <a href="https://aehandbook.substack.com/p/component-of-a-technical-data-project" target="_blank" rel="noopener">
+            <img class="drawing" src="assets/img/work-resume.webp" alt="Resume files named final, final v2, final real, versus a clean git history" width="1200" height="857" loading="lazy">
+          </a>
+          <figcaption class="hand" data-i18n="teach.track.career">projects and career (5)</figcaption>
+          <ul>
+            <li><a href="https://aehandbook.substack.com/p/component-of-a-technical-data-project" target="_blank" rel="noopener">a technical data project, part 1</a></li>
+            <li><a href="https://aehandbook.substack.com/p/component-of-a-technical-data-project-59e" target="_blank" rel="noopener">a technical data project, part 2</a></li>
+            <li><a href="https://aehandbook.substack.com/p/people-version-control-everything" target="_blank" rel="noopener">version control your resume</a></li>
+            <li><a href="https://aehandbook.substack.com/p/i-tell-people-im-an-ae-so-wtf-does" target="_blank" rel="noopener">what an analytics engineer actually does</a></li>
+            <li><a href="https://aehandbook.substack.com/p/power-bi-or-tableau-wrong-question" target="_blank" rel="noopener">Power BI or Tableau? wrong question</a></li>
+          </ul>
+        </figure>
+      </div>
+    </details>
   </section>
 
   <!-- shipped tools and courses -->

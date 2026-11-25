@@ -255,6 +255,7 @@ picture.drawing img { display: block; margin: 0 auto; } /* phones get the -m cut
 .single-figure .drawing { max-width: min(760px, 100%); }
 .single-figure.wide .drawing { max-width: 100%; }
 .single-figure figcaption { text-align: center; margin-top: 8px; font-size: 18px; }
+#teach > h3 { margin-top: 48px; }
 
 /* steps */
 .steps { list-style: none; counter-reset: step; padding: 0; margin: 28px 0 0; display: grid; gap: 18px; }
@@ -517,3 +518,8 @@ button.btn:disabled { opacity: 0.4; cursor: default; transform: none; }
   .marquee .track, .marquee.is-looping .track { flex-wrap: wrap; width: auto; animation: none; }
   .marquee .track > [aria-hidden] { display: none; }
 }
+.track ul { list-style: none; padding: 0; margin: 10px 0 0; font-size: 16px; line-height: 1.4; }
+.track li { margin: 6px 0; }
+.track li a { text-decoration: underline; text-underline-offset: 3px; }
+.track li a:hover { color: var(--violet); }
+.more .drawing-row { align-items: start; }
