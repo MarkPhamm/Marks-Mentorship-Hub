@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Writes assets/qdbd.json (last month's PyPI downloads of qdbd) and assets/posts.json (latest three Substack posts).
+# Writes assets/qdbd.json (last month's PyPI downloads of qdbd).
 # A failed or malformed fetch keeps the file from the previous run and makes the script exit 1 after the other sources.
-# usage: scripts/fetch-feeds.sh [qdbd] [posts]   (default: both; needs curl and jq)
+# usage: scripts/fetch-feeds.sh [qdbd]   (needs curl and jq)
 set -uo pipefail
 cd "$(dirname "$0")/.."
 failed=0
@@ -17,23 +17,12 @@ save() {
   fi
 }
 
-for source in ${@:-qdbd posts}; do
+for source in ${@:-qdbd}; do
   case $source in
     qdbd)
       curl -fsS -m 20 https://pypistats.org/api/packages/quickdbd-cli/recent \
         | jq '{last_month: .data.last_month}' \
         | save assets/qdbd.json '(.last_month | type) == "number" and .last_month > 0' || failed=1 ;;
-    posts)
-      # Substack answers 403 to GitHub's runners, so the nightly workflow skips this one: run it from a laptop.
-      # The archive list can keep an old title after a published post is renamed, so read each post for its current one.
-      curl -fsSL -m 20 -A 'Mozilla/5.0' 'https://aehandbook.substack.com/api/v1/archive?sort=new&limit=3' \
-        | jq -r '.posts[].slug' \
-        | while read -r slug; do
-            curl -fsSL -m 20 -A 'Mozilla/5.0' "https://aehandbook.substack.com/api/v1/posts/$slug" \
-              | jq '{title, url: .canonical_url, date: .post_date}'
-          done \
-        | jq -s 'sort_by(.date) | reverse | map(.date |= .[:10])' \
-        | save assets/posts.json 'length == 3 and all(.[]; (.title | length > 0) and (.url | startswith("https://aehandbook.substack.com/p/")))' || failed=1 ;;
     *) echo "unknown source: $source" >&2; exit 2 ;;
   esac
 done

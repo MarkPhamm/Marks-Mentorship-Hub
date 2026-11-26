@@ -14,7 +14,7 @@ The stats in `index.html` drift. Sources: SQL problems (the `Mentorships` playbo
 
 Three things refresh themselves. `.github/workflows/contrib.yml` runs every night and commits whatever changed. The calendar fetch and the downloads fetch are separate: one failing still lets the other commit, and the job stays red. `scripts/fetch-feeds.sh qdbd` writes `assets/qdbd.json` (last month's qdbd downloads from pypistats, shown rounded down to the hundred); a fetch that fails keeps the previous file. `scripts/fetch-contrib.sh` writes `assets/contrib.json` (total, start date, and one level digit 0-4 per day). `node scripts/stamp-stats.mjs` copies those figures into the hero in `index.html`, so the page is right with JavaScript off. The active-day caption uses the last 365 days. `assets/site.js` draws the graph from the same file and replaces the numbers when the JSON loads. Run the scripts by hand (`gh` logged in for the calendar) to refresh them now. If the contributions file is missing the graph stays hidden.
 
-The "latest from the handbook" list does not refresh itself: Substack answers 403 to GitHub's runners. After publishing a post, run `scripts/fetch-feeds.sh posts` on a laptop, add the post's `<li>` to its track in the "everything I've written" panel in `index.html`, and push both.
+The "everything I've written" section is hard-coded. After publishing a post, add its `<li>` to the right track in `index.html` and push.
 
 ## Add mentees
 

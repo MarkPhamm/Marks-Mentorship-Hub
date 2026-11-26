@@ -78,7 +78,6 @@
   /* ---- language toggle ---- */
   var toggle = document.getElementById('lang-toggle');
   var EN = {}; // filled lazily from the DOM before the first swap to Vietnamese
-  var latestPosts = null;
   var rebuildNote = function () {};
 
   function snapshotEnglish() {
@@ -123,7 +122,6 @@
     document.documentElement.setAttribute('lang', lang);
     labelLangToggle(lang);
     try { localStorage.setItem('lang', lang); } catch (e) {}
-    if (latestPosts) renderPosts(latestPosts);
     rebuildNote();
     drawSketches(); // text length changed, boxes must follow
   }
@@ -223,33 +221,6 @@
     scroller.appendChild(svg);
     fig.hidden = false;
     scroller.scrollLeft = scroller.scrollWidth; // narrow screens open on the most recent weeks
-  }
-
-  /* ---- latest posts ---- */
-  // assets/posts.json comes from scripts/fetch-feeds.sh: [{ title, url, date }], newest first
-  function renderPosts(posts) {
-    var box = document.getElementById('posts');
-    if (!box) return;
-    latestPosts = posts;
-    var ul = box.querySelector('ul');
-    ul.textContent = '';
-    var locale = document.documentElement.getAttribute('lang') === 'vi' ? 'vi-VN' : 'en-US';
-    posts.forEach(function (post) {
-      if (post.url.indexOf('https://') !== 0) return;
-      var li = document.createElement('li');
-      var a = document.createElement('a');
-      a.href = post.url;
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.textContent = post.title;
-      var date = document.createElement('span');
-      date.className = 'post-date';
-      date.textContent = new Date(post.date).toLocaleDateString(locale, { month: 'short', day: 'numeric', timeZone: 'UTC' });
-      li.appendChild(a);
-      li.appendChild(date);
-      ul.appendChild(li);
-    });
-    box.hidden = false;
   }
 
   /* ---- note builder ---- */
@@ -445,7 +416,6 @@
       .catch(function () {});
   }
   load('assets/contrib.json', renderContrib);
-  load('assets/posts.json', renderPosts);
   load('assets/qdbd.json', function (data) {
     // a string such as "unavailable" would render as NaN+; the refresh script rejects those, this is the backstop
     if (typeof data.last_month !== 'number' || !(data.last_month > 0)) return;

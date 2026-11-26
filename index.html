@@ -434,20 +434,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
   </section>
 
-  <!-- latest from the handbook: site.js fills the list from assets/posts.json; the full archive panel below works without JS -->
+  <!-- everything I've written: hard-coded, one track per topic; add each new post's <li> by hand -->
   <section id="posts" class="section">
-    <h2 class="hand" data-i18n="posts.h3" data-reveal>latest from the handbook</h2>
+    <h2 class="hand" data-i18n="posts.h3" data-reveal>everything I've written</h2>
     <figure class="single-figure">
       <picture class="drawing">
         <source media="(max-width: 640px)" srcset="assets/img/handbook-m.webp" width="800" height="909">
         <img src="assets/img/handbook.webp" alt="Written down, one post at a time: Mark points at the open AE Handbook, its contents sql, dbt, pipelines and spark, and a new post page, highlighted, that goes to your inbox" width="1200" height="615" loading="lazy">
       </picture>
     </figure>
-    <ul class="rules hand"></ul>
-    <!-- the rest opens on demand; nothing with data-sketch may go in here (a closed panel measures 0) -->
     <details class="more">
-      <summary class="hand" data-i18n="teach.more">everything I've written, by track</summary>
-      <div class="drawing-row">
+      <summary class="hand" data-i18n="teach.more">see every post, by track</summary>
+      <div class="drawing-row tracks">
         <figure class="track">
           <img class="drawing" src="assets/img/confused-sql.webp" alt="MySQL, PostgreSQL, Oracle, SQL Server — which one do I learn? Just learn ANSI SQL" width="1200" height="857" loading="lazy">
           <figcaption class="hand" data-i18n="teach.track.sql">sql and leetcode</figcaption>

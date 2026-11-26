@@ -56,7 +56,7 @@ var VI = {
   'teach.course1': 'learn dbt: 8 chặng, 34 bài tập',
   'teach.course2': 'learn airflow: 32 bài tập',
   'teach.course3': 'learn spark: 26 bài tập',
-  'teach.more': 'mọi bài mình đã viết, theo chủ đề',
+  'teach.more': 'xem mọi bài, theo chủ đề',
   'teach.track.sql': 'SQL và LeetCode',
   'teach.track.dbt': 'dbt, từ 100 đến 303',
   'teach.track.spark': 'Spark',
@@ -137,7 +137,7 @@ var VI = {
   'faq.a4': 'Kết nối LinkedIn kèm lời nhắn. Lời nhắn đó chính là bài copy-paste test đầu tiên của bạn.',
 
   'cta.h2': 'lời nhắn chính là đơn ứng tuyển',
-  'posts.h3': 'bài mới nhất trên handbook',
+  'posts.h3': 'mọi bài mình đã viết',
   'aria.sections': 'các mục',
   'aria.contrib': 'biểu đồ đóng góp GitHub của mình trong năm qua',
   'aria.links': 'liên kết',
